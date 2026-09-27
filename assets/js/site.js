@@ -44,6 +44,8 @@
       var open = nav.classList.toggle("open");
       menu.setAttribute("aria-expanded", open ? "true" : "false");
     }
+    var flip = event.target.closest("[data-flip]");
+    if (flip) { flip.classList.toggle("flipped"); }
     if (event.target.closest("[data-search-open]")) { openSearch(); }
     if (event.target.closest("[data-search-close]") || event.target.id === "search-panel") { closeSearch(); }
   });
@@ -157,6 +159,23 @@
         slot.appendChild(frame);
         if (window.gtag) { window.gtag("event", "lecture_open", { video_id: box.getAttribute("data-video") }); }
       }
+    });
+  });
+
+  /* Book animations: autoplay muted, tap to pause, never autoplay for reduced motion */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("video.anim-video").forEach(function (video) {
+    video.muted = true;
+    if (reduceMotion) {
+      video.removeAttribute("autoplay");
+      video.pause();
+      video.controls = true;
+    } else {
+      var attempt = video.play();
+      if (attempt && attempt.catch) { attempt.catch(function () { video.controls = true; }); }
+    }
+    video.addEventListener("click", function () {
+      if (video.paused) { video.play(); } else { video.pause(); }
     });
   });
 
