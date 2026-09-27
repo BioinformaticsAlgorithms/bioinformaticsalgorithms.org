@@ -1,0 +1,30 @@
+---
+title: Read the Book
+seo_title: "Read Bioinformatics Algorithms Free Online: Chapters 1 to 5"
+description: "Read the first five chapters of Bioinformatics Algorithms free online: replication origins, motif finding, genome assembly, antibiotic sequencing, and sequence alignment."
+lede: "We love open education, so the first five chapters of the book are free to read here, one page per lesson. If you enjoy them, the print book and the interactive course have all eleven."
+---
+{% for c in site.data.chapters %}{% if c.free %}
+{% assign lessons = site.lessons | where: "chapter", c.n | sort: "order" %}
+<section class="read-chapter" style="display:grid;grid-template-columns:150px 1fr;gap:26px;padding:26px 0;border-top:1px solid var(--line)">
+  <a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}"><img src="{{ '/assets/images/site/' | append: c.cover | relative_url }}" alt="Chapter {{ c.n }}: {{ c.question }}" width="150" height="214" loading="lazy" style="border-radius:8px;box-shadow:0 10px 24px rgba(31,39,69,.15)"></a>
+  <div>
+    <p class="kicker">Chapter {{ c.n }} &middot; {{ c.algorithms }}</p>
+    <h2 style="margin:0 0 8px"><a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}" style="color:var(--navy);text-decoration:none">{{ c.question }}</a></h2>
+    <p style="color:var(--muted);margin:0 0 12px">{{ c.blurb }}</p>
+    <p style="margin:0;font-size:.95rem">{% for l in lessons %}<a href="{{ l.url | relative_url }}">{{ l.title }}</a>{% unless forloop.last %} &middot; {% endunless %}{% endfor %}</p>
+    <p style="margin:12px 0 0"><a class="btn btn-primary btn-small" style="background:var(--red);color:#fff" href="{{ lessons[0].url | relative_url }}">Start Chapter {{ c.n }}</a> <a href="{{ '/faq-chapter-' | append: c.n | relative_url }}" style="margin-left:10px">Chapter {{ c.n }} FAQ</a></p>
+  </div>
+</section>
+{% endif %}{% endfor %}
+<section style="padding:26px 0;border-top:1px solid var(--line)">
+  <h2>Chapters 6 to 11</h2>
+  <p class="section-lede">These chapters are in the <a href="{{ site.buy_url | relative_url }}">print book</a> and the <a href="{{ '/online-courses' | relative_url }}">interactive course</a>. Their lecture videos and FAQs are free.</p>
+  <ul>
+  {% for c in site.data.chapters %}{% unless c.free %}
+    <li><strong>Chapter {{ c.n }}: {{ c.question }}</strong> ({{ c.algorithms }}). <a href="https://www.youtube.com/playlist?list={{ c.playlist }}" target="_blank" rel="noopener">Lectures</a> &middot; <a href="{{ '/faq-chapter-' | append: c.n | relative_url }}">FAQ</a></li>
+  {% endunless %}{% endfor %}
+  </ul>
+</section>
+{% include cta-book.html %}
+<style>@media (max-width:600px){.read-chapter{grid-template-columns:90px 1fr!important;gap:16px!important}}</style>

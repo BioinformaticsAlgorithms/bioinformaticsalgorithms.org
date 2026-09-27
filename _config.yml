@@ -1,0 +1,56 @@
+title: Bioinformatics Algorithms
+tagline: "An Active Learning Approach"
+description: "Bioinformatics Algorithms, the bestselling textbook by Phillip Compeau and Pavel Pevzner. Read the first five chapters free, watch the lecture videos, and learn bioinformatics by solving real problems."
+url: "https://bioinformaticsalgorithms.github.io"  # PREVIEW. Set to https://www.bioinformaticsalgorithms.org at cutover.
+baseurl: "/bioinformaticsalgorithms.org"  # PREVIEW. Set to "" at cutover.
+author: "Phillip Compeau and Pavel Pevzner"
+logo: /assets/images/site/bioinformatics-algorithms-3rd-edition-900.jpg
+lang: en_US
+timezone: America/New_York
+
+# PREVIEW: keep search engines off the preview copy. Set to false at cutover.
+noindex: true
+
+# Store and course links. Change buy_url when the new checkout is live.
+buy_url: /shop
+buy_price: "$89.95"
+amazon_url: "https://www.amazon.com/Bioinformatics-Algorithms-Active-Learning-Approach/dp/0990374637"
+amazon_price: "$99.95"
+cogniterra_url: "https://cogniterra.org/a/64"
+cogniterra_price: "$79.95"
+coursera_url: "https://www.coursera.org/specializations/bioinformatics"
+youtube_url: "https://www.youtube.com/channel/UCKSUVRs2N2FdDNvQoRWKhoQ"
+contact_email: activelearningpublishers@gmail.com
+isbn: ""  # add the 3rd edition ISBN-13 here once confirmed
+ga4_id: G-MJW2EM2GJB
+
+social:
+  name: Bioinformatics Algorithms
+  links:
+    - "https://www.youtube.com/channel/UCKSUVRs2N2FdDNvQoRWKhoQ"
+
+defaults:
+  - scope: {path: ""}
+    values:
+      layout: page
+      image: /assets/images/site/share-card.jpg
+
+collections:
+  lessons:
+    output: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - scripts
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .jekyll-cache
+
+# Where the "Buy direct" button sends people. Until the new checkout (Shopify) is set up,
+# this points at the existing Wix product page, which only works while Wix is live.
+checkout_url: "https://www.bioinformaticsalgorithms.org/product-page/bioinformatics-algorithms-3rd-edition"

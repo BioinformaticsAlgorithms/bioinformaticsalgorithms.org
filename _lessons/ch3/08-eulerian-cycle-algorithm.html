@@ -1,0 +1,80 @@
+---
+layout: lesson
+title: From Euler's Theorem to an Algorithm for Finding Eulerian Cycles
+seo_title: An Algorithm for Finding Eulerian Cycles and Paths
+description: The proof of Euler’s Theorem offers an example of what mathematicians call a constructive proof , which not only proves the desired result, but also...
+chapter: 3
+number: '3.8'
+order: 8
+slug: eulerian-cycle-algorithm
+permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
+---
+<h2 id="constructing-eulerian-cycles">Constructing Eulerian cycles</h2>
+<p>The proof of Euler’s Theorem offers an example of what mathematicians call a <strong>constructive proof</strong>, which not only proves the desired result, but also provides us with a method for constructing the object we need. In short, we track Leo’s movements until he inevitably produces an Eulerian cycle in a balanced and strongly connected graph <em>Graph</em>, as summarized in the following pseudocode.</p>
+<pre><small>
+<code class="language-no-highlight"><strong>EulerianCycle</strong>(<em>Graph</em>)
+    form a cycle <em>Cycle</em> by randomly walking in <em>Graph</em> (don't visit the same edge twice!)
+    <strong>while</strong> there are unexplored edges in <em>Graph</em>
+        select a node <em>newStart</em> in <em>Cycle</em> with still unexplored edges
+        form <em>Cycle</em>’ by traversing <em>Cycle</em> (starting at <em>newStart</em>) and then randomly walking
+        <em>Cycle</em> ← <em>Cycle</em>’
+    <strong>return</strong> <em>Cycle</em></code></small></pre>
+<p>You should now be prepared to solve the Eulerian Cycle Problem for any graph. It may not be obvious, but a good implementation of <strong>EulerianCycle</strong> will work in linear time. To achieve this runtime speedup, you would need to use an efficient data structure in order to maintain the current cycle that Leo is building as well as the list of unused edges incident to each node and the list of nodes on the current cycle that have unused edges.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Cycle Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3f/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<ul>
+<li>     <strong>Input:</strong> The adjacency list of an Eulerian directed graph.</li>
+<li>     <strong>Output:</strong> An Eulerian cycle in this graph.</li>
+</ul>
+<h2 id="from-eulerian-cycles-to-eulerian-paths">From Eulerian cycles to Eulerian paths</h2>
+<p>We can now check if a directed graph has an Eulerian <em>cycle</em>, but what about an Eulerian path? Consider the de Bruijn graph on the left in the figure below, which we already know has an Eulerian path, but which does not have an Eulerian cycle because nodes <samp><strong>TA</strong></samp> and <samp><strong><span style="color: #a03881;">TT</span></strong></samp> are not balanced. However, we can transform this Eulerian path into an Eulerian cycle by adding a single edge connecting <samp><strong><span style="color: #a03881;">TT</span></strong></samp> and <samp><strong>TA</strong></samp>, as shown in the figure below.</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> How many unbalanced nodes does a graph with an Eulerian path have?</p>
+<p style="text-align: center;"><img alt="Eulerian path to cycle" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/Eulerian_path_to_cycle.png" style="max-width:100%" width="750px"/></p>
+<p style="text-align: center;"><small><strong>Figure: </strong>Transforming an Eulerian path (left) into an Eulerian cycle (right) by adding an edge.</small></p>
+<p>More generally, consider a graph that does not have an Eulerian cycle but does have an Eulerian path. If an Eulerian path in this graph connects a node <em>v</em> to a different node <em>w</em>, then the graph is <strong>nearly balanced</strong>, meaning that all its nodes except <em>v</em> and <em>w</em> are balanced. In this case, adding an extra edge from <em>w</em> to <em>v</em> transforms the Eulerian path into an Eulerian cycle. Thus, a nearly balanced graph has an Eulerian path if and only if adding an edge between its unbalanced nodes makes the graph balanced and strongly connected.</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Find an analogue of the nearly balanced condition that will determine when an <em>undirected</em> graph has an Eulerian path.</p>
+<p>The analogue of Euler’s theorem for undirected graphs immediately implies that there is no Eulerian path in <em>Königsberg</em>. However, the story is different in modern-day Kaliningrad; for more details, see "DETOUR: The Bridges of Kaliningrad" in the <a href="{{ site.baseurl }}/">print companion</a> or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Path Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3g/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<ul>
+<li><strong>Input:</strong> The adjacency list of a directed graph that has an Eulerian path.</li>
+<li><strong>Output:</strong> An Eulerian path in this graph.</li>
+</ul>
+<p>You now have a method to assemble a genome, since the String Reconstruction Problem reduces to finding an Eulerian path in the de Bruijn graph generated from reads.</p>
+<p>We can therefore summarize this solution using the following pseudocode, which relies on three problems that we have already solved:</p>
+<ol>
+<li>The de Bruijn Graph Construction Problem;</li>
+<li>The Eulerian Path Problem;</li>
+<li>The String Spelled by a Genome Path Problem.</li>
+</ol>
+<pre><small><code class="language-no-highlight">    <strong>StringReconstruction</strong>(<em>Patterns</em>)
+        <em>dB</em> ← <strong>DeBruijn</strong>(<em>Patterns</em>)
+        <em>path</em> ← <strong>EulerianPath</strong>(<em>dB</em>)
+        <em>Text</em>﻿ ← <strong>PathToGenome</strong>(<em>path</em>)
+        <strong>return</strong> <em>Text</em></code></small></pre>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the String Reconstruction Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3h/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<ul>
+<li><strong>Input:</strong> An integer <em>k</em> followed by a list of <em>k</em>-mers <em>Patterns</em>.</li>
+<li><strong>Output:</strong> A string <em>Text</em> with <em>k-mer</em> composition equal to <em>Patterns</em>. (If multiple answers exist, you may return any one.)</li>
+</ul>
+<h2 id="constructing-universal-strings">Constructing universal strings</h2>
+<p>Now that you know how to use the de Bruijn graph to solve the String Reconstruction Problem, you can also construct a <em>k</em>-universal string for any value of <em>k</em>.</p>
+<p>We should note that de Bruijn was interested in constructing k-universal <em>circular</em> strings. For example, <samp>00011101</samp> is a 3-universal circular string, as it contains each of the eight binary 3-mers (<samp>000</samp>, <samp>001</samp>, <samp>011</samp>, <samp>111</samp>, <samp>110</samp>, <samp>101</samp>, <samp>010</samp>, and <samp>100</samp>) exactly once (see the figure below).</p>
+<p><strong><em>k</em>-Universal Circular String Problem</strong>: <em>Find a k-universal circular string.</em></p>
+<ul>
+<li><strong>Input:</strong> An integer <em>k</em>.</li>
+<li><strong>Output:</strong> A <em>k</em>-universal circular string.</li>
+</ul>
+<p style="text-align: center;"><img alt="K universal circular string" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/k_universal_circular_string.png" style="max-width:50%" width="200px"/></p>
+<p style="text-align: center;"><small><strong>Figure:</strong> The circular 3-universal string <samp>00011101</samp> contains each of the binary 3-mers exactly once.</small></p>
+<p>Like its analogue for linear strings, the <em>k</em>-Universal Circular String Problem is just a specific case of a more general problem, which requires us to reconstruct a circular string given its <em>k</em>-mer composition. This problem models the assembly of a circular genome containing a single chromosome, like the genomes of most bacteria. We know that we can reconstruct a circular string from its <em>k</em>-mer composition by finding an Eulerian cycle in the de Bruijn graph constructed from these <em>k</em>-mers. Therefore, we can construct a <em>k</em>-universal circular binary string by finding an Eulerian cycle in the de Bruijn graph constructed from the collection of all binary <em>k</em>-mers (see figure below).</p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> How many 3-universal circular strings are there?</p>
+<p style="text-align: center;"><img alt="Debruijn graph circular" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/debruijn_graph_circular.png" style="max-width:100%" width="750px"/></p>
+<p><small><strong>Figure:</strong> (Top) A graph consisting of eight isolated directed edges, one for each binary 3-mer. The nodes of each edge correspond to the 3-mer’s prefix and suffix. (Bottom) Gluing identically labeled nodes in the graph on top results in a de Bruijn graph containing four nodes. An Eulerian cycle through the edges <samp>000</samp> → <samp>001</samp> → <samp>011</samp> → <samp>111</samp> → <samp>110</samp> → <samp>101</samp> → <samp>010 </samp>→ <samp>100</samp> yields the 3-universal circular string <samp>00011101</samp>.</small></p>
+<p>Even though finding a 20-universal circular string amounts to finding an Eulerian cycle in a graph with over a million edges, we now have a fast algorithm for solving this problem. Let <em>BinaryStrings<sub>k</sub></em> be the set of all 2<sup><em>k</em></sup> binary <em>k</em>-mers. The only thing we need to do is solve the <em>k</em>-Universal Circular String Problem is to find an Eulerian cycle in <em>DeBruijn</em>(<em>BinaryStrings<sub>k</sub></em>). Note that the nodes of this graph represent all possible binary (<em>k</em> - 1)-mers. A directed edge connects (<em>k</em> - 1)-mer <em>Pattern</em> to (<em>k</em> - 1)-mer <em>Pattern'</em> in this graph if there exists a <em>k</em>-mer whose prefix is <em>Pattern</em> and whose suffix is <em>Pattern'</em>.</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> The figure below illustrates that <em>DeBruijn</em>(<em>BinaryStrings</em><sub>4</sub>) is balanced and strongly connected and is thus Eulerian. Can you prove that for any <em>k</em>, <em>DeBruijn</em>(<em>BinaryStrings<sub>k</sub></em>) is Eulerian?</p>
+<p style="text-align: center;"><img alt="4 universal string" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/4_universal_string.png" style="max-width:100%" width="650px"/></p>
+<p style="text-align: center;"><small><strong>Figure:</strong> An Eulerian cycle spelling the cyclic 4-universal string <samp>0000110010111101</samp> in <em>DeBruijn</em>(<em>BinaryStrings</em><sub>4</sub>).</small></p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the <em>k</em>-Universal Circular String Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3i/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<ul>
+<li><strong>Input:</strong> An integer <em>k</em>.</li>
+<li><strong>Output:</strong> A <em>k</em>-universal circular string.</li>
+</ul>

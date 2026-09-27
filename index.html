@@ -1,0 +1,102 @@
+---
+layout: default
+title: "Bioinformatics Algorithms: An Active Learning Approach"
+description: "The bestselling bioinformatics textbook by Phillip Compeau and Pavel Pevzner. Read the first five chapters free online, watch the lecture videos, and learn the algorithms behind modern biology."
+body_class: home
+jsonld: >-
+  {"@context":"https://schema.org","@graph":[
+  {"@type":"WebSite","name":"Bioinformatics Algorithms","url":"https://www.bioinformaticsalgorithms.org/"},
+  {"@type":"Book","name":"Bioinformatics Algorithms: An Active Learning Approach","bookEdition":"3rd","inLanguage":"en",
+   "author":[{"@type":"Person","name":"Phillip Compeau"},{"@type":"Person","name":"Pavel Pevzner"}],
+   "publisher":{"@type":"Organization","name":"Active Learning Publishers"},
+   "image":"https://www.bioinformaticsalgorithms.org/assets/images/site/bioinformatics-algorithms-3rd-edition-900.jpg",
+   "url":"https://www.bioinformaticsalgorithms.org/",
+   "offers":{"@type":"Offer","price":"89.95","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://www.bioinformaticsalgorithms.org/shop"}}]}
+---
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">The bestselling bioinformatics textbook</p>
+      <h1>Bioinformatics Algorithms</h1>
+      <p class="lede">Journey to the frontier of computational biology with the gold standard of bioinformatics education. Every chapter starts with a real biological question and builds the algorithms you need to answer it.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ '/read-the-book' | relative_url }}">Read 5 chapters free</a>
+        <a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy the print book, {{ site.buy_price }}</a>
+      </div>
+      <p class="hero-note">No sign-up needed to read. Prefer autograded code challenges and a certificate? <a href="{{ site.cogniterra_url }}" target="_blank" rel="noopener">Try the interactive course free</a>.</p>
+      <div class="stats">
+        <div class="stat"><strong>200+</strong><span>institutions have adopted it</span></div>
+        <div class="stat"><strong>45</strong><span>countries</span></div>
+        <div class="stat"><strong>Hundreds of thousands</strong><span>of online learners</span></div>
+      </div>
+    </div>
+    <div class="hero-art"><img src="{{ '/assets/images/site/hero-book.jpg' | relative_url }}" alt="Bioinformatics Algorithms: An Active Learning Approach, 3rd edition, by Phillip Compeau and Pavel Pevzner" width="1000" height="1000"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Start reading today</h2>
+    <p class="section-lede">The first five chapters are free on this site, one page per lesson. Chapters 6 to 11 are in the print book and the interactive course.</p>
+    <div class="chapter-cards">
+      {% for c in site.data.chapters %}
+      {% if c.free %}<a class="chapter-card" href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}">{% else %}<a class="chapter-card locked" href="{{ site.buy_url | relative_url }}">{% endif %}
+        <img src="{{ '/assets/images/site/' | append: c.cover | relative_url }}" alt="Chapter {{ c.n }}: {{ c.question }}" loading="lazy" width="420" height="620">
+        <span class="cc-body"><span class="cc-num">Chapter {{ c.n }} &middot; {{ c.topic }}</span><span class="cc-q">{{ c.question }}</span><span class="cc-tag">{% if c.free %}Free to read{% else %}In the print book{% endif %}</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="embed" style="max-width:820px;margin:0 auto 50px"><iframe src="https://www.youtube-nocookie.com/embed/yfXeKPt0nw4" title="An introduction to Bioinformatics Algorithms" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <h2 class="section-title">Learn by doing</h2>
+    <p class="section-lede">This is an active learning textbook. You meet each algorithm by working through the biology, then you implement it yourself.</p>
+    <div class="features">
+      <div class="feature"><div class="icon">?</div><h3>STOP and Think</h3><p>Questions woven into the text make you reason about each idea before we reveal it.</p></div>
+      <div class="feature"><div class="icon">&lt;/&gt;</div><h3>Hundreds of code challenges</h3><p>Implement every algorithm, then check your work on <a href="https://rosalind.info/problems/list-view/?location=bioinformatics-textbook-track" target="_blank" rel="noopener">Rosalind</a> or with the autograders in our <a href="{{ '/online-courses' | relative_url }}">interactive course</a>.</p></div>
+      <div class="feature"><div class="icon">&#9654;</div><h3>Free lecture videos</h3><p>Every chapter has a full <a href="{{ '/lecture-videos' | relative_url }}">lecture playlist</a> on YouTube.</p></div>
+      <div class="feature"><div class="icon">&#9998;</div><h3>Learner FAQ</h3><p>Answers to <a href="{{ '/faq-home' | relative_url }}">nearly 200 questions</a> that thousands of students have asked us.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Get the book</h2>
+    <p class="section-lede">Choose the version that fits how you learn.</p>
+    <div class="buy-grid">
+      <div class="buy-card best">
+        <h3>Print book, direct</h3>
+        <p class="price">{{ site.buy_price }}</p>
+        <ul><li>All eleven chapters</li><li>Detours and Charging Stations not included online</li><li>Our best price, shipped from us</li></ul>
+        <a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy direct</a>
+      </div>
+      <div class="buy-card">
+        <h3>Interactive course</h3>
+        <p class="price">Free to try <small>then {{ site.cogniterra_price }} once</small></p>
+        <ul><li>The full text with autograded code challenges</li><li>Certificate of completion</li><li>Hosted on Cogniterra</li></ul>
+        <a class="btn btn-primary" href="{{ site.cogniterra_url }}" target="_blank" rel="noopener">Start free</a>
+      </div>
+      <div class="buy-card">
+        <h3>Print book on Amazon</h3>
+        <p class="price">{{ site.amazon_price }}</p>
+        <ul><li>The same print edition</li><li>Prime shipping where available</li></ul>
+        <a class="btn btn-ghost" href="{{ site.amazon_url }}" target="_blank" rel="noopener">View on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    <h2 class="section-title">Adopted by 200 institutions in 45 countries</h2>
+    <p class="section-lede">We share slides, quiz questions, and a discounted classroom version of the interactive text with instructors. <a href="{{ '/contact' | relative_url }}" style="color:#fff">Get in touch</a> if you teach.</p>
+    <div class="quotes">
+      <blockquote class="quote"><p>&ldquo;This lively and unique text on bioinformatics motivates algorithmic thinking with an abundance of up-to-date examples from molecular biology.&rdquo;</p><footer>Michael Waterman, University Professor of Biological Sciences, Mathematics, and Computer Science, USC</footer></blockquote>
+      <blockquote class="quote"><p>&ldquo;I can&rsquo;t imagine a more rewarding or worthwhile subject to work in than bioinformatics, and both Prof. Compeau and Prof. Pevzner played a significant part in my discovery and continued work in the field!&rdquo;</p><footer>Graeme Benstead-Hume, University of Sussex</footer></blockquote>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+layout: default
+body_class: faq-page
+---
+{% assign items = site.data.faq[page.faq] %}
+{% capture base_attr %}="{{ site.baseurl }}/{% endcapture %}
+{% assign chapter = site.data.chapters | where: "n", page.chapter | first %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for e in items %}{"@type":"Question","name":{{ e.q | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ e.a | jsonify }}}}{% unless forloop.last %},{% endunless %}{% endfor %}]}
+</script>
+<div class="wrap page faq">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/faq-home' | relative_url }}">FAQ</a>{% if chapter %} <span>/</span> <a href="{{ '/bioinformatics-chapter-' | append: chapter.n | append: '/' | relative_url }}">Chapter {{ chapter.n }}</a>{% endif %}</nav>
+  <h1 class="page-title">{{ page.title }}</h1>
+  <p class="lede">{% if chapter %}Questions learners ask most about Chapter {{ chapter.n }}, <em>{{ chapter.question }}</em>{% else %}{{ page.lede }}{% endif %}</p>
+  {% if chapter and chapter.free %}<p><a href="{{ '/bioinformatics-chapter-' | append: chapter.n | append: '/' | relative_url }}">Read Chapter {{ chapter.n }} free</a></p>{% endif %}
+  <div class="faq-list">
+    {% for e in items %}
+    <details class="faq-item" id="q{{ forloop.index }}">
+      <summary>{{ e.q }}</summary>
+      <div class="faq-answer prose">{{ e.a | replace: '="/', base_attr }}</div>
+    </details>
+    {% endfor %}
+  </div>
+  {% include cta-book.html %}
+</div>

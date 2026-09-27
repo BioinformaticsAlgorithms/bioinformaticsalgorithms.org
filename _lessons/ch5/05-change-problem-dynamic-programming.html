@@ -1,0 +1,102 @@
+---
+layout: lesson
+title: 'An Introduction to Dynamic Programming: The Change Problem'
+seo_title: 'An Introduction to Dynamic Programming: The Change Problem'
+description: Imagine that you bought this textbook in a bookstore for $99.24, which you paid for with $100 in cash. You are due 76 cents in change, and the cashier...
+chapter: 5
+number: '5.5'
+order: 5
+slug: change-problem-dynamic-programming
+permalink: /bioinformatics-chapter-5/change-problem-dynamic-programming/
+---
+<!-- Step 1 -->
+<h2 id="changing-money-greedily">Changing money greedily</h2>
+<p>Imagine that you bought this textbook in a bookstore for $99.24, which you paid for with $100 in cash. You are due 76 cents in change, and the cashier now must make a decision whether to give you a fistful of 76 1-cent coins or just four coins (25 + 25 + 25 + 1 = 76). Making change in this example is easy, but it casts light on a more general problem — how can a cashier make change using the fewest number of coins?</p>
+<p>Different currencies have different possible coin values, or <strong>denominations</strong>. In the US, the coin denominations are (100, 50, 25, 10, 5, 1); in the Roman Republic, they were (120, 40, 30, 24, 20, 10, 5, 4, 1). The heuristic used by cashiers all over the world to make change, which we call <strong>GreedyChange</strong>, iteratively selects the largest coin denomination possible.</p>
+<pre><small><code class="language-no-highlight"><strong>GreedyChange</strong>(<em>money</em>)
+  <strong><em>change</em></strong> ← empty collection of coins
+  <strong>while</strong> <em>money</em> &gt; 0
+    <em>coin</em> ← largest denomination that is less than or equal to <em>money</em>
+    add a coin with denomination <em>coin</em> to the collection of coins <strong><em>change</em></strong>
+    <em>money</em> ← <em>money</em> − <em>coin</em>
+  <strong>return <em>change</em></strong></code></small></pre>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Does <strong>GreedyChange</strong> always return the minimum possible number of coins?</p>
+<!-- Step 2 -->
+<p>Say we want to change 48 units of currency (called denarii) in ancient Rome. <b></b><strong>GreedyChange</strong> returns five coins (48 = 40 + 5 + 1 + 1 + 1), and yet we can make change using only two coins (48 = 24 + 24). Thus, <strong>GreedyChange</strong> is suboptimal for some denominations!</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> During the reign of Augustus, Roman coin denominations were changed to (1600, 800, 400, 200, 100, 50, 25, 2, 1). Why did these denominations make Roman cashiers' lives easier?  More generally, what do you think might dictate when <strong>GreedyChange</strong> will make change with the fewest number of coins?</p>
+<!-- Step 3 -->
+<p>Since <strong>GreedyChange</strong> is  incorrect, we need to come up with a different approach. We can represent coins from <i>d</i> arbitrary denominations by an array of integers</p>
+<p style="text-align: center;"><em>Coins</em> = (<em>coin</em><sub>1</sub>, ... , <em>coin</em><sub><em>d</em></sub>)</p>
+<p>where the values <em>coin</em><sub><em>i</em></sub> are given in decreasing order. We say that an array of <em>d</em> positive integers (<em>change</em><sub>1</sub>, ..., <em>change</em><sub><em>d</em></sub>) with the <strong>number of coins</strong> <em>change</em><sub>1</sub> + ⋯ + <em>change</em><sub><em>d</em></sub> <strong>changes</strong> an integer <em>money</em> (for the denominations <em>Coins</em>) if</p>
+<p style="text-align: center;"><em>coin</em><sub>1</sub> · <em>change</em><sub>1</sub> + ⋯ + <em>coin</em><sub><em>d</em></sub> · <em>change</em><sub><em>d</em></sub> = <em>money</em></p>
+<p>For example, for the Roman denominations <em>Coins</em> = (120, 40, 30, 24, 20, 10, 5, 4, 1), both (0, 1, 0, 0, 0, 0, 0, 1, 0, 3) and (0, 0, 0, 2, 0, 0, 0, 0, 0) change <em>money</em> = 48.</p>
+<p>We will consider the problem of finding the minimum number of coins needed to make change, instead of actually producing these coins. Let <em>MinNumCoins</em>(<em>money</em>) denote the minimum number of coins needed to change <em>money</em> for a given collection of denominations (e.g., for the Roman denominations, <em>MinNumCoins</em>(48) = 2).</p>
+<p><strong>Change Problem:</strong> <em>Find the minimum number of coins needed to make change.</em></p><ul><li><strong>Input:</strong><span> An integer </span><em>money</em><span> and an array </span><em>Coins</em><span> of </span><em>d</em><span> positive integers.</span></li><li><strong>Output:</strong><span> The minimum number of coins with denominations </span><em>Coins</em><span> that changes </span><em>money</em><span>.</span></li></ul>
+<!-- Step 4 -->
+<h2 id="changing-money-recursively">Changing money recursively</h2>
+<p>Since the greedy solution used by Roman cashiers to solve the Change Problem is incorrect, we will consider a different approach. Suppose you need to change 76 denarii, and you only have coins of the three smallest denominations: <em>Coins</em> = (5, 4, 1). A minimal collection of coins totaling 76 denarii must be one of the following:</p>
+<ul>
+<li>a minimal collection of coins totaling 75 denarii, plus one 1-denarius coin;</li>
+<li>a minimal collection of coins totaling 72 denarii, plus one 4-denarius coin;</li>
+<li>a minimal collection of coins totaling 71 denarii, plus one 5-denarius coin.</li>
+</ul>
+<p>For the general denominations <em>Coins</em> = (<em>coin</em><sub>1</sub>, ... , <em>coin</em><sub><em>d</em></sub>), <em>MinNumCoins</em>(<em>money</em>) is equal to the minimum of <em>d</em> numbers:</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Min num coins recurrence relation" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recurrence_relation.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recurrence_relation.png" width="593px"/></p></span>
+<p>We have just produced a <strong>recurrence relation</strong>, or an equation for <em>MinNumCoins</em>(<em>money</em>) in terms of <em>MinNumCoins</em>(<em>m</em>) for smaller values <em>m</em>. </p>
+<!-- Step 5 -->
+<p>The recurrence relation from the preceding step motivates the following recursive algorithm (i.e., an algorithm that can call itself), which solves the Change Problem by computing <em>MinNumCoins</em>(<em>m</em>) for smaller and smaller values of <em>m</em>. In this algorithm, |<em>Coins</em>| refers to the number of denominations in <em>Coins</em>. See "DETOUR: The Towers of Hanoi" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> if you have not yet encountered recursive algorithms.</p>
+<pre><small><code class="language-no-highlight"><strong>RecursiveChange</strong>(<em>money</em>, <em>Coins</em>)
+  <strong>if</strong> <em>money</em> = 0
+    <strong>return</strong> 0
+  <em>MinNumCoins</em> ← ∞
+  <strong>for</strong> <em>i</em> ← 0 to |<em>Coins</em>| - 1
+    <strong>if</strong> <em>money</em> ≥ <em>coin</em><sub><em>i</em></sub>
+      <strong>NumCoins</strong> ← <strong>RecursiveChange</strong>(<em>money</em> − <em>coin</em><sub><em>i</em></sub>, <em>Coins</em>)
+      <strong>if</strong> <em>NumCoins</em> + 1 &lt; <em>MinNumCoins</em>
+        <em>MinNumCoins</em> ← <em>NumCoins</em> + 1
+  <strong>return</strong> <em>MinNumCoins</em></code></small></pre>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Implement <strong>RecursiveChange</strong> and run it on <em>money</em> = 76 with <em>Coins</em> = (5, 4, 1). What happens?</p>
+<!-- Step 6 -->
+<p><b>RecursiveChange</b> may appear efficient, but it is completely impractical because it recalculates the optimal coin combination for a given value of <em>money</em> over and over again. For example, when <em>money</em> = 76 and <em>Coins</em> = (5, 4, 1), <em>MinNumCoins</em>(70) gets computed six times, five of which are shown in the figure below.  This may not seem like a problem, but <em>MinNumCoins</em>(30) will be computed billions of times!</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Min num coins recursive tree" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recursive_tree.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recursive_tree.png" width="795px"/></p></span>
+<p><small><strong>Figure:</strong> A tree illustrating the computation of <em>MinNumCoins</em>(76) for the denominations <em>coins</em> = (5, 4, 1). The edges of this tree represent recursive calls of <strong>RecursiveChange</strong> for different input values, with five of the six computations of <em>MinNumCoins</em>(70) highlighted in red. When <em>MinNumCoins</em>(70) is computed for the sixth time (corresponding to the path 76 → 75 → 74 → 73 → 72 → 71 → 70), <strong>RecursiveChange</strong> has already been called hundreds of times.</small></p>
+<!-- Step 7 -->
+<h2 id="changing-money-using-dynamic-programming">Changing money using dynamic programming</h2>
+<p>To avoid the many recursive calls that are needed to compute <em>MinNumCoins</em>(<em>money</em>), we will use a dynamic programming strategy. Wouldn’t it be nice to know all the values of <em>MinNumCoins</em>(<em>money</em> − <em>coin</em><sub><em>i</em></sub>) by the time we compute <em>MinNumCoins</em>(<em>money</em>)? Instead of the time-consuming calls to <b>RecursiveChange</b>(<em>money</em> − <em>coin</em><sub><em>i</em></sub>, <em>Coins</em>), we could simply look up the values of <em>MinNumCoins</em>(<em>money</em> − <em>coin</em><sub><em>i</em></sub>) in an array and thus compute <em>MinNumCoins</em>(<em>money</em>) using just |<em>Coins</em>| comparisons.</p>
+<p>The key to dynamic programming is to take a step that may seem counterintuitive. Instead of computing <em>MinNumCoins</em>(<em>m</em>) for every value of <em>m</em> from 76 downward toward <em>m</em> = 0 via recursive calls, we will invert our thinking and compute <em>MinNumCoins</em>(<em>m</em>) from <em>m</em> = 0 <em>upward</em> toward 76, storing all these values in an array so that we only need to compute <em>MinNumCoins</em>(<em>m</em>) once for each value of <em>m</em>. <em>MinNumCoins</em>(<em>m</em>) is still computed via the same recurrence relation:</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Min num coins recurrence relation example" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recurrence_relation_example.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_recurrence_relation_example.png" width="494px"/></p></span>
+<p>For example, assuming that we have already computed <em>MinNumCoins</em>(<em>m</em>) for <em>m</em> &lt; 7, <em>MinNumCoins</em>(6) is equal to one more than the minimum of <em>MinNumCoins</em>(6 - 5) = 1, <em>MinNumCoins</em>(6 - 4) = 2, and <em>MinNumCoins</em>(6 - 1) = 1. Thus, <em>MinNumCoins</em>(6) is equal to 1 + 1 = 2. In turn, <em>MinNumCoins</em>(7) is equal to one more than the minimum of <em>MinNumCoins</em>(7 - 5) = 2, <em>MinNumCoins</em>(7 - 4) = 3, and <em>MinNumCoins</em>(7 - 1) = 2. As a result, <em>MinNumCoins</em>(7) is equal to 2 + 1 = 3. And so on, resulting in the following table.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Min num coins table" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_table.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_table.png" width="615px"/></p></span>
+<p style="text-align: center;"><small><b>Figure:</b> <i>MinNumCoins</i>(<i>m</i>) for values of <i>m</i> between 0 and 12.</small></p>
+<!-- Step 8 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Use dynamic programming to fill in the next ten values of <em>MinNumCoins</em>(<em>m</em>) (i.e., for 13 ≤ <em>m</em> ≤ 22). Place all the values on a single line. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p style="text-align: center;"><img alt="Min num coins table" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/min_num_coins_table.png" style="max-width: 100%" width="615px"/></p>
+<!-- Step 9 -->
+<p>Notice that <em>MinNumCoins</em>(2) is used in the computation of both <em>MinNumCoins</em>(6) and <em>MinNumCoins</em>(7), but instead of draining computational resources by having to compute this value from scratch both times, we simply consult the pre-computed value in the array. The following dynamic programming algorithm calculates <em>MinNumCoins</em>(<em>money</em>) with runtime O(<em>money</em> · |<em>Coins</em>|).</p>
+<div><pre><small><code class="language-no-highlight"><b>DPChange</b>(<em>money</em>, <em>Coins</em>)
+  <em>MinNumCoins</em>(0) ← 0
+  <strong>for</strong> <em>m</em> ← 1 to <em>money</em>
+    <em>MinNumCoins</em>(<em>m</em>) ← ∞
+      <strong>for</strong> <em>i</em> ← 0 to |<em>Coins</em>| - 1
+        <strong>if</strong> <em>m</em> ≥ <em>coin</em><sub><em>i</em></sub>
+          <strong>if</strong> <em>MinNumCoins</em>(<em>m</em> - <em>coin</em><sub><em>i</em></sub>) + 1 &lt; <em>MinNumCoins</em>(<em>m</em>)
+            <em>MinNumCoins</em>(<em>m</em>) ← <em>MinNumCoins</em>(<em>m</em> - <em>coin</em><sub><em>i</em></sub>) + 1
+  <strong>output</strong> <em>MinNumCoins</em>(<em>money</em>)</code></small></pre></div>
+<!-- Step 10 -->
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Change Problem.  The <strong>DPChange</strong> pseudocode is reproduced below for your convenience. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5a/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<ul><li><strong>Input:</strong><span> An integer </span><em>money</em><span> and an array </span><em>Coins</em><span> = (</span><em>coin</em><sub>1</sub><span>, ..., </span><em>coin</em><sub><em>d</em></sub><span>).</span></li><li><strong>Output:</strong><span> The minimum number of coins with denominations </span><em>Coins</em><span> that changes </span><em>money</em><span>.</span></li></ul>
+<div><pre><small><code class="language-no-highlight"><strong>DPChange</strong>(<em>money</em>, <em>Coins</em>)
+  <em>MinNumCoins</em>(0) ← 0
+  <strong>for</strong> <em>m</em> ← 1 to <em>money</em>
+    <em>MinNumCoins</em>(<em>m</em>) ← ∞
+      <strong>for</strong> <em>i</em> ← 0 to |<em>Coins</em>| - 1
+        <strong>if</strong> <em>m</em> ≥ <em>coin</em><sub><em>i</em></sub>
+          <strong>if</strong> <em>MinNumCoins</em>(<em>m</em> - <em>coin</em><sub><em>i</em></sub>) + 1 &lt; <em>MinNumCoins</em>(<em>m</em>)
+            <em>MinNumCoins</em>(<em>m</em>) ← <em>MinNumCoins</em>(<em>m</em> - <em>coin</em><sub><em>i</em></sub>) + 1
+  <strong>output</strong> <em>MinNumCoins</em>(<em>money</em>)</code></small></pre></div>
+<!-- Step 11 -->
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Consider the following modifications of <strong>DPChange</strong>.</p>
+<ol>
+<li>If <em>money</em> = 10<sup>9</sup>, <strong>DPChange</strong> requires a huge array of size 10<sup>9</sup>.  Modify the <strong>DPChange</strong> algorithm so that the array size required does not exceed the value of the largest coin denomination.</li>
+<li>Recall that our original goal was to make change, not just compute <em>MinNumCoins</em>(<em>money</em>).  Modify <strong>DPChange</strong> so that it not only computes the minimum number of coins but also returns these coins.</li>
+</ol>

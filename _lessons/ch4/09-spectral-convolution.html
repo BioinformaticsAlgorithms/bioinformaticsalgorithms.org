@@ -1,0 +1,52 @@
+---
+layout: lesson
+title: The Spectral Convolution Saves the Day
+seo_title: The Spectral Convolution in Peptide Sequencing
+description: One way to determine the amino acid composition of a peptide from its experimental spectrum would be to take the smallest masses present in the...
+chapter: 4
+number: '4.9'
+order: 9
+slug: spectral-convolution
+permalink: /bioinformatics-chapter-4/spectral-convolution/
+---
+<!-- Step 1 -->
+<p>One way to determine the amino acid composition of a peptide from its experimental spectrum would be to take the smallest masses present in the spectrum (between 57 and 200 Da). However, even if only a single amino acid mass is missing, then this approach will fail to reconstruct the peptide's amino acid composition.</p>
+<p>Let’s take a different approach. Say that our experimental spectrum contains the masses of subpeptides <samp>NQ<strong>E</strong></samp> and <samp>NQ</samp>. If we subtract these two masses, then we will obtain the mass <samp><strong>E</strong></samp> for free, even if it was not present in the experimental spectrum! If the underlying peptide is <samp>NQEL</samp>, then we can also find the mass of <samp><strong>E</strong></samp> by subtracting the masses of <samp>Q<strong>E</strong></samp> and <samp>Q</samp> or <samp>NQ<strong>E</strong>L</samp> and <samp>LNQ</samp>.</p>
+<p>Following this example, we define the <strong>convolution</strong> of a spectrum by taking all positive differences of masses in the spectrum. The tables on the next steps show the convolutions of the theoretical and simulated spectra of <samp>NQEL</samp> that we encountered before (spectra reproduced below).</p>
+<p style="text-align:center"><img alt="Theoretical simulated spectrum nqel" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/theoretical_simulated_spectrum_nqel.png" style="max-width: 100%" width="688px"/></p>
+<!-- Step 2 -->
+<p style="text-align: center;"><img alt="Spectral convolution nqel" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/spectral_convolution_nqel.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Antibiotics/spectral_convolution_nqel.png" width="692px"/></p>
+<p><small><strong>Figure:</strong> Spectral convolution for the theoretical spectrum of <samp>NQEL</samp>.  The most frequent elements in the convolution between 57 and 200 are (multiplicities in parentheses): 113 (8), 114 (8), 128 (8), 129 (8).</small></p>
+<p>As predicted, some of the values in these tables appear more frequently than others. For example, <strong><span style="color: #ff4363;">113</span></strong> (the mass of <samp><strong><span style="color: #ff4363;">L</span></strong></samp>) has multiplicity 8 in the table above; we say that <strong><span style="color: #ff4363;">113</span></strong> has <strong>multiplicity</strong> 8. Six of the eight occurrences of <strong><span style="color: #ff4363;">113</span></strong> in the table above correspond to subpeptide pairs differing in an <strong><samp style="color: #ff4363;">L</samp></strong>: <strong><samp style="color: #ff4363;">L</samp></strong> and <samp>""</samp>; <samp><strong><span style="color: #ff4363;">L</span></strong>N</samp> and <samp>N</samp>; <samp>E<strong><span style="color: #ff4363;">L</span></strong></samp> and <samp>E</samp>; <samp><strong><span style="color: #ff4363;">L</span></strong>NQ</samp> and <samp>NQ</samp>; <samp>QE<strong><span style="color: #ff4363;">L</span></strong></samp> and <samp>QE</samp>; <samp>NQE<strong><span style="color: #ff4363;">L</span></strong></samp> and <samp>NQE</samp>.</p>
+<!-- Step 3 -->
+<p><p style="text-align: center;"><img alt="Spectral convolution simulated nqel" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/spectral_convolution_simulated_nqel.png" style="max-width: 100%" width="698px"/></p></p>
+<p><small><strong>Figure:</strong> Spectral convolution for the simulated spectrum of <samp>NQEL</samp>.  The most frequent elements in the convolution between 57 and 200 are (multiplicities in parentheses): 113 (4), 114 (4), 128 (4), 99 (3), 129 (3).</small></p>
+<p>Interestingly, <strong><span style="color: #64b0f4;">129</span></strong> (the mass of <samp><strong><span style="color: #64b0f4;">E</span></strong></samp>) pops up three times in the above convolution of the simulated spectrum, even though <strong><span style="color: #64b0f4;">129</span></strong> was missing from the spectrum itself.</p>
+<p>We now should feel confident about using the most frequently appearing integers in the convolution as a guess for the amino acid composition of an unknown peptide. In our simulated spectrum for <samp>NQEL</samp>, the most frequent elements of the convolution in the range from 57 to 200 are (multiplicities in parentheses):</p>
+<div><p><strong><span style="color: #ff4363;">113</span></strong> (4), <strong>114</strong> (4), <strong><span style="color: #a03881;">128</span></strong> (4), <strong><span style="color: #66cc66;">99</span></strong> (3), <strong><span style="color: #64b0f4;">129</span></strong> (3)</p>
+</div><p>Note that these most frequent elements capture all four amino acids in <samp>NQEL</samp>.</p>
+<!-- Step 4 -->
+<p><strong>Spectral Convolution Problem:</strong> <em>Compute the convolution of a spectrum.</em> </p>
+<ul><li><strong>Input:</strong><span> A collection of integers </span><em>Spectrum</em><span>.</span></li>
+<li><strong>Output:</strong><span> The list of elements in the convolution of </span><em>Spectrum</em><span>.  If an element has multiplicity </span><i>k</i><span>, it should appear exactly </span><i>k</i><span> times; </span><span>you may return the elements in any order.</span></li></ul>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Spectral Convolution Problem at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4h/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<!-- Step 5 -->
+<p>Recall that <strong>LeaderboardCyclopeptideSequencing</strong> failed to reconstruct Tyrocidine B1 from <em>Spectrum</em><sub>10</sub> when using the extended alphabet of amino acids. The ten most frequent elements of its spectral convolution in the range from 57 to 200 are (with multiplicities in parentheses):</p>
+<p style="text-align: center;">
+<strong></strong><span style="color: #000;">147 (35)     </span><span style="color: #000;">128 (31)     97 (28)     113 (28)     114 (26)
+</span></p>
+<p style="text-align: center;"><span style="color: #000;">
+186 (23)     57 (21)     163 (21)     99 (18)     145 (18)</span><b></b></p>
+<div><div><div><p>Every mass in this list except for 57 and 145 captures an amino acid in Tyrocidine B1! <span>The figure on the next step shows the convolution of </span><em>Spectrum</em><sub>10</sub><span>.</span></p></div></div></div>
+<!-- Step 6 -->
+<p style="text-align: center;"><img alt="Figure" decoding="async" loading="lazy" src="{{ site.baseurl }}/assets/images/lessons/ic_com_media_56389e_bfa1fc06b1fb4523998974ee3253ee98_mv2_png.png" style="max-width: 100%" width="400px"/></p>
+<p><small><strong>Figure:</strong> The spectral convolution of the experimental spectrum <em>Spectrum</em><sub>10</sub> for Tyrocidine B1. For each element of the spectral convolution (shown as a number within a box), its <em>y</em>-coordinate represents the number of times that the element appears in the spectral convolution. Green boxes represent masses of amino acids from Tyrocidine B1.</small></p>
+<!-- Step 7 -->
+<p>We now have the outline for a new cyclopeptide sequencing algorithm. Given an experimental spectrum, we first compute the convolution of an experimental spectrum. We then select the <em>M</em> most frequent elements between 57 and 200 in the convolution to form an extended alphabet of candidate amino acid masses. In order to be fair, we should include the top <em>M</em> elements of the convolution "with ties". Finally, we run the algorithm <b>LeaderboardCyclopeptideSequencing</b>, where the amino acid masses are restricted to this alphabet. We call this algorithm <b>ConvolutionCyclopeptideSequencing</b>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>ConvolutionCyclopeptideSequencing</b>. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4i/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<ul><li><strong>Input</strong><span>: An integer </span><em>M</em><span>, an integer </span><em>N</em><span>, and a collection of (possibly repeated) integers </span><em>Spectrum</em><span>.</span></li><li><strong>Output:</strong><span> A cyclic peptide </span><em>LeaderPeptide</em><span> with amino acids taken only from the top </span><em>M</em><span> elements (and ties) of the convolution of </span><em>Spectrum</em><span> that fall between 57 and 200, and where the size of </span><em>Leaderboard</em><span> is restricted to the top </span><em>N</em><span> (and ties).</span></li></ul>
+<!-- Step 8 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Run <strong>ConvolutionCyclopeptideSequencing</strong> on <em>Spectrum</em><sub>25</sub> (reproduced below) with <em>N</em> = 1000 and <em>M</em> = 20. Identify the 86 highest-scoring linear peptides. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p style="text-align: center;"><img alt="Tyrocidine spectrum 25" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/tyrocidine_spectrum_25.png" style="max-width: 100%" width="670px"/></p>
+<!-- Step 9 -->
+<p><b>ConvolutionCyclopeptideSequencing</b> (with <em>N</em> = 1000 and <em>M</em> = 20) now correctly reconstructs Tyrocidine B1 from <em>Spectrum</em><sub>10</sub>. The true test of this algorithm is whether it will work on a noisier spectrum. Recall that our previous algorithm failed to identify the correct peptide for <em>Spectrum</em><sub>25</sub>. In contrast, <b>ConvolutionCyclopeptideSequencing</b> (with <em>N</em> = 1000 and <em>M</em> = 20) now correctly identifies Tyrocidine B1 from this spectrum!</p>

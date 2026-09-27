@@ -1,0 +1,58 @@
+# One entry per free lesson. title = the book's lesson title (shown as the H1).
+# seo = the search title (the <title> tag), written around the terms people search for.
+- {ch: 1, src: 0, num: "Welcome", slug: welcome, title: "Welcome to Bioinformatics Algorithms!", seo: "Welcome: How to Read Bioinformatics Algorithms"}
+- {ch: 1, src: 1, num: "1.1", slug: where-does-dna-replication-begin, title: "A Journey of 1000 Miles...", seo: "Where Does DNA Replication Begin? The Origin of Replication"}
+- {ch: 1, src: 2, num: "1.2", slug: frequent-words-problem, title: "Hidden Messages in the Replication Origin", seo: "Hidden Messages in the Replication Origin: The Frequent Words Problem"}
+- {ch: 1, src: 3, num: "1.3", slug: reverse-complement-pattern-matching, title: "Some Hidden Messages are More Surprising than Others", seo: "Reverse Complements and Pattern Matching in DNA"}
+- {ch: 1, src: 4, num: "1.4", slug: clump-finding-problem, title: "An Explosion of Hidden Messages", seo: "The Clump Finding Problem: Hidden Messages in Multiple Genomes"}
+- {ch: 1, src: 5, num: "1.5", slug: dna-replication, title: "The Simplest Way to Replicate DNA", seo: "How DNA Replication Works: The Simplest Way to Replicate DNA"}
+- {ch: 1, src: 6, num: "1.6", slug: asymmetry-of-replication, title: "Asymmetry of Replication", seo: "Leading and Lagging Strands: The Asymmetry of DNA Replication"}
+- {ch: 1, src: 7, num: "1.7", slug: skew-diagram, title: "Peculiar Statistics of the Forward and Reverse Half-Strands", seo: "GC Skew and the Skew Diagram: Finding ori with Half-Strand Statistics"}
+- {ch: 1, src: 8, num: "1.8", slug: hamming-distance-approximate-pattern-matching, title: "Some Hidden Messages are More Elusive than Others", seo: "Hamming Distance and Approximate Pattern Matching"}
+- {ch: 1, src: 9, num: "1.9", slug: finding-dnaa-boxes-in-e-coli, title: "A Final Attempt at Finding DnaA Boxes in E. coli", seo: "Finding DnaA Boxes in E. coli: Frequent Words with Mismatches"}
+- {ch: 1, src: 10, num: "Epilogue", slug: epilogue, title: "Complications in ori Predictions", seo: "Complications in Replication Origin (ori) Predictions"}
+- {ch: 2, src: 0, num: "2.1", slug: circadian-clock-genes, title: "Do We Have a \"Clock\" Gene?", seo: "Circadian Clock Genes and Regulatory Motifs"}
+- {ch: 2, src: 1, num: "2.2", slug: implanted-motif-problem, title: "Motif Finding is More Difficult Than You Think", seo: "Motif Finding and the Implanted Motif Problem"}
+- {ch: 2, src: 2, num: "2.3", slug: scoring-motifs, title: "Scoring Motifs", seo: "Scoring Motifs: Profile Matrices, Consensus Strings, Entropy and Motif Logos"}
+- {ch: 2, src: 3, num: "2.4", slug: median-string-problem, title: "From Motif Finding to Finding a Median String", seo: "The Motif Finding Problem and the Median String Problem"}
+- {ch: 2, src: 4, num: "2.5", slug: greedy-motif-search, title: "Greedy Motif Search", seo: "Greedy Motif Search and Profile-Most Probable k-mers"}
+- {ch: 2, src: 5, num: "2.6", slug: pseudocounts-laplace-rule-of-succession, title: "Motif Finding Meets Oliver Cromwell", seo: "Pseudocounts and Laplace's Rule of Succession in Motif Finding"}
+- {ch: 2, src: 6, num: "2.7", slug: randomized-motif-search, title: "Randomized Motif Search", seo: "Randomized Motif Search: A Randomized Algorithm for Finding Motifs"}
+- {ch: 2, src: 7, num: "2.8", slug: why-randomized-motif-search-works, title: "How Can a Randomized Algorithm Perform So Well?", seo: "Why Randomized Motif Search Works So Well"}
+- {ch: 2, src: 8, num: "2.9", slug: gibbs-sampling, title: "Gibbs Sampling", seo: "Gibbs Sampling for Motif Finding"}
+- {ch: 2, src: 9, num: "2.10", slug: gibbs-sampling-in-action, title: "Gibbs Sampling in Action", seo: "Gibbs Sampling in Action: A Worked Motif Finding Example"}
+- {ch: 2, src: 10, num: "Epilogue", slug: epilogue, title: "How Does Tuberculosis Hibernate?", seo: "Motif Finding in Tuberculosis: How Does TB Hibernate?"}
+- {ch: 3, src: 0, num: "3.1", slug: genome-assembly-newspaper-problem, title: "Exploding Newspapers", seo: "What Is Genome Assembly? The Exploding Newspaper Problem"}
+- {ch: 3, src: 1, num: "3.2", slug: string-reconstruction-problem, title: "The String Reconstruction Problem", seo: "The String Reconstruction Problem and k-mer Composition"}
+- {ch: 3, src: 2, num: "3.3", slug: overlap-graph, title: "String Reconstruction as a Walk in the Overlap Graph", seo: "The Overlap Graph and Hamiltonian Paths in Genome Assembly"}
+- {ch: 3, src: 3, num: "3.4", slug: de-bruijn-graph, title: "Another Graph for String Reconstruction", seo: "De Bruijn Graphs for Genome Assembly"}
+- {ch: 3, src: 4, num: "3.5", slug: eulerian-path-de-bruijn-graph, title: "Walking in the de Bruijn Graph", seo: "Walking in the de Bruijn Graph: Eulerian Paths and k-mer Composition"}
+- {ch: 3, src: 5, num: "3.6", slug: seven-bridges-of-konigsberg, title: "The Seven Bridges of Königsberg", seo: "The Seven Bridges of Königsberg and the Eulerian Cycle Problem"}
+- {ch: 3, src: 6, num: "3.7", slug: eulers-theorem, title: "Euler's Theorem", seo: "Euler's Theorem for Eulerian Cycles in Directed Graphs"}
+- {ch: 3, src: 7, num: "3.8", slug: eulerian-cycle-algorithm, title: "From Euler's Theorem to an Algorithm for Finding Eulerian Cycles", seo: "An Algorithm for Finding Eulerian Cycles and Paths"}
+- {ch: 3, src: 8, num: "3.9", slug: paired-de-bruijn-graph-read-pairs, title: "Assembling Genomes from Read-Pairs", seo: "Assembling Genomes from Read-Pairs: Paired de Bruijn Graphs"}
+- {ch: 3, src: 9, num: "Epilogue", slug: epilogue, title: "Genome Assembly Faces Real Sequencing Data", seo: "Genome Assembly with Real Sequencing Data: Contigs and Read Errors"}
+- {ch: 4, src: 0, num: "4.1", slug: discovery-of-antibiotics, title: "The Discovery of Antibiotics", seo: "The Discovery of Antibiotics and Non-Ribosomal Peptides"}
+- {ch: 4, src: 1, num: "4.2", slug: protein-translation-peptide-encoding, title: "How Do Bacteria Make Antibiotics?", seo: "How Bacteria Make Antibiotics: Protein Translation and Peptide Encoding"}
+- {ch: 4, src: 2, num: "4.3", slug: non-ribosomal-peptides, title: "Dodging the Central Dogma of Molecular Biology", seo: "Non-Ribosomal Peptides: Dodging the Central Dogma"}
+- {ch: 4, src: 3, num: "4.4", slug: mass-spectrometry-theoretical-spectrum, title: "Sequencing Antibiotics by Shattering Them into Pieces", seo: "Mass Spectrometry and the Theoretical Spectrum of a Peptide"}
+- {ch: 4, src: 4, num: "4.5", slug: brute-force-cyclopeptide-sequencing, title: "A Brute Force Algorithm for Cyclopeptide Sequencing", seo: "A Brute Force Algorithm for Cyclopeptide Sequencing"}
+- {ch: 4, src: 5, num: "4.6", slug: branch-and-bound-cyclopeptide-sequencing, title: "A Branch-and-Bound Algorithm for Cyclopeptide Sequencing", seo: "A Branch-and-Bound Algorithm for Cyclopeptide Sequencing"}
+- {ch: 4, src: 6, num: "4.7", slug: leaderboard-cyclopeptide-sequencing, title: "Mass Spectrometry Meets Golf", seo: "Leaderboard Cyclopeptide Sequencing for Spectra with Errors"}
+- {ch: 4, src: 7, num: "4.8", slug: non-proteinogenic-amino-acids, title: "From 20 to More than 100 Amino Acids", seo: "Beyond 20 Amino Acids: Non-Proteinogenic Amino Acids"}
+- {ch: 4, src: 8, num: "4.9", slug: spectral-convolution, title: "The Spectral Convolution Saves the Day", seo: "The Spectral Convolution in Peptide Sequencing"}
+- {ch: 4, src: 9, num: "Epilogue", slug: epilogue, title: "From Simulated to Real Spectra", seo: "Peptide Sequencing from Real Mass Spectra"}
+- {ch: 5, src: 0, num: "5.1", slug: non-ribosomal-code, title: "Cracking the Non-Ribosomal Code", seo: "Why Compare Biological Sequences? Cracking the Non-Ribosomal Code"}
+- {ch: 5, src: 1, num: "5.2", slug: longest-common-subsequence, title: "Introduction to Sequence Alignment", seo: "Introduction to Sequence Alignment and the Longest Common Subsequence"}
+- {ch: 5, src: 2, num: "5.3", slug: manhattan-tourist-problem, title: "The Manhattan Tourist Problem", seo: "The Manhattan Tourist Problem and Longest Paths in a DAG"}
+- {ch: 5, src: 3, num: "5.4", slug: alignment-graph, title: "Sequence Alignment is the Manhattan Tourist Problem in Disguise", seo: "Sequence Alignment as the Manhattan Tourist Problem: The Alignment Graph"}
+- {ch: 5, src: 4, num: "5.5", slug: change-problem-dynamic-programming, title: "An Introduction to Dynamic Programming: The Change Problem", seo: "An Introduction to Dynamic Programming: The Change Problem"}
+- {ch: 5, src: 5, num: "5.6", slug: manhattan-tourist-dynamic-programming, title: "The Manhattan Tourist Problem Revisited", seo: "Solving the Manhattan Tourist Problem with Dynamic Programming"}
+- {ch: 5, src: 6, num: "5.7", slug: dynamic-programming-dag-topological-ordering, title: "From Manhattan to an Arbitrary DAG", seo: "Dynamic Programming in a DAG and Topological Orderings"}
+- {ch: 5, src: 7, num: "5.8", slug: backtracking-alignment-graph, title: "Backtracking in the Alignment Graph", seo: "Backtracking in the Alignment Graph: Finding an LCS"}
+- {ch: 5, src: 8, num: "5.9", slug: scoring-matrices, title: "Scoring Alignment", seo: "Scoring Alignments: Scoring Matrices, Mismatches and Indels"}
+- {ch: 5, src: 9, num: "5.10", slug: global-and-local-alignment, title: "From Global to Local Alignment", seo: "Global Alignment vs. Local Alignment"}
+- {ch: 5, src: 10, num: "5.11", slug: edit-distance-fitting-overlap-alignment, title: "The Changing Faces of Sequence Alignment", seo: "Edit Distance, Fitting Alignment and Overlap Alignment"}
+- {ch: 5, src: 11, num: "5.12", slug: affine-gap-penalties, title: "Penalizing Insertions and Deletions in Sequence Alignment", seo: "Affine Gap Penalties in Sequence Alignment"}
+- {ch: 5, src: 12, num: "5.13", slug: linear-space-alignment, title: "Space Efficient Sequence Alignment", seo: "Space-Efficient Sequence Alignment in Linear Memory"}
+- {ch: 5, src: 13, num: "Epilogue", slug: epilogue, title: "Multiple Sequence Alignment", seo: "Multiple Sequence Alignment"}

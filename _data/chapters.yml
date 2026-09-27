@@ -1,0 +1,22 @@
+# The book's chapters. Chapters 1-5 are free to read on this site.
+- {n: 1, free: true, topic: "Replication Origins", question: "Where in the Genome Does DNA Replication Begin?", algorithms: "Algorithmic Warmup", playlist: PLQ-85lQlPqFNFDlaNMZ1JVN73rO1a0dpn, cover: chapter-1-cover.jpg,
+   seo: "Finding the Origin of Replication in Bacterial Genomes",
+   blurb: "How simple computational analysis of a bacterial genome can uncover the hidden messages that tell a cell where to begin copying its DNA: frequent words, clump finding, GC skew, and approximate pattern matching."}
+- {n: 2, free: true, topic: "Motif Finding", question: "Which DNA Patterns Play the Role of Molecular Clocks?", algorithms: "Randomized Algorithms", playlist: PLQ-85lQlPqFMEcdAi0yF015RgmowtsvwT, cover: chapter-2-cover.jpg,
+   seo: "Motif Finding Algorithms: Greedy, Randomized and Gibbs Sampling",
+   blurb: "How to find regulatory motifs, the hidden messages that help genes turn on and off: profile matrices, entropy, median strings, greedy motif search, randomized motif search, and Gibbs sampling."}
+- {n: 3, free: true, topic: "Genome Assembly", question: "How Do We Assemble Genomes?", algorithms: "Graph Algorithms", playlist: PLQ-85lQlPqFNGdaeGpV8dPEeSm3AChb6L, cover: chapter-3-cover.jpg,
+   seo: "Genome Assembly with de Bruijn Graphs and Eulerian Paths",
+   blurb: "The graph algorithms used to assemble a genome from millions of short DNA fragments: overlap graphs, de Bruijn graphs, Euler's theorem, Eulerian paths, and read-pairs."}
+- {n: 4, free: true, topic: "Antibiotic Sequencing", question: "How Do We Sequence Antibiotics?", algorithms: "Brute Force Algorithms", playlist: PLQ-85lQlPqFPdIS_5qv_Q3XWieobVPLlc, cover: chapter-4-cover.jpg,
+   seo: "Sequencing Antibiotics with Mass Spectrometry: Cyclopeptide Sequencing",
+   blurb: "How weighing tiny peptides lets us sequence antibiotics: mass spectrometry, brute force and branch-and-bound cyclopeptide sequencing, leaderboards, and the spectral convolution."}
+- {n: 5, free: true, topic: "Sequence Alignment", question: "How Do We Compare Biological Sequences?", algorithms: "Dynamic Programming", playlist: PLQ-85lQlPqFNmbPEsMoxb5dM5qtRaVShn, cover: chapter-5-cover.jpg,
+   seo: "Sequence Alignment and Dynamic Programming",
+   blurb: "The dynamic programming algorithms used to compare genes and proteins: the Manhattan Tourist Problem, longest common subsequences, global and local alignment, edit distance, affine gaps, and linear-space alignment."}
+- {n: 6, free: false, topic: "Genome Rearrangements", question: "Are There Fragile Regions in the Human Genome?", algorithms: "Combinatorial Algorithms", playlist: PLQ-85lQlPqFOcGz6A3g2ZArRL09Ffpp_N, cover: chapter-6-cover.jpg}
+- {n: 7, free: false, topic: "Evolutionary Trees", question: "Which Animal Gave Us SARS?", algorithms: "Evolutionary Tree Reconstruction", playlist: PLQ-85lQlPqFPhJxNcuSOxLTNmbp3NzVtU, cover: chapter-7-cover.jpg}
+- {n: 8, free: false, topic: "Clustering", question: "How Did Yeast Become a Wine-Maker?", algorithms: "Clustering Algorithms", playlist: PLQ-85lQlPqFMcC2d2CkvmdcJt2v-Np7Cz, cover: chapter-8-cover.jpg}
+- {n: 9, free: false, topic: "Read Mapping", question: "How Do We Locate Disease-Causing Mutations?", algorithms: "Combinatorial Pattern Matching", playlist: PLQ-85lQlPqFP-q0Ig_GdjWohbC9C3f8tz, cover: chapter-9-cover.jpg}
+- {n: 10, free: false, topic: "Hidden Markov Models", question: "Why Have Biologists Still Not Developed an HIV Vaccine?", algorithms: "Hidden Markov Models", playlist: PLQ-85lQlPqFPnk31Uut2ajVkBvlFmMtdx, cover: chapter-10-cover.jpg}
+- {n: 11, free: false, topic: "Peptide Identification", question: "Was T. rex Just a Big Chicken?", algorithms: "Computational Proteomics", playlist: PLQ-85lQlPqFNJboyCRRCQ2fHU4fizzRlf, cover: chapter-11-cover.jpg}

@@ -1,0 +1,17 @@
+---
+title: Lecture Videos
+seo_title: "Free Bioinformatics Lecture Videos for Every Chapter"
+description: "Free lecture videos for every chapter of Bioinformatics Algorithms, from replication origins and motif finding to genome assembly, alignment, phylogenetics, clustering, and HMMs."
+lede: "Every chapter of the book has a free lecture playlist. Subscribe to our YouTube channel, or start with a chapter below."
+---
+<p><a class="btn btn-primary" href="{{ site.youtube_url }}?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a></p>
+<div class="video-grid" style="margin-top:30px">
+{% for c in site.data.chapters %}
+  <div class="video-card">
+    <div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={{ c.playlist }}" title="Chapter {{ c.n }} lectures: {{ c.question }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <h3>Chapter {{ c.n }}: {{ c.question }}</h3>
+    <p>{{ c.algorithms }}{% if c.free %} &middot; <a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}">Read the chapter free</a>{% endif %} &middot; <a href="{{ '/faq-chapter-' | append: c.n | relative_url }}">FAQ</a></p>
+  </div>
+{% endfor %}
+</div>
+{% include cta-book.html %}

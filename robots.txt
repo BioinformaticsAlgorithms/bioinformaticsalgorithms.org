@@ -1,0 +1,8 @@
+---
+layout: null
+sitemap: false
+---
+User-agent: *
+{% if site.noindex %}Disallow: /{% else %}Allow: /{% endif %}
+
+Sitemap: {{ '/sitemap.xml' | absolute_url }}

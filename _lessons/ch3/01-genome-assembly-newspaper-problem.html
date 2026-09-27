@@ -1,0 +1,30 @@
+---
+layout: lesson
+title: Exploding Newspapers
+seo_title: What Is Genome Assembly? The Exploding Newspaper Problem
+description: Imagine that we stack a hundred copies of the June 27, 2000 edition of the New York Times on a pile of dynamite, and then we light the fuse. We ask you...
+chapter: 3
+number: '3.1'
+order: 1
+slug: genome-assembly-newspaper-problem
+permalink: /bioinformatics-chapter-3/genome-assembly-newspaper-problem/
+---
+<p>Imagine that we stack a hundred copies of the June 27, 2000 edition of the <i>New York Times</i> on a pile of dynamite, and then we light the fuse. We ask you to further suspend your disbelief and assume that the newspapers are not all incinerated but instead explode cartoonishly into smoldering pieces of confetti. How could we use the tiny snippets of newspaper to figure out what the news was on June 27, 2000? We will call this crazy conundrum the <strong>Newspaper Problem</strong>.</p>
+<p><span class="image-wrapper"><p style="text-align: center;"><img alt="Newspaper blowup" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/newspaper_blowup.png" style="max-width:100%" title="Image: /media/attachments/lessons/196/newspaper_blowup_2.png" width="650px"/></p></span></p>
+<p><small><strong>Figure:</strong> Don’t try this at home! Crazy as it may seem, the Newspaper Problem serves as an analogy for the computational framework of genome assembly.</small></p>
+<p>The Newspaper Problem is even more difficult than it may seem. Because we had multiple copies of the same edition of the newspaper, and because we undoubtedly lost some information in the blast, we cannot simply glue together one of the newspaper copies in the same way that we would assemble a jigsaw puzzle. Instead, we need to use <em>overlapping</em> fragments from different copies of the newspaper to reconstruct the day’s news, as shown in the figure below.</p>
+<p> </p>
+<p style="text-align:center"><img alt="Overlapping newspaper" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/overlapping_newspaper.png" style="max-width:100%" width="650px"/></p>
+<p style="text-align:center"><small><strong>Figure:</strong> In the Newspaper Problem, we need to use overlapping shreds of paper to figure out the news.</small></p>
+<p><em>Fine</em>, you ask, <em>but what do exploding newspapers have to do with biology?</em> Determining the order of nucleotides in a genome, or <strong>genome sequencing</strong>, presents a fundamental task in bioinformatics. Genomes vary in length; your own genome is roughly 3 billion nucleotides long, whereas the genome of <em>Amoeba dubia</em>, an amorphous unicellular organism, is approximately 200 times longer! This unicellular organism competes with the rare Japanese flower <em>Paris japonica</em> for the title of species with the longest genome.</p>
+<p>The first sequenced genome, belonging to a φX174 bacterial phage (i.e., a virus that preys on bacteria), had only 5,386 nucleotides and was completed in 1977 by Frederick Sanger. Four decades after this Nobel Prize-winning discovery, genome sequencing has raced to the forefront of bioinformatics research, as the cost of sequencing plummeted. Because of the decreasing cost of sequencing, we now have thousands of sequenced genomes, including those of many mammals (see below).
+</p>
+<p><p style="text-align: center;"><img alt="Mammals race" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/mammals_race.png" style="max-width:100%" width="650px"/></p></p>
+<p><small><span class="center"><strong>Figure:</strong> The first mammals with sequenced genomes.</span></small></p>
+<p>To sequence a genome, we must clear some practical hurdles. The largest obstacle is the fact that biologists still lack the technology to read the nucleotides of a genome from beginning to end in the same way that you would read a book. The best they can do is sequence much shorter DNA fragments called <strong>reads</strong>. The reasons why researchers can sequence small pieces of DNA but not long genomes warrant their own discussion. For more details, see "DETOUR: A Short History of DNA Sequencing Technologies" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p>In this chapter, however, our aim is to turn an apparent handicap into a useful tool for putting the genome back together.</p>
+<p>The traditional method for sequencing genomes is described as follows. Researchers take a small tissue or blood sample containing millions of cells with identical DNA, use biochemical methods to break the DNA into fragments, and then sequence these fragments to produce reads (see figure below).</p>
+<p>The difficulty is that researchers do not know where in the genome these reads came from, and so they must use overlapping reads to reconstruct the genome. Thus, putting a genome back together from its reads, or <strong>genome assembly</strong>, is just like the Newspaper Problem.</p>
+<p style="text-align: center;"><img alt="Sequencing overview" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/sequencing_overview.png" style="max-width:100%" width="650px"/></p>
+<p><small><strong>Figure:</strong> In DNA sequencing, many identical copies of a genome are broken in random locations to generate short reads, which are then sequenced and assembled into the nucleotide sequence of the genome.</small></p>
+<p>Even though researchers have sequenced many genomes, a giant genome like that of <em>Amoeba dubia</em> still remains beyond the reach of modern sequencing technologies. You might guess that the barrier to sequencing such a genome would be experimental, but that is not true; biologists can easily generate enough reads to analyze a large genome, but assembling these reads still presents a major computational challenge.</p>

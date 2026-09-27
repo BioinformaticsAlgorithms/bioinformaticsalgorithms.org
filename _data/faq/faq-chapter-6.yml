@@ -1,0 +1,110 @@
+- q: Since humans did not descend directly from mice, why do we nevertheless analyze a rearrangement scenario transforming mouse into human?
+  a: <p>Indeed, mouse and human have a common ancestor from which they have both evolved. Yet when we construct a scenario consisting of n rearrangements transforming the mouse genome into the human genome, the first x rearrangements represent a transformation of the mouse genome into the ancestor genome (going back in time) and the last n-x rearrangements represent a transformation from the ancestor to the human genome. This relies on the fact that the rearrangements we consider are invertible, e.g., the inverse operation of a reversal is a reversal.</p>
+- q: Why does the Random Breakage Model result in an exponential distribution of synteny blocks?
+  a: '<p>In a <strong>Poisson distribution</strong>, we assume that some event is happening on average λ times within a given interval of fixed length, with no relationship between the occurrences. That is, if we look at a given interval, we will see on average λ occurrences, but there may be any finite number of occurrences in practice. If the Random Breakage Model is true, then the Poisson distribution offers a good model for the number of breakpoints that occur in a given interval of the genome.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_7f09cb0540d74f3dafc8b5931e3d9b3e_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>Notation adapted from<a href="https://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution" target="_blank" rel="noopener"> http://stats.stackexchange.com/questions/2092/relationship-between-poisson-and-exponential-distribution</a></p>'
+- q: What is a permutation?
+  a: '<p>A <strong>permutation</strong> is a specific ordering of the positive integers from 1 to n, where each element is used exactly once. For example, there are six permutations of length 3:</p>
+
+    <p>(1 2 3)   (1 3 2)   (2 1 3)   (2 3 1)   (3 1 2)   (3 2 1)</p>
+
+    <p>In this book, we often use the term "permutation" as shorthand for a <strong>signed permutation</strong>, in which each element has a sign, or orientation (represented as a "+" or "-"). You can verify that there are 48 signed permutations of length 3.</p>'
+- q: How do we compare genomes where some synteny blocks appear in multiple copies, such as (+a +b +c +b) and (+a -b +b -c)?
+  a: '<p>You can label repeated elements in the first genome using subscripts so that each synteny block appears just once, e.g., (+a +b1 +c +b2). You can then label the second genome either as (+a -b1 +b2 -c) or as (+a -b2 +b1 -c) and compute the 2-break distance from (+a +b1 +c +b2) to each of the two resulting genomes, selecting the one that results in the minimum 2-break distance as the best labeling.</p>
+
+    <p>The problem with this approach is that the number of re-labelings of a permutation with duplicated elements may grow very quickly. Furthermore, this approach only works when the number of copies of the same synteny block in each of genome is the same.</p>'
+- q: How do we compare genomes with different numbers of synteny blocks, such as (+a +b +c) and (+c -b +a -d)?
+  a: <p>The easiest way to deal with synteny blocks that appear in one genome and not another is to ignore them and consider only those blocks common to both genomes, e.g., in this case to compare (+a +b +c) with (+c -b +a). It is also possible to incorporate insertions and deletions into genome rearrangement studies, providing some penalty for the insertion/deletion of a single block, or a penalty for the insertion/deletion of a series of contiguous blocks. Various research papers have attempted to expand genome rearrangement metrics to account for insertions and deletions.</p>
+- q: How can we conclude that there are 1,070 different seven-step scenarios to transform the mouse X chromosome into the human X chromosome by reversals?
+  a: '<p>Given a permutation P and a reversal ρ, we denote the genome resulting from applying ρ to P as P*ρ. A reversal ρ is called P-valid if the reversal distance of P*ρ is smaller than the 2-break distance of P. The following recurrence relation computes NumberOfScenarios(P), the number of different reversal scenarios that transform a genome P into the identity permutation using the minimum number of reversals: </p>
+
+    <p class="figure"><img src="/assets/images/faq/f3c7f7_cde45a59268e4192a6aa0d5f3bdb80f2_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: Why does the pair (+4 +3) form a breakpoint but the pair (-4 -3) does not?
+  a: '<p>The pair (+4 +3) forms a breakpoint because, in contrast to (-4 -3), it cannot be transformed into (+3 +4), a desirable pair when sorting by reversals, by a single reversal. For example, applying a reversal to</p>
+
+    <p>(+1 +2 +4 +3 +5 +6)</p>
+
+    <p>transforms this permutation into</p>
+
+    <p>(+1 +2 -3 -4 +5 +6),</p>
+
+    <p>but applying a reversal to</p>
+
+    <p>(+1 +2 -4 -3 +5 +6)</p>
+
+    <p>transforms it into the identity permutation</p>
+
+    <p>(+1 +2 +3 +4 +5 +6).</p>
+
+    <p>To better understand why (+4 +3) is a breakpoint, try sorting the permutation (+6 +5 +4 +3 +2 +1) – you will see that it requires many reversals!</p>'
+- q: Are there other types of genome rearrangements other than reversals, translocations, fusions, and fissions?
+  a: '<p>Yes! For example, a transposition moves a segment from one location in the genome to another. For example, one transposition applied to the blue region of the chromosome (+1 +2 +3 +4 +5 +6 +7) yields (+1 +5 +6 +2 +3 +4 +7). However, transpositions are more rare than reversals and other rearrangements discussed in the chapter.</p>
+
+    <p>Transpositions represent an example of a 3-break, a rearrangement that requires 3 rather than 2 breaks (between +1 and +2, between +4 +5, and between +6 and +7). Since 3-breaks are rare compared to 2-breaks, we can obtain reasonable distance functions without them, and so 3-breaks are not covered in this chapter.</p>'
+- q: The Exercise Break in the section “Breakpoint Graphs” suggests that the only genome that forms a trivial breakpoint graph with a genome P is P itself. But I can find another genome satisfying this condition!
+  a: <p>The section “Breakpoint Graphs” shows a trivial breakpoint graph BreakpointGraph(P, P) for P = (+a –b –c +d). Another trivial breakpoint graph is seemingly formed by the genomes P and Q = (-a +b +c -d). But note that P and Q represent the same circular chromosome traversed in opposite directions; therefore, P and Q are indeed identical.</p>
+- q: We refuted the Random Breakage Model by assuming that human and mouse genomes have circular chromosomes. But don't these genomes have linear chromosomes?
+  a: '<p>We used 2-break distance for circular chromosomes to refute the Random Breakage Model. See “DETOUR: Sorting linear permutations by reversals” or Bergeron, Mixtacki, Stoye 2006 (https://pub.uni-bielefeld.de/publication/1596811) to see that similar formulas hold for linear chromosomes.</p>'
+- q: Why do we ignore small diagonals when constructing synteny blocks?
+  a: <p>In addition to the dots representing conserved genes between two species, genomic dot-plots contain many spurious dots. As discussed in the main text, even randomly generated strings have shared k-mers that result in "spurious" dots in their genomic dot-plots. Moreover, these spurious k-mers may aggregate into spurious diagonals that must be removed for follow-up analysis of synteny blocks. Since these spurious diagonals are usually short, we filter out short diagonals when constructing synteny blocks.</p>
+- q: Can you give an example of how GraphToGenome should work?
+  a: '<p>The following explanation is a modification of one given by one of our excellent community TAs, Giampaolo Eusebi.</p>
+
+    <p>Keep in mind that:</p>
+
+    <ul>
+
+    <li>Every even number 2x is a black node head, and every even number 2x−1 is a black node tail;</li>
+
+    <li>every colored edge is composed by two numbers representing black heads or tails.</li>
+
+    </ul>
+
+    <p>That being said, the order should not be very important. Take, for example, the following edge list:</p>
+
+    <p>(2,4), (7,9), (10,12), (3,6), (5,1), (11,8)</p>
+
+    <p>If you start with (2,4):</p>
+
+    <ul>
+
+    <li>(2,4) ends with a 4 (even), and the only edge that starts with 4−1=3 is (3,6);</li>
+
+    <li>(3,6) ends with a 6 (even), and the only edge that starts with 6−1=5 is (5,1);</li>
+
+    <li>(5,1) ends with a 1 (odd), and the only edge that starts with 1+1=2 is (2,4), which brings us back where we started, thus forming a cycle.</li>
+
+    </ul>
+
+    <p>The only remaining edges are (7,9), (10,12),(11,8). If you start with (7,9):</p>
+
+    <ul>
+
+    <li>(7,9) ends with a 9 (odd), and the only edge that starts with 9+1=10 is (10,12);</li>
+
+    <li>(10,12) ends with a 12 (even), and the only edge that starts with 12−1=11 is (11,8);</li>
+
+    <li>(11,8) ends with a 8 (even), and the only edge that starts with 8−1=7 is (7,9), which brings us back where we started, thus forming a cycle.</li>
+
+    </ul>
+
+    <p>The edge list is now empty. The key point is that we will have obtained the same two cycles regardless of which edges we chose as starting points (feel free to try it for yourself).</p>'
+- q: How can we account for mutations when constructing synteny blocks?
+  a: '<p>Our algorithm for constructing synteny blocks, which is based on shared k-mers, does account for mutations. For example, even though the two "genes" ACTGAGTTC and ACTGGGTTC differ from each other by a mutation (A -&gt; G), the genomic dot-plot with k = 3 will reveal that they form a single synteny block; construct this dot-plot and see for yourself!</p>
+
+    <p>Modern programs for constructing synteny blocks use dot-pots representing all local alignments (with scores exceeding a threshold) rather than all shared k-mers between the two genomes. However, constructing all such local alignments for long genomes is a time-consuming task.</p>'
+- q: How do reverse palindromes affect the construction of genomic dot-plots?
+  a: '<p>As specified in the main text:</p>
+
+    <p>We color the point (x, y) red if the two genomes share a k-mer at respective positions x and y. We color (x, y) blue if the k-mer starting at position x in the first genome is the reverse complement of the k-mer starting at position y in the second genome.</p>
+
+    <p>This definition does not specify what to do with reverse palindromes. A reverse palindrome is a DNA string that is its own reverse complement, such as ACGCGT. If a reverse complement starts at respective positions x and y in two genomes, then (x, y) should technically be colored both red and blue! To address this issue, we will use only red to color points corresponding to reverse palindromes.</p>'
+- q: Can we use sorting to solve the Shared k-mers Problem?
+  a: '<p class="figure"><img src="/assets/images/faq/988d7f_f6f193628e4c435e81d503af2ff44264_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_683b6626ec864df490054f042006c88a_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: 'In "DETOUR: Sorting Linear Permutations by Reversals", why do we need the complex formula for reversal distance if we have a simpler formula for the 2-break distance for linear chromosomes?'
+  a: <p>2-breaks include reversals, but not every 2-break is a reversal. For example, one 2-break on the linear chromosome (+a +b +c +d +e) may yield a fission operation, resulting in the linear chromosome (+a +b +e) and the circular chromosome (+c +d).</p>

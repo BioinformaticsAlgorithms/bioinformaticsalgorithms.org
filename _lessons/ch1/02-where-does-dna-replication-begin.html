@@ -1,0 +1,29 @@
+---
+layout: lesson
+title: A Journey of 1000 Miles...
+seo_title: Where Does DNA Replication Begin? The Origin of Replication
+description: Genome replication is one of the most important tasks carried out in the cell. Before a cell can divide, it must first replicate its genome so that...
+chapter: 1
+number: '1.1'
+order: 2
+slug: where-does-dna-replication-begin
+permalink: /bioinformatics-chapter-1/where-does-dna-replication-begin/
+---
+<p><strong>Genome replication</strong> is one of the most important tasks carried out in the cell. Before a cell can divide, it must first replicate its genome so that each of the two daughter cells inherits its own copy. In 1953, James Watson and Francis Crick completed their <a href="https://www.nature.com/nature/dna50/watsoncrick.pdf" rel="noopener" target="_blank">landmark paper</a> on the DNA double helix with a now-famous phrase:</p>
+<blockquote><em>It has not escaped our notice that the specific pairing we have postulated immediately suggests a possible copying mechanism for the genetic material.</em></blockquote>
+<p>They conjectured that the two strands of the parent DNA molecule unwind during replication, and then each parent strand acts as a template for the synthesis of a new strand. As a result, the replication process begins with a pair of complementary strands of DNA and ends with two pairs of complementary strands, as shown below.</p>
+<p style="text-align: center;"><img alt="Semiconservative replication" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Replication/semiconservative_replication.png" style="max-width:100%"/></p>
+<p><small><b>Figure:</b> A naive view of replication.  Nucleotides adenine (<samp>A</samp>) and thymine (<samp>T</samp>) are complements of each other, as are cytosine (<samp>C</samp>) and guanine (<samp>G</samp>). Complementary nucleotides bind to each other in DNA.</small></p>
+<p>Although this figure successfully models DNA replication on a simple level, the details of replication turned out to be much more intricate than Watson and Crick imagined; as we will see, an astounding amount of molecular logistics is required to ensure DNA replication.</p>
+<p>At first glance, a computer scientist might not imagine that these details have any computational relevance. To mimic the process in the above figure algorithmically, we only need to take a string representing the genome and return a copy of it! Yet if we take the time to review the underlying biological process, we will be rewarded with new algorithmic insights into analyzing replication. Replication begins in a genomic region called the <strong>replication origin</strong> (denoted <em>ori</em>) and is carried out by molecular copy machines called <strong>DNA polymerases</strong>.</p>
+<p>Locating <em>ori</em> presents an important task not only for understanding how cells replicate but also for various biomedical problems. For example, some <strong>gene therapy</strong> methods use genetically engineered mini-genomes, which are called <strong>viral vectors</strong> because they are able to penetrate cell walls (just like real viruses). Viral vectors carrying artificial genes have been used in agriculture, such as to engineer frost-resistant tomatoes and pesticide-resistant corn. In 1990, gene therapy was first successfully performed on humans when it saved the life of a four-year-old girl suffering from Severe Combined Immunodeficiency Disorder; the girl had been so vulnerable to infections that she was forced to live in a sterile environment.</p>
+<p>The idea of gene therapy is to intentionally infect a patient who lacks a crucial gene with a viral vector containing an artificial gene that encodes a therapeutic protein. Once inside the cell, the vector replicates and eventually produces many copies of the therapeutic protein, which in turn treats the patient’s disease. To ensure that the vector actually replicates inside the cell, biologists must know where <em>ori</em> is in the vector’s genome and ensure that the genetic manipulations that they perform do not affect it.</p>
+<p>In the following problem, we assume that a genome has a single <em>ori</em> and is represented as a <strong>DNA string</strong>, or a string of nucleotides from the four-letter alphabet {<samp>A</samp>, <samp>C</samp>, <samp>G</samp>, <samp>T</samp>}.</p>
+<p><strong>Finding Origin of Replication Problem:</strong><br/></p>
+<ul>
+<li><strong>Input</strong>: A DNA string <em>Genome</em>.</li>
+<li><strong>Output</strong>: The location of <em>ori</em> in <em>Genome</em>.</li>
+</ul>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Does the Finding Origin of Replication Problem represent a clearly stated computational problem?</p>
+<p>Although the Finding <em>ori</em> Problem asks a legitimate biological question, it does not present a well-defined computational problem. Indeed, biologists would immediately plan an experiment to locate <i>ori</i>: for example, they might delete various short segments from the genome in an effort to find a segment whose deletion stops replication. Computer scientists, on the other hand, would shake their heads and demand more information before they can even start thinking about the problem.</p>
+<p>Why should biologists care what computer scientists think? Computational methods are now the only realistic way to answer many questions in modern biology. First, these methods are much faster than experimental approaches; second, the results of many experiments cannot be interpreted without computational analysis. In particular, existing experimental approaches to <em>ori</em> prediction are rather time consuming. As a result, <em>ori</em> has only been experimentally located in a handful of species. Thus, we would like to design a computational approach to find <em>ori</em> so that biologists are free to spend their time and money on other tasks.</p>

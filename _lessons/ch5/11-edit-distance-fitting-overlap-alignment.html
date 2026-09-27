@@ -1,0 +1,47 @@
+---
+layout: lesson
+title: The Changing Faces of Sequence Alignment
+seo_title: Edit Distance, Fitting Alignment and Overlap Alignment
+description: 'In this lesson, we will describe three sequence comparison problems and let you apply what you have already learned to solve them. Hint: the idea is to...'
+chapter: 5
+number: '5.11'
+order: 11
+slug: edit-distance-fitting-overlap-alignment
+permalink: /bioinformatics-chapter-5/edit-distance-fitting-overlap-alignment/
+---
+<!-- Step 1 -->
+<p>In this lesson, we will describe three sequence comparison problems and let you apply what you have already learned to solve them. Hint: the idea is to frame each problem as an instance of the Longest Path in a DAG Problem.</p>
+<h2 id="problem-1-edit-distance">Problem 1: Edit Distance</h2>
+<p>In 1966, Vladimir Levenshtein introduced the notion of the <strong>edit distance</strong> between two strings as the minimum number of <strong>edit operations</strong> needed to transform one string into another. Here, an edit operation is the insertion, deletion, or substitution of a single symbol. For example, <samp>TGCATACT</samp> can be transformed into <samp>ATCCGAT</samp> with six edit operations, implying that the edit distance between these strings is at most 6.</p>
+<p style="text-align:center"><img alt="Edit distance 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/edit_distance_1.png" style="max-width: 100%" width="591px"/></p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Can you transform <samp>TGCATACT</samp> into <samp>ATCCGAT</samp> using a smaller number of operations?</p>
+<!-- Step 2 -->
+<p>In fact, the edit distance between <samp>TGCATACT</samp> and <samp>ATCCGAT</samp> is 5:</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Edit distance 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/edit_distance_2.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/edit_distance_2.png" width="544px"/></p></span>
+<!-- Step 3 -->
+<p>Levenshtein introduced edit distance but did not describe an algorithm for computing it, which we leave to you.</p>
+<p><strong>Edit Distance Problem:</strong> <em>Find the edit distance between two strings.</em></p>
+<ul><li><strong>Input:</strong> Two strings.</li><li><strong>Output:</strong> The edit distance between these strings.</li></ul>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Edit Distance Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5g/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<!-- Step 4 -->
+<h2 id="problem-2-fitting-alignment">Problem 2: Fitting Alignment</h2>
+<p>Say that we wish to compare the approximately 20,000 amino acid-long NRP synthetase from <em>Bacillus brevis</em> with the approximately 600 amino acid-long A-domain from <em>Streptomyces roseosporus</em>, the bacterium that produces the powerful antibiotic Daptomycin. We hope to find a region within the longer protein sequence <em>v</em> that has high similarity with all of the shorter sequence <em>w</em>. Global alignment will not work because it tries to align all of <em>v</em> to all of <em>w</em>; local alignment will not work because it tries to align substrings of both <em>v</em> and <em>w</em>. Thus, we have a distinct alignment application called the <strong>Fitting Alignment Problem</strong>.</p>
+<p>“Fitting” <em>w</em> to <em>v</em> requires finding a substring <em>v′</em> of <em>v</em> that maximizes the global alignment score between <em>v′</em> and <em>w</em> among all substrings of <em>v</em>. For example, the best global, local, and fitting alignments of <em>v</em> = <samp>CGTAGGCTTAAGGTTA</samp> and <em>w</em> = <samp>ATAGATA</samp> are shown in the figure below (with mismatch and indel penalties equal to 1).</p>
+<p><b><span style="color: #66cc66;"><span style="color: #000;"><strong>Fitting Alignment Problem:</strong> <em></em></span></span></b><span style="color: #66cc66;"><span style="color: #000;"><em>Construct a highest-scoring fitting alignment between two strings.</em></span></span></p>
+<ul><li><b><span style="color: #66cc66;"><span style="color: #000;"><strong>Input:</strong> </span></span></b><span style="color: #66cc66;"><span style="color: #000;">Strings <em>v</em> and <em>w</em> as well as a matrix <em>Score</em>.</span></span></li><li><b><span style="color: #66cc66;"><span style="color: #000;"><strong>Output:</strong> </span></span></b><span style="color: #66cc66;"><span style="color: #000;">A highest-scoring fitting alignment of <em>v</em> and <em>w</em> as defined by the scoring matrix <em>Score</em>.</span></span></li></ul>
+<p>Note in the figure that the optimal local alignment (with score 3) is not a valid fitting alignment. On the other hand, the score of the optimal global alignment (<span style="color: #ff4363;">6</span> - <span style="color: #66cc66;">9</span> - <span style="color: #a03881;">1</span> = -4) is smaller than that of the best fitting alignment (<span style="color: #ff4363;">5</span> - <span style="color: #a03881;">2</span> - <span style="color: #66cc66;">2</span> = +1).<br/></p>
+<p style="text-align: center;"><img alt="Global local fitting" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/global_local_fitting.png" style="max-width: 100%" width="725px"/></p>
+<p><small><b>Figure: </b>Global, local, and fitting alignments.  Black symbols do not contribute to the local and fitting alignments and are only shown to illustrate flanking regions.</small></p>
+<!-- Step 5 -->
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span><span> Solve the Fitting Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5h/" rel="noopener" target="_blank">Rosalind</a>.</span></p>
+<ul><li><strong>Input:</strong> Two nucleotide strings <em>v</em> and <em>w</em>, where <em>v</em> has length at most 1000 and <em>w</em> has length at most 100.</li><li><strong>Output:</strong> A highest-scoring fitting alignment between <em>v</em> and <em>w</em>. </li></ul>
+<!-- Step 6 -->
+<h2 id="problem-3-overlap-alignment">Problem 3: Overlap Alignment</h2>
+<p>In the chapter on genome assembly, we discussed how to use overlapping reads to assemble a genome, a problem that was complicated by errors in reads. Aligning the ends of the hypothetical reads shown below offers a way to find overlaps between error-prone reads.</p>
+<div><div style="text-align: center;"><samp>ATGCA<strong><span style="color: #ff4363;">T</span><span style="color: #66cc66;">G</span><span style="color: #ff4363;">CC</span><span style="color: #66cc66;">G</span><span style="color: #ff4363;">G</span></strong></samp></div><div style="text-align: center;"><samp><strong>         <span style="color: #ff4363;">T</span><span style="color: #66cc66;">-</span><span style="color: #ff4363;">CC</span><span style="color: #66cc66;">-</span><span style="color: #ff4363;">G</span></strong>AAAC</samp></div><div style="text-align: center;"></div>
+<p>An <strong>overlap alignment</strong> of strings <em>v</em> = <em>v</em><sub>1</sub> ... <em>v</em><sub><em>n</em></sub> and <em>w</em> = <em>w</em><sub>1</sub> ... <em>w</em><sub><em>m</em></sub> is a global alignment of a suffix of <em>v</em> with a prefix of <em>w</em>. An optimal overlap alignment of strings <em>v</em> and <em>w</em> maximizes the global alignment score between an <em>i</em>-suffix of <em>v</em> and a <em>j</em>-prefix of <em>w</em> (i.e., between <em>v</em><sub><em>i</em></sub> ... <em>v</em><sub><em>n</em></sub> and <em>w</em><sub>1</sub> ... <em>w</em><sub><em>j</em></sub>) among all <em>i</em> and <em>j</em>.</p>
+<p><strong></strong></p></div><div style="text-align: left;"><strong>Overlap Alignment Problem:</strong> <em>Construct a highest-scoring overlap alignment between two strings.</em></div>
+<ul><li><strong>Input:</strong><span> Two strings and a matrix </span><em>score</em><span>.</span></li><li><strong>Output:</strong><span> A highest-scoring overlap alignment between the two strings as defined by the scoring matrix </span><em>score</em><span>.</span></li></ul>
+<!-- Step 7 -->
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Overlap Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5i/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<ul><li><strong>Input:</strong> Two strings <em>v</em> and <em>w</em>, each of length at most 1000.</li><li><strong>Output:</strong> The score of an optimal overlap alignment of <em>v</em> and <em>w</em>, followed by an alignment of a suffix <em>v'</em> of <em>v</em> and a prefix <em>w'</em> of <em>w </em>achieving this maximum score.</li></ul>

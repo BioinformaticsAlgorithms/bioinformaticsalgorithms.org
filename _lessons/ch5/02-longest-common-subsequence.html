@@ -1,0 +1,48 @@
+---
+layout: lesson
+title: Introduction to Sequence Alignment
+seo_title: Introduction to Sequence Alignment and the Longest Common Subsequence
+description: To simplify matters, we will compare only two sequences at a time, returning to multiple sequence comparison at the end of the chapter. The Hamming...
+chapter: 5
+number: '5.2'
+order: 2
+slug: longest-common-subsequence
+permalink: /bioinformatics-chapter-5/longest-common-subsequence/
+---
+<!-- Step 1 -->
+<h2 id="sequence-alignment-as-a-game">Sequence alignment as a game</h2>
+<p>To simplify matters, we will compare only two sequences at a time, returning to multiple sequence comparison at the end of the chapter. The Hamming distance, which counts mismatches in two strings, rigidly assumes that we align the <em>i</em>-th symbol of one sequence against the <em>i</em>-th symbol of the other. However, since biological sequences are subject to insertions and deletions, it is often the case that the <em>i</em>-th symbol of one sequence corresponds to a symbol at a completely different position in the other sequence. The goal, then, is to find the most appropriate correspondence of symbols.</p>
+<p>For example, <samp>ATGCATGC</samp> and <samp>TGCATGCA</samp> have no matching positions, and so their Hamming distance is equal to 8:</p>
+<p style="text-align:center"><samp><strong><span style="color:#ff4363">ATGCATGC</span></strong><br/>
+<strong><span style="color:#ff4363">TGCATGCA</span></strong></samp></p>
+<p>Yet these strings have seven matching positions if we align them differently:</p>
+<p style="text-align:center"><samp><strong>A<span style="color:#ff4363">TGCATGC</span>-</strong><br/>
+<strong>-<span style="color:#ff4363">TGCATGC</span>A</strong></samp></p>
+<p>Strings <samp>ATGCTTA</samp> and <samp>TGCATTAA</samp> have more subtle similarities:</p>
+<p style="text-align:center"><samp><strong>A<span style="color:#ff4363">TGC</span>-<span style="color:#ff4363">TTA</span>-</strong><br/>
+<strong>-<span style="color:#ff4363">TGC</span>A<span style="color:#ff4363">TTA</span>A</strong></samp></p>
+<p>These examples lead us to postulate a notion of a good alignment as one that matches as many symbols as possible.</p>
+<!-- Step 2 -->
+<p>You can think about maximizing the number of matched symbols in two strings as a single-person game. At each turn, you have two choices. You can remove the first symbol from each sequence, in which case you earn a point if the symbols match; alternatively, you can remove the first symbol from either of the two sequences, in which case you earn no points but may set yourself up to earn more points in later moves. Your goal is to maximize the number of points.</p>
+<p>In the figure below, we show one way of playing this game for the sequences <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp>, scoring <strong><span style="color: #ff4363;">4</span></strong> points. Any time we remove a symbol on the left, we add it to a growing alignment of <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp> on the right. When only one symbol is removed in a turn, we align it with a space symbol.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Sequence alignment game" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/sequence_alignment_game.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/sequence_alignment_game.png" width="680px"/></p></span>
+<p><small><b>Figure:</b> One way of playing the alignment game for the strings <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp>, with score 4. At each step, we choose to remove either one or both symbols from the left of the two sequences in the “remaining symbols” column. If we remove both symbols, then we align them in the “growing alignment”. If we remove only one symbol, then we align this symbol with a space symbol in the growing alignment. Matched symbols are shown in red (and receive score 1). Mismatched symbols are shown in purple; symbols aligned against space symbols are shown in blue or green depending on which sequence they were removed from.</small></p>
+<!-- Step 3 -->
+<p>The figure on the previous step, reproduced below, shows just one of many possible ways to play the alignment game for the strings <samp>ATGCATGC</samp> and <samp>TGCATGCA</samp>. Can you find an even better way to play this game for the strings?</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Sequence alignment game" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/sequence_alignment_game.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/sequence_alignment_game.png" width="574px"/></p></span>
+<!-- Step 4 -->
+<h2 id="sequence-alignment-and-the-longest-common-subsequence">Sequence alignment and the longest common subsequence</h2>
+<p>We now define an alignment of sequences <em>v</em> and <em>w</em> as a two-row matrix such that the first row contains the symbols of <em>v</em> (in order), the second row contains the symbols of <em>w</em> (in order), and space symbols (called gap symbols and shown as dashes below) may be interspersed throughout both strings, as long as two space symbols are not aligned against each other. Here is the alignment of <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp> from the figure on the previous step.</p>
+<p style="text-align: center;"><samp><strong><span style="color: #ff4363;">A T</span> <span style="color: #64b0f4;">-</span> <span style="color: #ff4363;">G T</span> <span style="color: #66cc66;">T</span> <span style="color: #a03881;">A</span> <span style="color: #66cc66;">T</span> <span style="color: #a03881;">A</span></strong><br/>
+<strong><span style="color: #ff4363;">A T</span> <span style="color: #64b0f4;">C</span> <span style="color: #ff4363;">G T</span> <span style="color: #66cc66;">-</span> <span style="color: #a03881;">C</span> <span style="color: #66cc66;">-</span> <span style="color: #a03881;">C</span></strong></samp></p>
+<p>An alignment presents one possible scenario by which <em>v</em> could have evolved into <em>w</em>. Columns containing the same letter in both rows are called <strong><span style="color: #ff4363;">matches</span></strong> and represent conserved nucleotides, whereas columns containing different letters are called <strong><span style="color: #a03881;">mismatches</span></strong> and represent single-nucleotide substitutions. Columns containing a space symbol are called <strong><span style="color: #66cc66;"><span style="color: #64b0f4;">in</span>dels</span></strong>: a column containing a space symbol in the top row of the alignment is called an <strong><span style="color: #64b0f4;">insertion</span></strong>, as it implies the insertion of a symbol when transforming <em>v</em> into <em>w</em>; a column containing a space symbol in the bottom row of the alignment is called a <strong><span style="color: #66cc66;">deletion</span></strong>, as it indicates the deletion of a symbol when transforming <em>v</em> into <em>w</em>. The alignment above has four matches, two mismatches, one insertion, and two deletions.</p>
+<p>The matches in an alignment of two strings define a <strong>common subsequence</strong> of the two strings, or a sequence of symbols appearing in the same order (although not necessarily consecutively) in both strings. For example, the alignment above indicates that <samp><strong><span style="color: #ff4363;">ATGT</span></strong></samp> is a common subsequence of <samp><strong><span style="color: #ff4363;">ATGT</span></strong>TATA</samp> and <samp><strong><span style="color: #ff4363;">AT</span></strong>C<strong><span style="color: #ff4363;">GT</span></strong>CC</samp>. An alignment of two strings maximizing the number of matches therefore corresponds to a <strong>longest common subsequence (LCS)</strong> of these strings. Note that two strings may have more than one longest common subsequence.</p>
+<p><strong>Longest Common Subsequence Problem:</strong> <em>Find a longest common subsequence of two strings.</em><br/></p><ul><li><strong>Input:</strong><span> Two strings.</span></li><li><strong>Output:</strong><span> A longest common subsequence of these strings.</span></li></ul>
+<!-- Step 5 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Find all longest common subsequences of the strings <samp>ACTGCA</samp> and <samp>CATCGC</samp>. How many such subsequences did you find?</p>
+<!-- Step 6 -->
+<p>If we limit our attention to the two A-domains coding for <samp>Asp</samp> and <samp>Orn</samp> from the introduction, then in addition to the 19 matches that we have already found, we can find 10 more matches (shown in blue below), yielding a common subsequence of length 29.</p>
+<p style="text-align: center;"><img alt="A domain 8" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_8.png" style="max-width: 100%" width="858px"/></p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> What is the longest common subsequence of these strings?</p>
+<!-- Step 7 -->
+<p>None of the algorithmic approaches we have studied thus far will help us solve the Longest Common Subsequence Problem, and so before asking you to solve this problem, we will change course to describe a different problem that may seem completely unrelated to sequence alignment.</p>

@@ -1,0 +1,51 @@
+---
+layout: lesson
+title: Cracking the Non-Ribosomal Code
+seo_title: Why Compare Biological Sequences? Cracking the Non-Ribosomal Code
+description: Following Watson & Crick's publication of DNA's double helix structure in 1953, physicist George Gamow founded the “RNA Tie Club" for renowned...
+chapter: 5
+number: '5.1'
+order: 1
+slug: non-ribosomal-code
+permalink: /bioinformatics-chapter-5/non-ribosomal-code/
+---
+<!-- Step 2 -->
+<h2 id="the-rna-tie-club">The RNA Tie Club</h2>
+<p>Following Watson &amp; Crick's publication of DNA's double helix structure in 1953, physicist George Gamow founded the “RNA Tie Club" for renowned scientists. A necktie embroidered with a double helix signified membership in this club, which was restricted to twenty regular members (one for each amino acid) as well as four honorary members (one for each nucleotide). Gamow wanted the RNA Tie Club to serve more than a social function; by convening top scientific minds, he hoped to decode the message hidden within DNA by determining how RNA is converted into amino acids. Indeed, Sydney Brenner and Francis Crick struck first one year later by discovering that amino acids are translated from codons (i.e., triplets of nucleotides).</p>
+<!-- Step 3 -->
+<p>The RNA Tie Club would eventually boast eight Nobel laureates, but all this intellectual firepower did not help them take the remaining steps toward deciphering the genetic code. In 1961, Marshall Nirenberg synthesized RNA strands consisting only of uracil (...<samp>UUUUUUUUUUUU</samp>...), added ribosomes and amino acids, and produced a peptide consisting only of phenylalanine (...<samp>PhePhePhePhe</samp>...). Nirenberg thus concluded that the RNA codon <samp>UUU</samp> codes for the amino acid phenylalanine. Following Nirenberg’s success, Har Gobind Khorana synthesized the RNA strand ...<samp><strong><span style="color: #64b0f4;">UCU</span><span style="color: #ff4363;">CUC</span><span style="color: #64b0f4;">UCU</span><span style="color: #ff4363;">CUC</span></strong></samp>... and demonstrated that it translates into ...<samp><strong><span style="color: #64b0f4;">Ser</span><span style="color: #ff4363;">Leu</span><span style="color: #64b0f4;">Ser</span><span style="color: #ff4363;">Leu</span></strong></samp>... Following these insights, the rest of the <em>ribosomal</em> genetic code was rapidly elucidated.</p>
+<!-- Step 4 -->
+<p>Nearly four decades later, Mohamed Marahiel set out to solve the much more challenging puzzle of cracking the <strong>non-ribosomal code</strong>. You will recall from our chapter on antibiotics sequencing that bacteria and fungi produce antibiotics and other non-ribosomal peptides (NRPs) without any reliance on the ribosome and the genetic code. Instead, these organisms manufacture NRPs by employing a giant protein called NRP synthetase:</p>
+<div style="text-align: center;">DNA    →    RNA    →    NRP synthetase    →    NRP</div>
+<p>The NRP synthetase that encodes the 10 amino acid-long antibiotic Tyrocidine B1 includes 10 segments called <strong>adenylation domains</strong> (<strong>A-domains</strong>); each A-domain is about 500 amino acids long and is responsible for adding a single amino acid to Tyrocidine B1.</p>
+<p>A generation earlier, the RNA Tie Club had asked, “How does RNA encode an amino acid?” Now Marahiel set out to answer the far more challenging question, “How does each A-domain encode an amino acid?”</p>
+<!-- Step 5 -->
+<h2 id="from-protein-comparison-to-the-non-ribosomal-code">From protein comparison to the non-ribosomal code</h2>
+<p>Fortunately, Marahiel already knew the amino acid sequences of some A-domains, along with the amino acids that they add to the growing peptide. Below are three of these A-domains (taken from three different bacteria), which code for aspartic acid (<samp>Asp</samp>), ornithine (<samp>Orn</samp>), and valine (<samp>Val</samp>), respectively. In the interest of space, we will show you only short fragments taken from the three A-domains:</p>
+<p style="text-align: center;"><img alt="A domain 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_1.png" style="max-width: 100%" width="897px"/></p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> You now have a portion of the data that Marahiel had in 1999 when he discovered the non-ribosomal code. What would you do to infer the non-ribosomal code?</p>
+<!-- Step 6 -->
+<p>Marahiel conjectured that since A-domains have the same function (i.e., adding an amino acid to the growing peptide), different A-domains should have similar parts. A-domains should also have differing parts to incorporate different amino acids. However, only three conserved columns (shown in red below) are common to the three sequences and have likely arisen by pure chance:</p>
+<p style="text-align: center;"><img alt="A domain 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_2.png" style="max-width: 100%" width="912px"/></p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> How else are the three sequences similar?</p>
+<!-- Step 7 -->
+<p>If we slide the second sequence only one amino acid to the right, adding a <b>space symbol</b>
+("-") to the beginning of the sequence, then we find 11 conserved columns!</p>
+<p style="text-align: center;"><img alt="A domain 3" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_3.png" style="max-width: 100%" width="912px"/></p>
+<p>Adding a few more space symbols reveals 14 conserved columns:</p>
+<p style="text-align: center;"><img alt="A domain 4" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_4.png" style="max-width: 100%" width="912px"/></p>
+<p>and even more sliding reveals 19 conserved columns:</p>
+<p style="text-align: center;"><img alt="A domain 5" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_5.png" style="max-width: 100%" width="912px"/></p>
+<!-- Step 8 -->
+<p>It turns out that the red columns represent the <strong>conserved core</strong> shared by many A-domains. Now that Marahiel knew how to correctly <em>align</em> the A-domains, he hypothesized that some of the remaining variable columns should code for Asp, Orn, and Val. He discovered that the non-ribosomal code is defined by 8 amino acid-long non-ribosomal <strong>signatures</strong>, which are shown as purple columns below.</p>
+<p style="text-align: center;"><img alt="A domain 6" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_6.png" style="max-width: 100%" width="912px"/></p>
+<p>The purple columns define the signatures <samp><strong><span style="color: #a03881;">LTKVGHIG</span></strong></samp>, <samp><strong><span style="color: #a03881;">VGEIGSID</span></strong></samp>, and <samp><strong><span style="color: #a03881;">AWMFAAVL</span></strong></samp>, coding for <samp>Asp</samp>, <samp>Orn</samp>, and <samp>Val</samp>, respectively:</p>
+<p><strong><span style="color: #a03881;">LTKVGHIG</span></strong> → Asp <strong><span style="color: #a03881;">VGEIGSID</span></strong> → Orn <strong><span style="color: #a03881;">AWMFAAVL</span></strong> → Val</p>
+<p>It is important to note that without first constructing the conserved core, Marahiel would not have been able to infer the non-ribosomal code, since the 24 amino acids in the signatures above do not line up in the original alignment:</p>
+<p style="text-align: center;"><img alt="A domain 7" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_7.png" style="max-width: 100%" width="912px"/></p>
+<p>Even after identifying the conserved core, you may be wondering whether Marahiel had a crystal ball; why did he choose these particular 8 purple columns? Why should signatures have 8 amino acids and not 5, or better yet 3? Suffice it to say that fifteen years after Marahiel’s initial discovery, the non-ribosomal code is still not fully understood. See "DETOUR: Fireflies and the Non-Ribosomal Code" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> for a better appreciation of the complexities underlying Marahiel's work.</p>
+<!-- Step 9 -->
+<h2 id="what-do-oncogenes-and-growth-factors-have-in-common">What do oncogenes and growth factors have in common?</h2>
+<p>Marahiel’s cracking of the non-ribosomal code is just one of many biological problems that have benefited from sequence comparison. Another striking example of the power of sequence comparison was established in 1983 when Russell Doolittle compared the newly sequenced <strong>platelet derived growth factor</strong> (<strong>PDGF</strong>) gene with all other genes known at the time. Doolittle stunned cancer biologists when he showed that PDGF was very similar to the sequence of a gene known as <strong>v-sis</strong>. The two genes’ similarity was puzzling because their functions differ greatly; the PDGF gene encodes a protein stimulating cell growth, whereas v-sis is an <strong>oncogene</strong>, or a gene in viruses that causes a cancer-like transformation of infected human cells. Following Doolittle’s discovery, scientists hypothesized that some forms of cancer might be caused by a good gene doing the right thing at the wrong time. The link between PDGF and v-sis established a new paradigm; searching all new sequences against sequence databases is now the first order of business in genomics.</p>
+<p>However, the question remains: what is the best way to compare sequences algorithmically? Returning to the A-domain example (reproduced below), the insertion of spaces to reveal the conserved core probably looked like a magic trick to you. It is completely unclear what algorithm we have used to decide where to insert the space symbols, or how we should quantify the “best” alignment of the three sequences.</p>
+<p style="text-align: center;"><img alt="A domain 6" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_6.png" style="max-width: 100%" width="912px"/></p>

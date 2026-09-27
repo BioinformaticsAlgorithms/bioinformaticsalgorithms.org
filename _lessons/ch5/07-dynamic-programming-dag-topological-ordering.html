@@ -1,0 +1,80 @@
+---
+layout: lesson
+title: From Manhattan to an Arbitrary DAG
+seo_title: Dynamic Programming in a DAG and Topological Orderings
+description: After seeing how dynamic programming solved the Manhattan Tourist Problem, you should be prepared to adapt ManhattanTourist for alignment graphs with...
+chapter: 5
+number: '5.7'
+order: 7
+slug: dynamic-programming-dag-topological-ordering
+permalink: /bioinformatics-chapter-5/dynamic-programming-dag-topological-ordering/
+---
+<!-- Step 1 -->
+<h2 id="sequence-alignment-as-building-a-manhattan-like-graph">Sequence alignment as building a Manhattan-like graph</h2>
+<p>After seeing how dynamic programming solved the Manhattan Tourist Problem, you should be prepared to adapt <strong>ManhattanTourist</strong> for alignment graphs with diagonal edges. Recall the figure below, in which we modeled the Longest Common Subsequence Problem as finding the longest path in an alignment graph “city” whose “attractions”’ (matches) all lie on diagonal edges with weight 1.</p>
+<p style="text-align:center"><img alt="Alignment graph matches" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_graph_matches.png" style="max-width: 100%" width="405px"/></p>
+<!-- Step 2 -->
+<p>You can probably work out the recurrence relation for the alignment graph on your own, but imagine for a second that you have not already learned that an LCS can be represented by a longest path in the alignment graph. As "DETOUR: Finding a Longest Common Subsequence without Building a City" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> explains, we don't need to build a Manhattan-like city to compute the length of an LCS. However, the arguments required to do so are tedious.</p>
+<p>More importantly, various alignment applications are much more complex than the Longest Common Subsequence Problem and require building a DAG with appropriately chosen edge weights in order to model the specifics of a biological problem. Rather than treating each subsequent alignment application as a frightening new challenge, we would like to equip you with a generic dynamic programming algorithm that will find a longest path in any DAG. Moreover, many bioinformatics problems have nothing to do with alignment, yet they can also be solved as applications of the Longest Path in a DAG Problem.</p>
+<!-- Step 3 -->
+<h2 id="dynamic-programming-in-an-arbitrary-dag">Dynamic programming in an arbitrary DAG</h2>
+<p>Given a node <em>b</em> in a DAG, let <em>s</em><sub><em>b</em></sub> denote the length of the longest path from the source to <em>b</em>. We call node <em>a</em> a <strong>predecessor</strong> of node <em>b</em> if there is an edge connecting <em>a</em> to <em>b</em> in the DAG; the indegree of a node is equal to the number of its predecessors. The <strong>score</strong> <em>s</em><sub><em>b</em></sub> of node <em>b</em> with indegree <em>k</em> is computed as a maximum of <em>k</em> terms:</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Predecessor recurrence 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/predecessor_recurrence_1.png" style="max-width: 100%" width="528px"/></p></span>
+<p>For example, in the graph shown below, node (1, 1) has three predecessors. You can arrive at (1, 1) by traveling right from (1, 0), down from (0, 1), or diagonally from (0, 0), Assuming that we have already computed <em>s</em><sub>0, 0</sub>, <em>s</em><sub>0, 1</sub>, and <em>s</em><sub>1, 0</sub>, we can therefore compute <em>s</em><sub>1, 1</sub> as the maximum of three values.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="S 1%2c1 recurrence" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/s_1%2c1_recurrence.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/s_1%2c1_recurrence.png" width="723px"/></p></span>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Dag 1 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/dag_1-1.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/dag_1-1.png" width="361px"/></p></span>
+<p style="text-align: left;"><small><strong>Figure:</strong> In the DAG above, (1, 1) has three predecessors  ((0, 0), (0, 1), and (1, 0)) that are used in the computation of <em>s</em><sub>1, 1</sub>.</small></p>
+<!-- Step 4 -->
+<p>An analogous argument can be applied to the alignment graph (below) to compute the length of an LCS between sequences v and w. Since in this case all edges have weight 0 except for diagonal edges of weight 1 that represent matches (<em>v</em><sub><em>i</em></sub> = <em>w</em><sub><em>j</em></sub>), we obtain the following recurrence for computing the length of an LCS.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Lcs recurrence" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/lcs_recurrence.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/lcs_recurrence.png" width="634px"/></p></span>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Alignment graph colored" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_graph_colored.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/alignment_graph_colored.png" width="376px"/></p></span>
+<p class="callout callout-think" style="text-align: left;"><span class="callout-label">STOP and Think</span> The above recurrence does not incorporate mismatch edges.  Why is this not a problem?</p>
+<!-- Step 5 -->
+<p>A similar approach can be developed to find the longest path in any DAG, as suggested by the next exercise.</p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> What is the length of a longest path between the blue and red nodes in the DAG shown below? Check your solution at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p style="text-align: center;"><img alt="Weighted dag" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/weighted_dag.png" style="max-width: 100%" width="296px"/></p>
+<!-- Step 6 -->
+<h2 id="topological-orderings">Topological orderings</h2>
+<p>Do not worry if you struggled to answer the last exercise. The hitch to using dynamic programming in order to find the length of a longest path in a DAG is that we must decide on the <em>order</em> in which to <b></b>visit<b></b> nodes when computing the values <em>s</em><sub><em>b</em></sub> according to the recurrence</p>
+<p style="text-align: center;"><img alt="Predecessor recurrence 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/predecessor_recurrence_1.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/predecessor_recurrence_1.png" width="558px"/></p>
+<p>This ordering of nodes is important, since by the time we reach node <em>b</em>, the values <em>s</em><sub><em>a</em></sub> for all its predecessors must have already been computed. We have managed to hide this issue for rectangular grids because the order in which we have computed the <em>s</em><sub><em>i</em>, <em>j</em></sub> ensured that we would never consider a node before visiting all of its predecessors.</p>
+<p>To illustrate the importance of visiting nodes in the correct order, consider the DAG shown below, which corresponds to a “Dressing Challenge Problem”. How would you order the nodes of this graph so that you don't put on your boots before your tights.</p>
+<p style="text-align: center;"><img alt="Dressing challenge" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/dressing_challenge.png" style="max-width: 100%" width="723px"/></p>
+<!-- Step 7 -->
+<p>To solve the Dressing Challenge Problem, we need to arrange the nodes in the DAG from the previous step along a line so that every directed edge connects a node to a node on its right (see figure below). To get dressed without any mishaps, you can simply visit nodes from left to right. To find a longest path in an arbitrary DAG, we first need to order the nodes of the DAG so that every node falls after all its predecessors. Formally, an ordering of nodes (<em>a</em><sub>1</sub>, ... , <em>a</em><sub><em>k</em></sub>) in a DAG is called a <strong>topological ordering</strong> if every edge (<em>a</em><sub><em>i</em></sub>, <em>a</em><sub><em>j</em></sub>) of the DAG connects a node with a smaller index to a node with a larger index, i.e., <em>i</em> &lt; <em>j</em>.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Dressing challenge topological ordering" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/dressing_challenge_topological_ordering.png" style="max-width: 100%" title="Image: /media/attachments/lessons/244/dressing_challenge_topological_ordering_3.png" width="717px"/></p></span>
+<div style="text-align: center;"><small><strong>Figure:</strong> <b>﻿</b>Two different topological orderings of the Dressing Challenge DAG.</small></div>
+<!-- Step 8 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> How many topological orderings does the Dressing Challenge DAG (reproduced below) have? Check your solution at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p style="text-align: center;"><img alt="Dressing challenge" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/dressing_challenge.png" style="max-width: 100%" width="723px"/></p>
+<!-- Step 9 -->
+<p><strong>ManhattanTourist</strong> is able to find a longest path in a rectangular grid because its pseudocode (reproduced at bottom) implicitly orders nodes according to the “row-by-row” topological ordering shown in the figure below.</p>
+<p style="text-align: center;"><img alt="Topological ordering 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/topological_ordering-2.png" style="max-width: 100%" width="386px"/></p>
+<div><pre><small><code class="language-no-highlight"><b>ManhattanTourist</b>(<em>n</em>, <em>m</em>, <em>Down</em>, <em>Right</em>)
+  <em>s</em><sub>0, 0</sub> ← 0
+  <strong>for</strong> <em>i</em> ← 1 to <em>n</em>
+    <em>s</em><sub><em>i</em>, 0</sub> ← <em>s</em><sub><em>i</em>-1, 0</sub> + <em>down</em><sub><em>i</em>, 0</sub>
+  <strong>for</strong> <em>j</em> ← 1 to <em>m</em>
+    <em>s</em><sub>0, <em>j</em></sub> ← <em>s</em><sub>0, <em>j</em>−1</sub> + <em>right</em><sub>0, <em>j</em></sub>
+  <strong>for</strong> <em>i</em> ← 1 to <em>n</em>
+    <strong>for</strong> <em>j</em> ← 1 to <em>m</em>
+      <em>s</em><sub><em>i</em>, <em>j</em></sub> ← max{s<sub><em>i</em> - 1, <em>j</em></sub> + <em>down</em><sub><em>i</em>, <em>j</em></sub>, <em>s</em><sub><em>i</em>, <em>j</em> - 1</sub> + <em>right</em><sub><em>i</em>, <em>j</em></sub>}
+  <strong>return</strong> <em>s</em><sub><em>n</em>, <em>m</em></sub></code></small></pre></div>
+<!-- Step 10 -->
+<p>The “column-by-column” topological ordering, shown below, gives yet another topological ordering of a rectangular grid.</p>
+<p style="text-align: center;"><img alt="Topological ordering 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/topological_ordering-1.png" style="max-width: 100%" width="386px"/></p>
+<!-- Step 11 -->
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Rewrite the <strong>ManhattanTourist</strong> pseudocode based on the additional topological ordering shown below.</p>
+<p style="text-align: center;"><img alt="Topological ordering 3" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/topological_ordering-3.png" style="max-width: 100%" width="386px"/></p>
+<!-- Step 12 -->
+<p>It can be proven that any DAG has a topological ordering, and that this topological ordering can be constructed in time proportional to the number of edges in the graph (for more details, see "DETOUR: Constructing a Topological Ordering" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>). Once we have a topological ordering, we can compute the length of the longest path from source to sink by visiting the nodes of the DAG in the order dictated by the topological ordering, which is achieved by the following algorithm. For simplicity, we assume that the source node is the only node with indegree 0 in <em>Graph</em>.</p>
+<pre><small><code class="language-no-highlight"><strong>LongestPath</strong>(<em>Graph</em>, <em>source</em>, <em>sink</em>)
+  <strong>for</strong> each node <em>b</em> in <em>Graph</em>
+    <em>s</em><sub><em>b</em></sub> ← −∞
+  <em>s</em><sub><em>source</em></sub> ← 0
+  topologically order <em>Graph</em>
+  <strong>for</strong> each node <em>b</em> in <em>Graph</em> (following the topological order)
+    <em>s</em><sub><em>b</em></sub> ← max<sub>all predecessors <em>a</em> of node <em>b</em> </sub>{<em>s</em><sub><em>a</em></sub> + weight of edge from <em>a</em> to <em>b</em>}
+  <strong>return</strong> <em>s</em><sub><em>sink</em></sub></code></small></pre>
+<p>Since every edge participates in only a single recurrence, the runtime of <strong>LongestPath</strong> is proportional to the number of edges in the DAG <em>Graph</em>.</p>
+<p>We can now efficiently compute the <em>length</em> of a longest path in an arbitrary DAG, but we do not yet know how to convert <strong>LongestPath</strong> into an algorithm that will <em>construct</em> this longest path. In the next section, we will use the Longest Common Subsequence Problem to explain how to construct a longest path in a DAG.</p>

@@ -1,0 +1,195 @@
+- q: Does amalgamation of the reference human genome from various individuals cause problems? Can’t such amalgamation produce a phenotype that does not occur naturally?
+  a: <p>Yes, the reference human genome is a mosaic of various genomes that does not match the genome of any individual human. Since various human genomes differ by only 0.1%, however, the amalgamation does not cause significant problems.</p>
+- q: How does the repeated triplet "CAG" affect the severity of Huntington's disease?
+  a: <p>Huntington's disease is a rare genetic disease in that it is attributable to a single gene, called Huntingtin. This gene includes a trinucleotide repeat "...CAGCAGCAG..." that varies in length. Individuals with fewer than 26 copies of "CAG" in their Huntingtin gene are classified as unaffected by Huntington's disease, whereas individuals with more than 35 copies carry a large risk of the disease, and individuals with more than 40 copies will be afflicted. Moreover, an unaffected person can pass the disease to a child if the normal gene mutates and increases the repeat length. The reason why many repeated copies of "CAG" in Huntingtin leads to disease is that this gene produces a protein with many copies of glutamine ("CAG" codes for glutamine), which increases the decay rate of neurons.</p>
+- q: Would it be better to use multiple reference genomes instead of a single reference genome?
+  a: <p>Perhaps in theory, but in practice, biologists still use one reference genome, since comparison against thousands of reference genomes would be time-consuming.</p>
+- q: What is the point of appending the "$" sign to Text when we construct SuffixTrie(Text)?
+  a: <p>Construct the suffix trie for "papa" and you will see why we have added the "$" sign – without the "$" sign, the suffix "pa" will become a part of the path spelled by the suffix "papa".</p>
+- q: Why do we construct the trie of all suffixes and not the trie of all prefixes for pattern matching?
+  a: <p>If a pattern matches the text starting at position i, we want this pattern to correspond to a path starting at the root of a constructed tree. Therefore, we are interested in the suffix starting at position i rather than the prefix ending at position i.</p>
+- q: Why do we need an edge from the root to the leaf in the suffix tree (labeled by the "$" sign) if this edge is never traversed during pattern matching?
+  a: <p>Although we indeed do not need this edge, it is included to simplify the description of the suffix tree.</p>
+- q: What are the edge labels in the suffix tree for "panamabananas$"?
+  a: '<p>The suffix tree for "panamabananas$" reproduced below contains 17 edges with the following labels (note that different edges may have the same labels):</p>
+
+    <p>$ a</p>
+
+    <p>bananas$</p>
+
+    <p>mabananas$</p>
+
+    <p>na</p>
+
+    <p>mabananas$</p>
+
+    <p>nanas$</p>
+
+    <p>s$</p>
+
+    <p>s$</p>
+
+    <p>bananas$</p>
+
+    <p>mabananas$</p>
+
+    <p>na</p>
+
+    <p>mabananas$</p>
+
+    <p>nas$</p>
+
+    <p>s$</p>
+
+    <p>panamabananas$</p>
+
+    <p>s$</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_92eec19ade484a22978e648e0e8fa5ca_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: How does storing SuffixTree(Text) require memory on the order of 20·|Text| if the number of nodes in the suffix tree does not exceed 2·|Text|?
+  a: <p>In addition to storing the nodes and edges of the suffix tree, we also need to store the information at the edge labels. Storing this information takes most of the memory allocated for the suffix tree.</p>
+- q: How can I construct a suffix tree in linear time?
+  a: <p>Suffix trees were introduced by <a href="https://ieeexplore.ieee.org/document/4569722" target="_blank" rel="noopener">Weiner, 1973</a>. However, the original linear-time algorithm for building the suffix tree was extremely complex. Although the Weiner algorithm was greatly simplified by Esko Ukkonen in 1995, it is still non-trivial. Check out this excellent <a href="https://stackoverflow.com/questions/9452701/ukkonens-suffix-tree-algorithm-in-plain-english/9513423#9513423" target="_blank" rel="noopener">StackOverflow post</a> by Johannes Goller if you are interested in seeing a full explanation.</p>
+- q: How do we construct the suffix tree for a human genome with 23 chromosomes?
+  a: <p>You can simply construct the suffix tree for the contatenation of all 23 chromosomes. Don't forget to add 22 different delimiters (i.e., any symbols that differ from “A”, “C”, “G”, and “T”) when you construct the concatenated string.</p>
+- q: Why does the suffix array for the 3-billion nucleotide human require 12 GB of memory? Is about 3 GB not sufficient?
+  a: <p>The suffix array for the human genome indeed has about 3 billion elements. However, since each element represents one of 3·10^9 positions in the human genome, we need 4 bytes to store each element.</p>
+- q: Why does the suffix tree for the 3-billion nucleotide human require about 60 GB of memory?
+  a: '<p>A suffix tree for a string <em>Text</em> has |<em>Text</em>|+1 leaves and up to |<em>Text</em>| other nodes. The last figure in "Charging Station: Constructing a Suffix Tree" illustrates that we need to store two (rather large) numbers for each edge of the suffix tree, each requiring at least 4 bytes for the aprroximately 3 billion nucleotide human genome. Thus, since there are approximately 2·|<em>Text</em>| edges in the suffix tree of <em>Text</em>, the suffix tree for the human genome requires at least 3· 10^9·2·(4+4) = 48 GB. And we have not even taken into account some other things that need to be stored, such as the human genome itself :)</p>'
+- q: Can I see an example of how PatternMatchingWithSuffixArray works?
+  a: '<p>We illustrate how PatternMatchingWithSuffixArray matches "ana" against the suffix array of "panamabananas$", reproduced below from the main text (the suffix array is the column on the left).</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_df5b7e9b74c74500a057badb261c4ebc_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: What is special about the final column of the Burrows-Wheeler matrix? Why not work with some other column?
+  a: '<p>In short, the last column is the only invertible column of the Burrows-Wheeler matrix. In other words, it is the only column from which we are always able to reconstruct the original string Text.</p>
+
+    <p>For example, strings 001 and 100 have identical third columns in the Burrows-Wheeler matrix, as shown below.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_da708bca3b344fba8b78298e3e32f95c_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: Why do we need the LCP array to transform a suffix array into a suffix tree?
+  a: <p>It may seem easier to subsequently add each suffix to the growing suffix tree by finding out where each newly added suffix branches from the growing suffix tree. But this straightforward approach results in quadratic running time, compared to the linear time algorithm in the textbook. (Keep in mind that the LCP array can be constructed in linear time.)</p>
+- q: Why does FirstColumn appear among the arguments in BWMatching if it is never used in the BWMatching pseudocode?
+  a: <p>We indeed do not use FirstColumn in BWMatching. Although it seemingly does not make sense, we prefer this because we use FirstColumn in a modification of of BWMatching in a later section.</p>
+- q: How does the array FirstOccurrence reduce memory if we still need the larger array FirstColumn to construct FirstOccurrence in the first place?
+  a: <p>When we use FirstColumn to construct FirstOccurrence, we can immediately release the memory taken by FirstColumn. Furthermore, there is an alternative way to construct FirstOccurrence without using FirstColumn.</p>
+- q: Is it possible to construct the Burrows-Wheeler Transform in linear time and space?
+  a: <p>Our naive approach to constructing BWT(Text) requires constructing the matrix M(Text) of all cyclic rotations, which requires O(|Text|^2) time and space. However, there exist algorithms constructing BWT(Text) in linear time and space. One such algorithm first constructs the suffix array of Text in linear time and space, then uses this suffix array to construct BWT(Text).</p>
+- q: Doesn't the Last-to-First mapping require a lot of memory?
+  a: <p>In practice, it is possible to compute the Last-to-First mapping of a given position of BWT(<em>Text</em>) with very low runtime and memory using the array holding the first occurrence of each symbol in the sorted string. Unfortunately, the analysis is beyond the scope of this class. For details, please see <a href="http://dl.acm.org/citation.cfm?id=796543" target="_blank" rel="noopener">Ferragina and Manzini, 2000</a> (click <a href="http://people.unipmn.it/manzini/papers/focs00draft.pdf" target="_blank" rel="noopener">here</a> for full text).</p>
+- q: Why do the first and last occurrences of symbol in the range of positions from top to bottom in LastColumn have respective ranks Countsymbol(top, LastColumn)+1 and Countsymbol(bottom+1, LastColumn)?
+  a: '<p>Given an index <em>ind</em> in the array <em>LastColumn</em> (varying from 0 to 13 in the example shown in the text), the number of occurrences of <em>symbol</em> before position <em>ind</em> (i.e., in positions with indices less than <em>ind</em>) is defined by <em>Countsymbol</em>(<em>ind</em>, <em>LastColumn</em>). Since the number of occurrences of <em>symbol</em> starting before position <em>ind</em> is equal to <em>Countsymbol</em>(<em>ind</em>, <em>LastColumn</em>), the rank of the first occurrence of <em>symbol</em> starting from position <em>ind</em> is</p>
+
+    <p><em>Countsymbol</em>(<em>ind</em>, <em>LastColumn</em>) + 1<br></p>
+
+    <p>To be more precise, it is <em>Countsymbol</em>(<em>ind</em>, <em>LastColumn</em>) + 1 if <em>symbol</em> occurs in <em>LastColumn</em> at or after position <em>ind</em>.<br></p>
+
+    <p>Similarly, the rank of the last occurrence of symbol starting before or at position <em>ind</em> is given by</p>
+
+    <p><em>Countsymbol</em>(<em>ind</em> + 1, <em>LastColumn</em>)<br></p>
+
+    <p>For example, when <em>ind</em> = 5, the rank of the first occurrence of "n" starting at position 5 is <em>Count</em>"n"(5, <em>LastColumn</em>) + 1 = 1 + 1 = 2. On the other hand, the rank of the last occurrence of "p" starting before or at position <em>ind</em> is <em>Count</em>"p"(6, <em>LastColumn</em>) = 1.</p>'
+- q: Would it be possible to match a pattern using the Burrows-Wheeler Transform by moving forward through the pattern instead of moving backward?
+  a: '<p>Let''s match "nam" against BWT("panamabananas$"), but instead of matching backward (like in the figure below, reproduced from the text), let''s try to match it forward. We can easily find the three occurrences of "n" in the first column to start this matching, but afterwards we need to match the next symbol "a" in "nam". However, this symbol is "hiding" in the second column, and we have no clue what is in the second column - the Burrows Wheeler Transform does not reveal this information! And there is no equivalent of the "First-Last Property" for the second column to help us.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_0038507369de4cb4ad7b9dd26e397f99_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: Is BetterBWMatching guaranteed to terminate?
+  a: <p>The condition "<em>top</em> ≤ <em>bottom</em>" is a <strong>loop invariant</strong>, or a property that holds before and after each iteration of the loop. In this case, if pattern matches have been found, the number of matches is equal to <em>bottom</em> - <em>top</em> + 1. If pattern matches are not found, then at some point in the loop, <em>bottom</em>becomes equal to <em>top</em> - 1, in which case <em>top</em> ≤ <em>bottom</em> and the loop terminates.</p>
+- q: Would BetterBWMatching work properly if Pattern contains symbols that do not appear in Text?
+  a: <p>No; however, you can easily modify <strong>BetterBWMatching</strong> by first checking whether <em>Pattern</em> contains symbols not present in <em>Text</em> and immediately returning 0 in this case.</p>
+- q: In the main text, you illustrated walking backward in BetterBWMatching with the pattern "ana", which is a palindrome. How can we match a non-palindromic pattern?
+  a: <p>Try "walking backwards" to find the one pattern match of "ban" in "panamabananas$".</p>
+- q: How do we select the constant K for constructing the partial suffix array?
+  a: '<p>Selecting a large value of <em>K</em> reduces the memory allocated to the partial suffix array by a factor of <em>K</em> but increases the time needed to "walk backward" during the pattern matching process (see the figure below, reproduced from the main text). This backward walk may take up to <em>K</em>-1 steps ((<em>K</em>-1)/2 steps on average). Thus, it makes sense to select the minimum value of <em>K</em> that allows fitting the BWT pattern matching code into the memory on your machine.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_ae015650708746fd8126aec2b171e7f3_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: If we have to construct the entire suffix array to build the partial suffix array, how can it save memory?
+  a: '<p>The partial suffix array can indeed be constructed without constructing the (full) suffix array first. The figure below shows the partial suffix array of <em>Text </em>= “panamabananas$” with <em>K</em> = 5. Although it is unclear how to find where the entries 0, 5, and 10 in the suffix array are located without constructing this array first, we know that the top-most entry of the suffix array is 13, corresponding to the length of <em>Text</em>):</p>
+
+    <p class="figure"><img src="/assets/images/faq/f3c7f7_31b2f31b1ca94833ae8c847e49a274a5_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>Using the <em>LastToFirst</em> function, we can find out where entry 12 is located:</p>
+
+    <p class="figure"><img src="/assets/images/faq/f3c7f7_f048e4bb2d0849e0a07d83e355e5d93a_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>And, in turn, we can find entry 11:</p>
+
+    <p class="figure"><img src="/assets/images/faq/f3c7f7_98d1962beb35441a91419841379d0692_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>At last, we find entry 10, which is the one we were looking for!</p>
+
+    <p class="figure"><img src="/assets/images/faq/f3c7f7_c31c8ef9cbdc461b822cf52b0eb160cc_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>After entry 10 in the partial suffix array is found, we can apply the <em>LastToFirst</em> function five more times and find the position of 5 in the partial suffix array. Slowly but surely, after another round of five applications of the <em>LastToFirst </em>function, we will find the position of 0.<br></p>
+
+    <p>However, since the <em>LastToFirst </em>function consumes a lot of memory, we cannot explicitly use it to construct the partial suffix array.  We could also use the <em>Count</em> arrays, but these require a lot of memory too… yet we can substitute the <em>Count</em> arrays by memory-efficient checkpoint arrays (which can also be computed without needing the original <em>Count</em> arrays) to achieve the same goal, and therefore construct the partial suffix array efficiently.</p>'
+- q: It seems as though the partial suffix array will require using the LastToFirst mapping. But we got rid of the LastToFirst mapping in order to speed up pattern matching and save memory! Why do we do this?
+  a: <p>We indeed got rid of the <em>LastToFirst</em> array; however, in the same section we saw how the <em>Count</em> arrays can be used as a substitute for <em>LastToFirst</em>.</p>
+- q: How do we select the constant C when constructing checkpoint arrays?
+  a: <p>Selecting a large value of <em>C</em> reduces the memory allocated to the checkpoint arrays by a factor of <em>C</em> but increases the time for computing <em>top</em> and <em>bottom</em> pointers by a factor of <em>C</em> in the worst case. Thus, it makes sense to select the minimum value of <em>C</em> that allows fitting the BWT pattern matching code into the memory on your machine.</p>
+- q: What modifications of BetterBWMatching are needed to make it work with checkpoint arrays instead of count arrays?
+  a: '<p>To explain how to modify BetterBWMatching for working with checkpoint arrays, we explain how to quickly compute each value in the count array given the checkpoint arrays and <em>LastColumn</em>.</p>
+
+    <p>To compute <em>Count_symbol</em>(<em>i</em>, <em>LastColumn</em>), we represent <em>i</em> as <em>t</em>·<em>K</em> + <em>j</em>, where <em>j</em> &lt; <em>K</em>. We can then compute <em>Count_symbol</em>(<em>i</em>, <em>LastColumn</em>) as <em>Count_symbol</em>(<em>t</em>·<em>K</em>, <em>LastColumn</em>) (contained in the checkpoint arrays) plus the number of occurrences of <em>symbol</em> in positions <em>t</em>·<em>K</em> + 1 to <em>i</em> in <em>LastColumn</em>.</p>'
+- q: How do biologists determine the maximum allowable number of mismatches while mapping reads to the human genome?
+  a: <p>Biologists usually set a small threshold for the maximum number of mismatches, since otherwise read mapping becomes too slow.</p>
+- q: Can reads that "fall off the edges of the text" form approximate matches?
+  a: <p>For example, does <em>Pattern</em> = "TTACTG" match <em>Text</em> = "ACTGCTGCTG" with <em>d</em> = 2 mismatches? Not according to the statement of the Multiple Approximate Pattern Matching Problem, since there is no <em>starting position</em> in <em>Text</em> where <em>Pattern</em>appears as a substring with at most <em>d</em> mismatches. However, if you want to count approximate matches falling off the edges of <em>Text</em>, you can simply add short strings formed by "$" signs before the start and after the end of <em>Text</em>.</p>
+- q: What is the running time of approximate pattern matching using the Burrows Wheeler Transform?
+  a: <p>Unfortunately, the running time scales roughly as <em>Ak</em>, where <em>A</em> is the alphabet size and <em>k</em> is the number of mismatches. This is why the existing read matching tools based on the Burrows Wheeler Transform become prohibitively slow when the number of mismatches increases. For more details, see N. Zhang, A. Mukherjee, D.Adjeroh, T. Bell. <a href="http://ieeexplore.ieee.org/document/1194077/" target="_blank" rel="noopener">"Approximate Pattern Matching using the Burrows-Wheeler Transform."</a><em>Data Compression Conference</em>, 2003, 458.</p>
+- q: How does seed extension work?
+  a: <p>After finding a seed of length <em>k</em> that starts at position <em>i</em> in <em>Pattern</em> and position <em>j</em> in <em>Text</em>, approximate pattern matching algorithms find a substring of <em>Text</em> of length |<em>Pattern</em>| that starts at position <em>j-i</em>.  If this substring matches <em>Pattern</em> with at most <em>d</em>mismatches, then it is reported as an approximate match between <em>Pattern </em>and <em>Text</em>.</p>
+- q: How does BLAST find all k-mers that have scores above a given threshold when scored against a k-mer in the query string?
+  a: <p>To find all <em>k</em>-mers that score above a threshold against a given <em>k</em>-mer <em>a,</em> we can generate the 1-neighborhood of <em>a</em> and retain only <em>k</em>-mers from this set that score above the threshold. Iterate by applying the same procedure to each <em>k</em>-mer in the constructed set. See the <a href="https://doi.org/10.1016/S0022-2836(05)80360-2" target="_blank" rel="noopener">BLAST paper</a> for a more efficient algorithm.</p>
+- q: How does BLAST extend the seeds that it identifies? Does it not require constructing an optimal alignment, thus significantly slowing down the algorithm?
+  a: '<p>After finding a seed, BLAST does construct an alignment but imposes a limit on the number of insertions and deletions in this alignment. For example, after finding the two amino acid-long seed CG below, we can find the best local alignment starting at the “end” of this seed (shown by the blue rectangle shown below) and another local alignment ending at the “beginning” of this seed (the corresponding rectangle is not shown). The resulting local alignments extending this seed from both sides form a full-length alignment.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_5d5f5d1d619440369f4bea30f9af5cc3_mv2.png" alt="Figure" loading="lazy"></p>
+
+    <p>However, since finding an optimal local alignment in the blue rectangle above is time consuming, BLAST instead finds a highest-scoring alignment path in a narrow band as illustrated below. Since the band is narrow, the algorithm constructing this banded alignment is fast.</p>
+
+    <p class="figure"><img src="/assets/images/faq/988d7f_c1e431298020427b89f3a33a0b42cb76_mv2.png" alt="Figure" loading="lazy"></p>'
+- q: How can I modify the approximate pattern matching with the Burrows-Wheeler transform to account for patterns whose last symbols do not appear in Text?
+  a: '<p>The algorithm illustrated in the epilogue would fail to find an approximate match of "nad" because the final symbol of "nad" does not appear in "panamabananas$". To address this complication, we can modify the algorithm for finding a pattern of length <em>m</em> with up to <em>k</em> mismatches as follows.</p>
+
+    <p>We first run the algorithm described in the main text to find all approximate instances of a <em>Pattern</em> of length <em>k</em> against <em>Text</em>. However, this algorithm does not actually find all approximate matches of <em>Pattern</em> – since we do not allow mismatched strings in the early stages of BetterBWMatching, we miss those matches where the last letter of <em>Pattern</em> does not match <em>Text</em>. To fix this shortcoming, we can simply find all locations in <em>Text</em> where the prefix of <em>Pattern</em> of length <em>k</em> - 1 has <em>d</em> - 1 mismatches. Yet this algorithm fails to find matches where the last two letters of <em>Pattern</em> do not match <em>Text</em>. Thus, we need to run the algorithm again, finding all locations in <em>Text</em> where the prefix of <em>Pattern</em> of length <em>k</em> - 2 has <em>d </em>- 2 mismatches. We then find all locations in <em>Text</em> where the prefix of <em>Pattern </em>of length <em>k</em> - 3 occurs with
+    <em>d</em> - 3 mismatches, and so on, finally finding all locations in <em>Text</em> where the prefix of <em>Pattern</em> of length <em>k</em> - <em>d</em> occurs exactly.</p>'
+- q: When we approximately match patterns with the Burrows-Wheeler transform, we consider possibilities of mismatches in all positions but the first one. Wouldn't this strategy fail to match a read with an error at the first position?
+  a: '<p>Yes, this strategy would fail to match a read with an error at the first position. However, as noted in the main text, if we start considering mismatches at the first position, the running time will significantly increase. As is, the running time explodes with the increase in the maximum number of errors. If one wants to alow mismatches at the first position, a more sensible strategy would be to trim the first position of the read.</p>
+
+    <p>To see how modern read mapping algorithms get around this limitation, see <a href="https://doi.org/10.1186/gb-2009-10-3-r25" target="_blank" rel="noopener">B.Langmead, C. Trapnell, M. Pop, S. L Salzberg. Ultrafast and memory-efficient alignment of short DNA sequences to human genome (2009) <em>Genome biology</em>, 10, R25</a>.</p>'
+- q: 'Why do we add both the # and $ symbols to the texts when solving the Longest Shared Substring Problem?'
+  a: <p>Consider the strings "mapa" and "pepap", with longest shared substring “pa”. If we use both “#” and “$”, then we construct the suffix tree for "mapa#pepap$", which reveals the longest shared substring “pa”. If we do not use “#”, then we construct the suffix tree for "mapapepap$", falsely concatenating the two strings.  In this suffix tree, we would find  the erroneous longest shared substring “pap” in the concatenated string "mapapepap$".</p>
+- q: How should I modify BinarySearch if I want to determine how many times a key is present in an array with duplicates?
+  a: '<p>If <em>key</em> appears in <em>Array[minIndex,…, maxIndex]</em>, BinarySearchTop and BinarySearchBottom find the indexes of its first and last occurrences, respectively. Note that in the case of BinarySearchTop, <em>key &gt;Array(i) </em> for all <em>i</em> &lt; <em>minIndex</em> and <em>key</em> ≤ <em>Array(i)</em>for all <em>i&gt;maxIndex</em>.  In contrast, in the case of BinarySearchBottom, <em>key </em>≥ <em>Array(i) </em> for all <em>i</em>&lt;<em>minIndex</em> and <em>key</em> &lt; <em>Array(i)</em> for all <em>i&gt;maxIndex</em>.  </p>
+
+    <p><strong>BinarySearchTop(</strong><em>Array</em><strong>, </strong><em>key<strong>, </strong>minIndex<strong>, </strong>maxIndex</em><strong>)</strong></p>
+
+    <p><strong>    while</strong><em>maxIndex</em><strong> ≥ </strong><em>minIndex</em></p>
+
+    <p><em>        midIndex</em><strong> = (</strong><em>minIndex + maxIndex</em><strong>)/2</strong></p>
+
+    <p><strong>        if </strong><em>Array</em><strong>(</strong><em>midIndex</em><strong>) ≥ </strong><em>key</em></p>
+
+    <p><em>            maxIndex</em><strong> = </strong><em>mid-</em><strong>1</strong></p>
+
+    <p><strong>        else</strong></p>
+
+    <p><em>            minIndex</em><strong> = </strong><em>mid+</em><strong>1</strong></p>
+
+    <p><strong>    return</strong><em>minIndex</em></p>
+
+    <p><strong>BinarySearchBottom(</strong><em>Array</em><strong>, </strong><em>key<strong>, </strong>minIndex<strong>, </strong>maxIndex</em><strong>)</strong></p>
+
+    <p><strong>    while</strong><em>maxIndex</em><strong> ≥ </strong><em>minIndex</em></p>
+
+    <p><em>        midIndex</em><strong> = (</strong><em>minIndex + maxIndex</em><strong>)/2</strong></p>
+
+    <p><strong>        if </strong><em>Array</em><strong>(</strong><em>midIndex</em><strong>) &gt; </strong><em>key</em></p>
+
+    <p><em>            maxIndex</em><strong> = </strong><em>mid-</em><strong>1</strong></p>
+
+    <p><strong>        else</strong></p>
+
+    <p><em>minIndex =mid+</em><strong>1</strong></p>
+
+    <p><strong>    return</strong><em>minIndex</em></p>'

@@ -1,0 +1,72 @@
+---
+layout: lesson
+title: Backtracking in the Alignment Graph
+seo_title: 'Backtracking in the Alignment Graph: Finding an LCS'
+description: Recall that we previously highlighted each edge selected by ManhattanTourist , as shown below. To form a longest path, we simply need to find a path...
+chapter: 5
+number: '5.8'
+order: 8
+slug: backtracking-alignment-graph
+permalink: /bioinformatics-chapter-5/backtracking-alignment-graph/
+---
+<!-- Step 1 -->
+<p>Recall that we previously highlighted each edge selected by <strong>ManhattanTourist</strong>, as shown below.</p>
+<p style="text-align:center"><img alt="Manhattan revisited grid 5" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/manhattan_revisited_grid-5.png" style="max-width: 100%" width="358px"/></p>
+<!-- Step 2 -->
+<p>To form a longest path, we simply need to find a path from <i></i>source<i></i> to <i></i>sink<i></i> formed by highlighted edges (more than one such path may exist). However, if we were to walk from source to sink along the highlighted edges, we might reach a dead end, such as the node (1, 2). In contrast, every path from the sink will bring us back to the source if we backtrack in the direction opposite to each highlighted edge, as shown below.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Backtracking" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/backtracking.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/backtracking.png" width="358px"/></p></span>
+<p><small><strong>Figure:</strong> Following edges from the sink backwards to the source produces the red path in the DAG above, which highlights a longest path from the source to sink.</small></p>
+<!-- Step 3 -->
+<p>We can use this backtracking idea to construct an LCS of strings <em>v</em> and <em>w</em>.  We know that if we assign a weight of 1 to the edges in <em>AlignmentGraph</em>(<em>v</em>, <em>w</em>) corresponding to matches and assign a weight of 0 to all other edges, then <em>s</em><sub>|<em>v</em>|, |<em>w</em>|</sub> gives the length of an LCS.   The following algorithm maintains a record of which edge was used to compute each value <em>s</em><sub><em>i</em>, <em>j</em></sub> by utilizing <strong>backtracking pointers</strong>, which take one of the three values <strong><span style="color: #66cc66;">↓</span></strong> , <strong><span style="color: #64b0f4;">→</span></strong>, or <strong><span style="color: #ff4363;">↘</span></strong>. Backtracking pointers are stored in a matrix <em>Backtrack</em>.</p>
+<div><pre><small><code class="language-no-highlight"><b>LCSBackTrack</b>(<em>v</em>, <em>w</em>)
+  <strong>for</strong> <em>i</em> ← 0 to |<em>v</em>|
+    <em>s</em><sub><em>i</em>, 0</sub> ← 0
+  <strong>for</strong> <em>j</em> ← 0 to |<em>w</em>|
+    <em>s</em><sub>0, <em>j</em></sub> ← 0
+  <strong>for</strong> <em>i</em> ← 1 to |<em>v</em>|
+    <strong>for</strong> <em>j</em> ← 1 to |<em>w</em>|
+      <i>match</i> ← 0
+      if <em>v</em><sub><em>i</em>-1<em></em></sub><i> </i>= <em>w</em><sub><em>j</em>-1</sub>
+        match ← 1
+      <em>s</em><sub><em>i</em>, <em>j</em></sub> ← max{<strong><em><span style="color: #66cc66;">s</span></em><sub><em><span style="color: #66cc66;">i</span></em><span style="color: #66cc66;">-1, </span><em><span style="color: #66cc66;">j </span></em></sub></strong>, <strong><em><span style="color: #64b0f4;">s</span></em><sub><em><span style="color: #64b0f4;">i</span></em><span style="color: #64b0f4;">,</span><em><span style="color: #64b0f4;">j</span></em><span style="color: #64b0f4;">-1</span> </sub></strong>, <strong><em><span style="color: #ff4363;">s</span></em><sub><em><span style="color: #ff4363;">i</span></em><span style="color: #ff4363;">-1, </span><em><span style="color: #ff4363;">j</span></em><span style="color: #ff4363;">-1</span></sub></strong> + <i>match</i> }
+      <strong>if</strong> <em>s</em><sub><em>i,j</em></sub> = <em>s</em><sub><em>i</em>-1,<em>j</em></sub>
+        <em>Backtrack</em><sub><em>i</em>, <em>j</em></sub> ← "<strong><span style="color: #66cc66;">↓</span></strong>"
+      <strong>else if</strong> <em>s</em><sub><em>i</em>, <em>j</em></sub> = <em>s</em><sub><em>i</em>, <em>j</em>-1</sub>
+        <em>Backtrack</em><sub><em>i</em>, <em>j</em></sub> ← "<strong><span style="color: #64b0f4;">→</span></strong>"
+      <strong>else if</strong> <em>s</em><sub><em>i</em>, <em>j</em></sub> = <em>s</em><sub><em>i</em>-1, <em>j</em>-1</sub> + <i>match</i>
+        <em>Backtrack</em><sub><em>i</em>, <em>j</em></sub> ← "<strong><span style="color: #ff4363;">↘</span></strong>"
+  <strong>return</strong> <em>Backtrack</em></code></small></pre></div>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> How does changing the order of these three "if" statements affect the computation of <em>Backtrack</em>?</p>
+<!-- Step 4 -->
+<p>We now need to find a path from the source to the sink formed by the highlighted edges. The following algorithm solves the Longest Common Subsequence Problem by using the information in <em>Backtrack</em>. <b>OutputLCS</b>(<em>Backtrack</em>, <em>v</em>, <em>i</em>, <em>j</em>) outputs an LCS between the <em>i</em>-prefix of <em>v</em> and the <em>j</em>-prefix of <em>w</em>. The initial invocation that outputs an LCS of <em>v</em> and <em>w</em> is <b>OutputLCS</b>(<em>Backtrack</em>, <em>v</em>, |<em>v</em>|, |<em>w</em>|).</p>
+<div><pre><small><code class="language-no-highlight"><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em>, <em>j</em>)
+  <strong>if</strong> <em>i</em> = 0 or <em>j</em> = 0
+    <strong>return </strong>""
+  <strong>if</strong> <em>backtrack</em><sub><em>i</em>, <em>j</em></sub> = "<strong><span style="color: #66cc66;">↓</span></strong>"
+    <b>﻿return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em> - 1, <em>j</em>)
+  <strong>else if</strong> <em>backtrack</em><sub><em>i</em>, <em>j</em></sub> = "<strong><span style="color: #64b0f4;">→</span></strong>"
+    <b>return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em>, <em>j</em> - 1)
+  <strong>else</strong>
+    <b>return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em> - 1, <em>j</em> - 1) + <em>v</em><sub><em>i</em></sub><br/></code></small></pre></div>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> <b>OutputLCS</b> is a recursive algorithm, but it is efficient. What makes it different from the inefficient recursive algorithms for making change and finding a longest path in a DAG?</p>
+<!-- Step 5 -->
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Use <b>OutputLCS</b> (reproduced below) to solve the Longest Common Subsequence Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5c/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<ul><li><strong>Input:</strong> Two strings <em>s</em> and <em>t</em>.</li><li><strong>Output:</strong> A longest common subsequence of <em>s</em> and <em>t</em>.</li></ul>
+<div><pre><small><code class="language-no-highlight"><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em>, <em>j</em>)
+  <strong>if</strong> <em>i</em> = 0 or <em>j</em> = 0
+    <strong>return </strong>""
+  <strong>if</strong> <em>backtrack</em><sub><em>i</em>, <em>j</em></sub> = "<strong><span style="color: #66cc66;">↓</span></strong>"
+    <b>return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em> - 1, <em>j</em>)
+  <strong>else if</strong> <em>backtrack</em><sub><em>i</em>, <em>j</em></sub> = "<strong><span style="color: #64b0f4;">→</span></strong>"
+    <b>return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em>, <em>j</em> - 1)
+  <strong>else</strong>
+    <b>return </b><strong>OutputLCS</strong>(<strong><em>backtrack</em></strong>, <em>v</em>, <em>i</em> - 1, <em>j</em> - 1) + <em>v</em><sub><em>i</em></sub><br/></code></small></pre></div>
+<!-- Step 6 -->
+<p>The backtracking method can be generalized to construct a longest path in any DAG. Whenever we compute <em>s</em><sub><em>b</em></sub> as</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Predecessor recurrence 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/predecessor_recurrence_1.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/predecessor_recurrence_1.png" width="584px"/></p></span>
+<p>we simply need to store a predecessor of <em>b</em> that was used in the computation of <em>s</em><sub><em>b</em></sub> so that we can backtrack later on. You are now ready to use backtracking to find the longest path in an arbitrary DAG.</p>
+<!-- Step 7 -->
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Longest Path in a DAG Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5d/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<ul><li><strong>Input:</strong> An integer representing the starting node to consider in a graph, followed by an integer representing the ending node to consider, followed by a list of edges in the graph.  The edge notation "0-&gt;1:7" indicates that an edge connects node 0 to node 1 with weight 7.  You may assume a given topological order corresponding to nodes in increasing order.</li><li><strong>Output:</strong> The length of a longest path in the graph, followed by a longest path. </li></ul>
+<!-- Step 8 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Currently, <strong>OutputLCS</strong> finds a single LCS of two strings. Modify <strong>OutputLCS</strong> (and <strong>LCSBacktrack</strong>) to find every LCS of two strings.</p>

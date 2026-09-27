@@ -1,0 +1,116 @@
+- q: What are the costs of genome and exome sequencing?
+  a: <p>Exome sequencing requires only 7-10 GB of sequencing data (100X coverage), as opposed to the approximately 100 GB required for genome sequencing (35X coverage). These reduced costs make it feasible to increase the number of sequencing samples, enabling large, population-based comparisons. The current cost of human genome sequencing with 35X coverage is on the order of $1,000, whereas the cost of human exome sequencing with 100X coverage was approximately half that.</p>
+- q: What are quality scores?
+  a: '<p>Reads often have Phred quality scores, which specify the accuracy of each base in a read (<a href="https://www.ncbi.nlm.nih.gov/pubmed/9521921" target="_blank" rel="noopener">Ewing et al., 1998</a>). Phred quality scores are important for deciding whether a given SNV is correct or represents a computational artifact.</p>
+
+    <p>Phred quality scores are defined as</p>
+
+    <p>Phred(s) = -10 log Pr(s) ,</p>
+
+    <p>where Pr(s) is the estimated probability that a given base in a read is incorrect and the logarithm is taken base-10. For example, if Phred assigns a quality score of 30 to a base, the probability that this base is called incorrectly is 0.001; if Phred assigns a quality score of 20 to a base, then the probability that this base is called incorrectly is 0.01.</p>
+
+    <p>Various read mapping tools estimate the probability that a given SNV is incorrect based on Phred quality scores of individual reads covering the position of this SNV. The quality score is defined as</p>
+
+    <p>-10 log Pr(SNV is incorrect) .</p>
+
+    <p>In layman’s terms, the larger the quality score, the more reliable the variant call.</p>'
+- q: What are the differences between the versions of Isaac for WGS and WES?
+  a: '<p>Isaac aligns reads to the entire genome in both genome and exome sequencing pipelines, i.e., it does not use a computational shortcut in the exome sequencing pipeline by aligning only to the exome since it may cause computational artifacts. Thus, why are there two separate apps (Isaac Whole Genome Sequencing App and Isaac Enrichment App) for seemingly identical computational tasks? The reason is for a simpler user interface: the underlying program performs similar steps, but there are certain parameters only relevant in genome sequencing data and certain parameters only relevant in exome sequencing data, so each specific app hides any non-relevant parameters so that an inexperienced user will not be confused.</p>'
+- q: Where is the parameter “maximum number of errors/mutations per read” in Isaac?
+  a: <p>To map a read, Isaac first finds a seed (a k-mer shared by this read and the genome) and then tries to extend this seed to the entire read length using dynamic programming. Isaac further maps the read to the genome if such extension results in an alignment with at most t mutations. Here, k and t are internal parameters for Isaac.</p>
+- q: How do biologists sequence the exome?
+  a: '<p>The following <strong>target-enrichment methods</strong> capture genomic regions of interest from a DNA sample before sequencing. First, <strong>polymerase chain reaction (PCR)</strong> amplifies specific DNA sequences. It uses a single-stranded DNA fragment called an <strong>oligonucleotide primer</strong> as a start for DNA amplification. <strong>Uniplex PCR</strong> uses only one primer to amplify a single region, whereas <strong>multiplex PCR</strong> uses multiple primers to amplify multiple regions and enrich multiple genes at the same time. PCR, which was the basis of the 1993 Nobel Prize in Chemistry, is effective but has limitations on the length of regions that it can amplify.</p>
+
+    <p>The datasets provided in this Bioinformatics Application Challenge were generated using <strong>in-solution capture</strong>, an alternative approach to PCR. It uses <strong>probes</strong>, or short fragments of DNA (which in WES are generated from annotated genes), which hybridize to a DNA sample (i.e., sequencing reads). DNA fragments that hybridize to the probes are then sequenced. Biologists often call the probes used in WES “<strong>enrichment probes</strong>” because they “enrich” the sample for exonic DNA. Accordingly, the version of Isaac aimed at WES is called “Isaac enrichment”.</p>'
+- q: What are precision and recall?
+  a: '<p>In many types of problems, we wish to classify objects into two groups, a <strong>positive group</strong> and a <strong>negative group</strong>. The objects already have correct assignments to these two groups, and our hope is to correctly infer the division. For example, we may have a medical test, where patients either have a disease or not, and our goal is to classify them into the positive and negative groups accordingly.</p>
+
+    <p><strong>Precision</strong> is the number of true positives divided by the total number of positives, i.e., the fraction of objects that were assigned to the positive class that were identified correctly, or the ratio of true positives to total positives. Note that this concept is different from the fraction of tests that should have been assigned to the positive class and were indeed classified as positives, which is defined as the <strong>recall</strong>. To be more precise, a <strong>false negative</strong> is an object that should have been classified as positive but was classified as negative. In this light, the recall is simply the ratio of the number of true positives to the sum of true positives and false negatives. High precision indicates that an algorithm returned substantially more relevant results than irrelevant, whereas high recall indicates that the algorithm returned most of the relevant results.</p>
+
+    <p>For example, say that we want to predict criminals in a population of 100 people containing 20 criminals. Algorithm 1 produces a list of 60 people, which contains all 20 of the actual criminals. Algorithm 2 produces a list of just 5 people, all of whom are actual criminals. Algorithm 1 has 100% recall, since it successfully predicted all 20 criminals, but it has only 33% precision, since only 20 of the 60 predicted criminals were correct. On the other hand, Algorithm 2 has 100% precision, since all 5 of the predicted criminals were correct, but it has 25% recall, since it only predicted 5 of the 20 criminals.</p>
+
+    <p>More generally, algorithms with high recall often have low precision, and vice-versa. As a result, many algorithms have a sliding curve of differing recall/precision rates based on their parameters, and researchers must choose the parameter values that provide a nice trade-off between precision and recall.</p>'
+- q: What are Isaac’s parameters?
+  a: '<p>The Isaac Whole Genome Sequencing App for genome sequencing applications has the following parameters:</p>
+
+    <ul>
+
+    <li><em>Toggle for SV/CNV calling</em> (<strong>SV = Structural Variation, CNV = Copy Number Variation</strong>). Structural variations refer to large-scale changes in genomic architecture and thus are different from the SNVs or small indels that we considered before. They consist of duplications, rearrangements (inversions and translocations), and large indels. “Copy Number Variation” is a subcategory of “Structural Variation” that only includes insertions, deletions and duplications. </li>
+
+    <li><em>Toggle for gene and transcript annotations from either the RefSeq or the Ensembl database of genomic sequences</em>. The default setting is to use RefSeq, which is what we will use.</li>
+
+    <li><em>The minimum allowed variant quality</em> (GQX). GQX is a metric for variant quality, where higher GQX correlates with higher quality, so all variants that fall below the specific threshold are omitted from the results. GQX is computed using the statistics GQ and QUAL, which are Phred-scaled quality values. GQ, as defined in the VCF manual, is the “conditional genotype quality, encoded as a Phred-scaled quality score.<br><br>GQ = -10 log Pr(<em>call is incorrect</em> | <em>site is a variant</em>)<br><br>QUAL is the Phred-scaled quality score for the assertion made in n alternate alleles (ALT). QUAL is defined as<br><br>-10 log Pr(<em>call in ALT is wrong</em>).<br><br>GQX is simply the minimum of GQ and QUAL. For our analyses using the Isaac apps on BaseSpace, we use the default parameter for minimum GQX threshold, which is 30.</li>
+
+    <li><em>Maximum allowed strand bias for variants</em>. Since DNA is double stranded, we expect that the number of reads mapping to a region on one strand (e.g., “AAAAAA”) is approximately equal to the number of reads mapping to the opposite strand (e.g., “TTTTTT”). If there is a strand bias above the maximum allowed threshold (i.e., the variant shows up significantly more in reads from one strand vs. the other), the variant is omitted from the results because extreme strand bias indicates a potential high false-positive rate for SNVs (<a href="http://bmcgenomics.biomedcentral.com/articles/10.1186/1471-2164-13-666" target="_blank" rel="noopener">Guo et al, 2012</a>).</li>
+
+    <li><em>Flagging PCR duplicates</em>. We assume that, when we perform the sequencing, it is unlikely to generate two paired end reads with identical start sites (unless the coverage is significantly higher than read length). However, such identical reads do appear on read datasets due to various artifacts. These reads are removed in the “Flagging PCR duplicates” mode.</li>
+
+    </ul>
+
+    <p>The Isaac Enrichment App for WES applications has the following parameters:</p>
+
+    <ul>
+
+    <li>The “Targeted Regions” option specifies which kit was used to extract the exonic DNA.</li>
+
+    <li>The “Target Manifest” option specifies the specific regions of the exome in which you are interested (and is essentially a parameter to filter the output of the app). If you specify a Target Manifest, the Isaac Enrichment App still aligns the reads to the whole genome as it would without a Target Manifest, but when it outputs the results, it filters out any results that are not in the regions specified in the Target Manifest.</li>
+
+    </ul>'
+- q: What are assembly metrics?
+  a: '<p>Below we list some of many metrics for analyzing assembly quality.</p>
+
+    <p><strong>N50 statistic:</strong> N50 is a statistic that is used to measure the quality of an assembly. N50 is defined as the maximal contig length for which all contigs greater than or equal to that length comprise at least half of the sum of the lengths of all the contigs. For example, consider the five toy contigs with the following lengths: [10, 20, 30, 60, 70]. Here, the total length of contigs is 190, and contigs of length 60 and 70 account for at least 50% of the total length of contigs (60 + 70 = 130), but the contig of length 70 does not account for 50% of the total length of contigs. Thus, N50 is equal to 60.</p>
+
+    <p><strong>NG50 statistic:</strong> The NG50 length is a modified version of N50 that is defined when the length of the genome is known (or can be estimated). It is defined as the maximal contig length for which all contigs of at least that length comprise at least half of the length of the genome. NG50 allows for meaningful comparisons between different assemblies for the same genome. For example, consider the five toy contigs that we considered previously: [10, 20, 30, 60, 70]. These contigs only add to 190 nucleotides, but say that we know that the genome from which they have been generated has length 300. In this example, the contigs of length 30, 60, and 70 account for at least 50% of the genome length (30 + 60 + 70 = 160); but the contigs of length 60 and 70 no longer account for at least 50% of the genome length (60 + 70 = 130). Thus, NG50 is equal to 30.</p>
+
+    <p><strong>NGA50 statistic:</strong> If we know a reference genome for a species, then we can test the accuracy of a newly assembled genome against this reference. The NGA50 statistic is a modified version of NG50 accounting for assembly errors (called misassemblies). To compute NGA50, errors in the contigs are accounted for by comparing contigs to a reference genome. All of the misassembled contigs are broken at misassembly breakpoints, resulting in a larger number of contigs with the same total length. For example, if there is a missasembly breakpoint at position 10 in a contig of length 30, this contig will be broken into contigs of length 10 and 20.</p>
+
+    <p>NGA50 is calculated as the NG50 statistic for the set of contigs resulting after breaking at misassembly breakpoints. For example, consider our previous example, for which the genome length is 300. If the largest contig in [10, 20, 30, 60, 70] is broken into two contigs of length 20 and 50 (resulting in the set of contigs [10, 20, 20, 30, 50, 60]), then. contigs of length 20, 30, 50, and 60 account for at least 50% of the genome length (20 + 30 + 50 + 60 = 160). But contigs of length 30, 50, and 60 do not account for at least 50% of the genome length (30 + 50 + 60 = 140). Thus, NGA50 is equal to 20.</p>'
+- q: How do we classify pathogenic E. coli strains?
+  a: '<p>Pathogenic <em>E. coli</em> strains can be classified based on their virulence properties.</p>
+
+    <p><strong>Enterotoxigenic </strong>) strains produce two enterotoxins - heat-stable (ST) and heat-labile (LT), which is similar to cholera toxin in structure and function. ETEC strains are the most common cause of traveler''s diarrhea (caused by contaminated food or water) and are the leading cause of diarrhea in children in the developing world.</p>
+
+    <p><strong>Enteroaggregative </strong> strains have as many as a thousand <strong>fimbriae</strong>, thin and short appendages composed of curlin proteins. They use fimbriae to adhere to one another and to animal cells. EAEC strains aggressively colonize the gastrointestinal mucosa.</p>
+
+    <p><strong>Enterohemorrhagic </strong> strains produce Shiga toxin, which can cause bloody diarrhea and lead to HUS. Common EHEC strains can be detected by a sorbitol test.</p>
+
+    <p>Different strains can also harbor plasmids or phage elements, which can give them the ability to resist different types of antibiotics.</p>'
+- q: What is 16S rRNA?
+  a: <p>When we studied the origins of SARS, we described sequencing 18S rRNA to analyze insect evolution. However, biologists studying bacterial genomes usually sequence 16S ribosomal RNA (16S rRNA) that plays an important role in protein biosynthesis as a key element of the prokaryotic ribosomes. Since 16S rRNA is highly conserved between various species of bacteria and archaea, it is widely used in phylogenetic studies. In addition to highly conserved sites, 16S rRNA gene sequences contain hypervariable regions that can provide species-specific signature sequences useful for identification of bacterial strains and species. As a result, 16S rRNA sequencing has become prevalent in medical microbiology as a rapid and cheap alternative to phenotypic methods of bacterial identification. Although it was originally used to identify bacteria, 16S sequencing was subsequently found to be capable of reclassifying bacteria into completely new species, or even genera. It has also been used to describe
+    new species that have never been successfully cultured.</p>
+- q: How do we assess sequence quality?
+  a: '<p>FastQC allows you to check whether your read dataset has any problems before doing further analysis. To give you a hint of what the data may look like, here are two examples of FastQC output:</p>
+
+    <ul>
+
+    <li>High quality read dataset: <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html" target="_blank" rel="noopener">www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html</a></li>
+
+    <li>Poor-quality read dataset: <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html" target="_blank" rel="noopener">bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html</a></li>
+
+    </ul>
+
+    <p>You can run FastQC on your TY2482 dataset and answer various questions, such as: “What is the GC-content of the reads?” (50.53) or “How many read-pairs are there in the entire TY2482 dataset?” (5,102,041)</p>'
+- q: How do biologists merge expression values from different samples?
+  a: '<p>Given experimental and control groups with multiple samples, how do biologists “‘merge”’ expression values from a given group into a single expression value? For complex reasons beyond the scope of this application challenge, we can assume that the number of reads <em>K</em>(<em>i</em>, <em>j</em>) in some sample <em>j</em> that are assigned to gene <em>i</em> can be modeled by a <strong>negative binomial distribution</strong>. This distribution models the number of “successes” that will occur in an indefinite sequence of identical independent trials (where each trial has probability p of “success” and probability 1 – <em>p</em> of “failure”) before we encounter <em>r</em> “failures”. A simple example of a negative binomial distribution would model flipping a biased coin with a probability 0.3 of heads (“success”) and asking what the probability is of obtaining <em>k</em> heads when we reach the 10th tails. More generally, the probability of obtaining exactly <em>k</em> successes
+    when we encounter the <em>r</em>-th failure is</p>
+
+    <p>C(<em>k</em>+<em>r</em>-1, <em>k</em>) · (1-<em>p</em>)^<em>r</em> · <em>p</em>^<em>k</em></p>
+
+    <p>where C(_, _) is the <a href="https://en.wikipedia.org/wiki/Combination" target="_blank" rel="noopener">combination statistic</a>. The exact values of the parameters <em>k</em>, <em>p</em>, and <em>r</em> are unknown in advance and are estimated from the data.</p>'
+- q: What is a p-value?
+  a: '<p>To define p-values, we consider two hypotheses: <strong>H0</strong> (the <strong>null hypothesis</strong>) and <strong>H1</strong> (the<strong> experimental hypothesis</strong>). H0 states that nothing significant occurred: the results of the experiment deviated from the expected outcome purely by chance. In contrast, H1 states that the results of the experiment significantly deviated from the expected outcome. In practice, we assume that the null hypothesis is true, and then ask ourselves, “What is the probability that we would obtain a result equal to or more extreme than the one obtained, given that the null hypothesis is indeed true?” This probability is what we mean by a <strong>p-value</strong>.</p>
+
+    <p>If a p-value is low, then there is a good chance that the null hypothesis is not true; as a result, we define some probability threshold for which, if the p-value of our experiment falls below this threshold, we reject H0 (i.e., we conclude that the outcome was unlikely to have been caused by random chance). Note that this does not mean that we accept the experimental hypothesis. In the case of gene expression, H0 is “The measured gene expression levels between the two groups differed purely because of random chance in sampling”. H1, on the other hand, is “The gene expression levels between the two groups differed because the gene is actually being differentially expressed”. Connecting the null hypothesis to a quantifiable p-value is a complex issue, one that depends on the model used, and as a result one that can sometimes be disputed.</p>'
+- q: What is NaN?
+  a: '<p>Some genes have “NaN” in place of a p-value. In computing, <strong>NaN</strong> (an acronym for <strong>Not a Number</strong>), is a numeric data type value representing an undefined value. There are three types of operations that can return NaN:</p>
+
+    <ol>
+
+    <li><em>Indeterminate forms</em>: Any of the arithmetic problems that have undefined solutions. A few examples are 0/0, ∞/∞, ∞ – ∞, etc.</li>
+
+    <li><em>Real operations with complex results</em>: Since complex numbers are not handled in floating-point calculations, they are simply stored as NaN. Two examples are the square root of a negative number and the logarithm of a negative number. </li>
+
+    <li><em>NaN as at least one operand:</em> If you attempt to do any type of arithmetic using NaN as an operand, the result must also be NaN since arithmetic operations involving “Not a Number” values are undefined.</li>
+
+    </ol>'

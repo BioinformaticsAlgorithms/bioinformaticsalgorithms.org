@@ -1,0 +1,48 @@
+---
+layout: lesson
+title: Gibbs Sampling in Action
+seo_title: 'Gibbs Sampling in Action: A Worked Motif Finding Example'
+description: We will illustrate how GibbsSampler works on the same strings Dna that we considered before. Imagine that, at the initial step, the algorithm has...
+chapter: 2
+number: '2.10'
+order: 10
+slug: gibbs-sampling-in-action
+permalink: /bioinformatics-chapter-2/gibbs-sampling-in-action/
+---
+<p>We will illustrate how <strong>GibbsSampler</strong> works on the same strings <em>Dna</em> that we considered before. Imagine that, at the initial step, the algorithm has chosen the following 4-mers (shown in red) and has randomly selected the third string for removal. To be more precise, <strong>GibbsSampler</strong> does not really remove the third string; it ignores it at this particular step and may analyze it again in subsequent steps.</p>
+<p><span class="center"><img alt="Gibbs 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_1.png" style="max-width:100%" width="400px"/></span></p>
+<p>This results in the following motif, count, and profile matrices.</p>
+<p><span class="center"><img alt="Gibbs 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_2.png" style="max-width:100%" width="650px"/></span></p>
+<p>Note that the profile matrix deviates only slightly from the uniform profile, making us wonder whether we have any chance to be steered toward the implanted motif. We now use this profile matrix to compute the probabilities of all 4-mers in the deleted string <samp>ccgGCGTtag</samp>:</p>
+<p><span class="center"><img alt="Gibbs 3" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_3.png" style="max-width:100%" width="650px"/></span></p>
+<p>Note that all but two of these probabilities are zero. This situation is similar to the one we encountered with <strong>GreedyMotifSearch</strong>, and as before, we need to augment zero probabilities with small pseudocounts to avoid disastrous results.</p>
+<p>Application of Laplace’s Rule of Succession to the count matrix above yields the following updated count and profile matrices:</p>
+<p><span class="center"><img alt="Gibbs 4" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_4.png" style="max-width:100%" width="650px"/></span></p>
+<p>After adding pseudocounts, the 4-mer probabilities in the deleted string <samp>"ccgGCGTtag"</samp> are recomputed as follows:</p>
+<p><span class="center"><img alt="Gibbs 5" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_5.png" style="max-width:100%" width="650px"/></span></p>
+<p>Since these probabilities sum to <i>C</i> = 80/8<sup>4</sup>, our hypothetical seven-sided die is represented by the random number generator</p>
+<p><span class="center"><span class="math-tex"><em>Random</em>(4/8<sup>4</sup>, 8/8<sup>4</sup>, 8/8<sup>4</sup>, 24/8<sup>4</sup>, 12/8<sup>4</sup>, 16/8<sup>4</sup>, 8/8<sup>4</sup>) = <br/>
+<em>Random</em>((4/8<sup>4</sup>)/(80/8<sup>4</sup>), (8/8<sup>4</sup>)/(80/8<sup>4</sup>), (8/8<sup>4</sup>)/(80/8<sup>4</sup>), (24/8<sup>4</sup>)/(80/8<sup>4</sup>), (12/8<sup>4</sup>)/(80/8<sup>4</sup>), (16/8<sup>4</sup>)/(80/8<sup>4</sup>), (8/8<sup>4</sup>)/(80/8<sup>4</sup>)) = <br/>
+<em>Random </em>(4/80, 8/80, 8/80, 24/80, 12/80, 16/80, 8/80)</span></span></p>
+<p>Let's assume that after rolling this seven-sided die, we arrive at the <em>Profile</em>-randomly generated 4-mer <samp>GCGT</samp> (the fourth 4-mer in the deleted sequence). The deleted string <samp>ccgGCGTtag</samp> is now added back to the collection of motifs, and <samp><span style="color: #ff4363;"><b>GCGT</b></span></samp> substitutes the previously chosen <samp>ccgG</samp> in the third string in <i>Dna</i>, as shown below. We then roll a fair five-sided die and randomly select the first string from <i>Dna</i> for removal.</p>
+<p><span class="center"><img alt="Gibbs 7" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_7.png" style="max-width:100%" width="550px"/></span></p>
+<p>After constructing the motif and profile matrices, we obtain the following:</p>
+<p><span class="center"><img alt="Gibbs 8" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_8.png" style="max-width:100%" width="650px"/></span></p>
+<p>Note that the profile matrix looks more biased toward the implanted motif than the previous profile matrix did.</p>
+<p>We update the count and profile matrices with pseudocounts:</p>
+<p><span class="center"><img alt="Gibbs 9" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_9.png" style="max-width:100%" width="650px"/></span></p>
+<p>Then, we compute the probabilities of all 4-mers in the deleted string "<samp>ttACCTtaac"</samp>:</p>
+<p><span class="center"><img alt="Gibbs 10" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_10.png" style="max-width:100%" width="600px"/></span></p>
+<p>When we roll a seven-sided die, we arrive at the <em>Profile</em>-randomly generated <em>k</em>-mer <samp><b><span style="color: #ff4363;">ACCT</span></b></samp>, which we add to the collection <em>Motifs.</em></p>
+<p>After rolling the five-sided die once again, we randomly select the fourth string for removal.</p>
+<p><span class="center"><img alt="Gibbs 11" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_11.png" style="max-width:100%" width="550px"/></span></p>
+<p>We further add pseudocounts and construct the resulting count and profile matrices:</p>
+<p><span class="center"><img alt="Gibbs 12" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_12.png" style="max-width:100%" width="650px"/></span></p>
+<p>We now compute the probabilities of all 4-mers in the deleted string <samp>"cactaACGAg"</samp>:</p>
+<p><span class="center"><img alt="Gibbs 13" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_13.png" style="max-width:100%" width="600px"/></span></p>
+<p>We need to roll a seven-sided die to produce a <em>Profile</em>-randomly generated 4-mer. Assuming the most probable scenario in which we select <samp><span style="color: #ff4363;"><b>ACGA</b></span></samp>, we update the selected 4-mers as follows:</p>
+<p><span class="center"><img alt="Gibbs 14" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/gibbs_14.png" style="max-width:60%" width="250px"/></span></p>
+<p>You can see that the algorithm is beginning to converge. Rest assured that a subsequent iteration will produce all implanted motifs after we select the second string in <em>Dna</em> (when the incorrect 4-mer <samp>GTct</samp> will likely change into the implanted (4, 1)-motif <samp>ACGT</samp>).</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Run <strong>GibbsSampler</strong> on the Subtle Motif Problem. What do you find?</p>
+<p>Although <strong>GibbsSampler</strong> performs well in many cases, it may converge to a suboptimal solution, particularly for difficult search problems with elusive motifs. A <strong>local optimum</strong> is a solution that is optimal within a small neighboring set of solutions, which is in contrast to a <strong>global optimum</strong>, or the optimal solution among all possible solutions. Since <strong>GibbsSampler</strong> explores just a small subset of solutions, it may "get stuck" in a local optimum. For this reason, similarly to <strong>RandomizedMotifSearch</strong>, it should be run many times with the hope that one of these runs will produce the best-scoring motifs. Yet convergence to a local optimum is just one of many issues we must consider in motif finding; for more details, see "DETOUR: Complications of Motif Finding" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p>When we run <strong>GibbsSampler</strong> 2,000 times on the Subtle Motif Problem with implanted 15-mer <samp><strong><span style="color: #a03881;">AAAAAAAA</span><span style="color: #ff4363;">GGGGGGG</span></strong></samp> (each time with new randomly selected <em>k</em>-mers for <em>N</em> = 200 iterations), it returns a collection <em>Motifs</em> with consensus string <samp><strong><span style="color: #a03881;">AAAAAA</span></strong>g<strong><span style="color: #a03881;">A</span><span style="color: #ff4363;">GGGGGG</span>t</strong></samp> and <em>Score</em>(<em>Motifs</em>) equal to 38. This score is even lower than the score of 40 expected from the implanted motifs!</p>

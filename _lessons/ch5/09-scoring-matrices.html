@@ -1,0 +1,35 @@
+---
+layout: lesson
+title: Scoring Alignment
+seo_title: 'Scoring Alignments: Scoring Matrices, Mismatches and Indels'
+description: 'Recall Marahiel’s alignment of the A-domains coding for Asp and Orn , which had 19 + 10 matches: It is not difficult to construct an alignment having...'
+chapter: 5
+number: '5.9'
+order: 9
+slug: scoring-matrices
+permalink: /bioinformatics-chapter-5/scoring-matrices/
+---
+<!-- Step 1 -->
+<h2 id="what-is-wrong-with-the-lcs-scoring-model">What is wrong with the LCS scoring model?</h2>
+<p>Recall Marahiel’s alignment of the A-domains coding for <samp>Asp</samp> and <samp>Orn</samp>, which had <strong><span style="color:#ff4363">19</span></strong> + <strong><span style="color:#64b0f4">10</span></strong> matches:</p>
+<p style="text-align:center"><img alt="A domain 8" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_8.png" style="max-width: 100%" width="883px"/></p>
+<p>It is not difficult to construct an alignment having even more matches at the expense of introducing more indels. Yet the more indels we add, the less biologically relevant the alignment becomes, as it diverges further and further from the biologically correct alignment found by Marahiel. Below is the alignment with the maximum number of matches, representing an LCS of length <strong><span style="color:#ff4363">19</span></strong> + <strong><span style="color:#64b0f4">8</span></strong> + <strong><span style="color:#66cc66">19</span></strong> = 46 (the green symbols represent new matches). This alignment is so long that we cannot fit it on a single line.</p>
+<p style="text-align:center"><img alt="A domain 9" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_9.png" style="max-width: 100%" width="678px"/></p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> If Marahiel had constructed the alignment above, would he have been able to infer the eight amino acid-long signatures of the non-ribosomal code?</p>
+<!-- Step 2 -->
+<p>Below, we highlight the purple amino acids representing the non-ribosomal signatures. Although these signatures are grouped in eight conserved columns in Marahiel’s alignment from the beginning of the chapter, only five of these columns have “survived” in the LCS alignment from the previous step, making it impossible to infer the non-ribosomal signatures:</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="A domain 10" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_10.png" style="max-width: 100%" width="758px"/></p></span>
+<p>The frivolous matches hiding the real evolutionary scenario have appeared because nothing stopped us from introducing an excessive number of indels when building an LCS. Recalling our original alignment game in which we rewarded matched symbols, we need some way of <em>penalizing</em> indels and mismatches. First, let’s handle indels. Say that in addition to assigning matches a premium of +1, we decide to assess each indel a penalty of -4. The top-scoring alignment of the A-domains gets closer to the biologically correct alignment, with six of the columns corresponding to correctly aligned signatures.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="A domain 11" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/A_domain_11.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/A_domain_11.png" width="758px"/></p></span>
+<!-- Step 3 -->
+<h2 id="scoring-matrices">Scoring matrices</h2>
+<p>To generalize the alignment scoring model, we still award +1 for <strong><span style="color: #ff4363;">matches</span></strong>, but we also penalize <strong><span style="color: #a03881;">mismatches</span></strong> by some positive constant μ (the <strong>mismatch penalty</strong>) and <strong><span style="color: #64b0f4;">in</span><span style="color: #66cc66;">dels</span></strong> by some positive constant σ (the <strong>indel penalty</strong>). As a result, the score of an alignment is equal to the following expression:</p>
+<p style="text-align: center;"># matches − μ · # mismatches − σ · # indels</p>
+<p>For example, with the parameters μ = 1 and σ = 2, the following alignment will be assigned a score of -4.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Alignment scoring example" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_scoring_example.png" style="max-width: 100%" width="281px"/></p></span>
+<p>Biologists have further refined this cost function to allow for the fact that some mutations may be more likely than others, which calls for mismatches and indel penalties that differ depending on the specific symbols involved. We will extend the <i>k</i>-letter alphabet to include the space symbol and then construct a (<em>k</em> + 1) × (<em>k</em> + 1) <b>scoring matrix</b> <strong><em></em></strong><i>score</i><strong></strong> holding the score of aligning every pair of symbols. The scoring matrix for comparing DNA sequences (<em>k</em> = 4) when all mismatches are penalized by μ and all indels are penalized by σ is shown below.</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Alignment scoring matrix" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_scoring_matrix.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/alignment_scoring_matrix.png" width="266px"/></p></span>
+<!-- Step 4 -->
+<p>Although scoring matrices for DNA sequence comparison are usually defined only by the parameters μ and σ, scoring matrices for protein sequence comparison weight different mutations differently and become quite involved. One example, the PAM<sub>250</sub> scoring matrix, is shown below (see "DETOUR: PAM Scoring Matrices" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>).</p>
+<p style="text-align: center;"><img alt="Pam250" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/pam250.png" style="max-width: 100%" width="700px"/></p>
+<p><small><strong>Figure:</strong> The PAM<sub>250</sub> scoring matrix for protein alignment. Here, the indel penalty has been set to 8.</small></p>

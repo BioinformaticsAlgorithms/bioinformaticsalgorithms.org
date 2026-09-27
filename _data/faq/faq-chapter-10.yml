@@ -1,0 +1,2 @@
+- q: Since a deletion state does not emit a symbol, why is it not the case that all emission probabilities in a deletion state are zero?
+  a: <p>It may seem that all edges entering into deletion states in the Viterbi graph should have weight zero. However, for purposes of the Viterbi graph, deletion states can be thought of as emitting a blank symbol ("-") with probability 1.</p>

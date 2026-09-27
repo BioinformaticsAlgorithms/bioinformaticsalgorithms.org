@@ -1,0 +1,16 @@
+---
+title: Learner FAQ
+seo_title: "Bioinformatics Algorithms FAQ: Answers to Learner Questions by Chapter"
+description: "Chapter-by-chapter answers to nearly 200 questions that thousands of learners have asked about Bioinformatics Algorithms, from DnaA boxes to the Burrows-Wheeler transform."
+lede: "In teaching this material online and in the classroom, we have heard the same great questions again and again. Here are our answers, chapter by chapter."
+---
+<div class="faq-index">
+{% for c in site.data.chapters %}
+{% capture key %}faq-chapter-{{ c.n }}{% endcapture %}
+{% assign items = site.data.faq[key] %}
+{% if items %}<a href="{{ '/' | append: key | relative_url }}"><strong>Chapter {{ c.n }}: {{ c.topic }}</strong><span>{{ c.question }} &middot; {{ items.size }} question{% if items.size != 1 %}s{% endif %}</span></a>{% endif %}
+{% endfor %}
+{% assign app = site.data.faq["faq-application-challenges"] %}
+<a href="{{ '/faq-application-challenges' | relative_url }}"><strong>Application challenges</strong><span>Sequencing, read quality, RNA-seq, and variant calling &middot; {{ app.size }} questions</span></a>
+</div>
+{% include cta-book.html %}

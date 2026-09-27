@@ -1,0 +1,49 @@
+---
+layout: lesson
+title: The Manhattan Tourist Problem
+seo_title: The Manhattan Tourist Problem and Longest Paths in a DAG
+description: Imagine you are a tourist in Midtown Manhattan, and you want to see as many sights as possible on your way from the corner of 59th Street and 8th...
+chapter: 5
+number: '5.3'
+order: 3
+slug: manhattan-tourist-problem
+permalink: /bioinformatics-chapter-5/manhattan-tourist-problem/
+---
+<!-- Step 1 -->
+<h2 id="what-is-the-best-sightseeing-strategy">What is the best sightseeing strategy?</h2>
+<p>Imagine you are a tourist in Midtown Manhattan, and you want to see as many sights as possible on your way from the corner of 59th Street and 8th Avenue to the corner of 42nd Street and 3rd Avenue (figure below). However, you are short on time, and at each intersection, you can only move south (↓) or east (→). You can choose from many different paths through the map, but no path will visit all the sights. The challenge of finding a legal path through the city that visits the most sights is called the <strong>Manhattan Tourist Problem</strong>.</p>
+<p style="text-align:center"><img alt="Tourist map" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/tourist_map.png" style="max-width: 100%" width="573px"/></p>
+<p><small><strong>Figure:</strong> A simplification of Midtown Manhattan. You start at the intersection of 59th Street and 8th Avenue in the northwest corner and end at the intersection of 42nd Street and 3rd Avenue in the southeast corner, traveling only south or east between intersections. The attractions shown are: Carnegie Hall (1), Tiffany &amp; Co. (2), the Sony Building (3), the Museum of Modern Art (4), the Four Seasons Hotel (5), St. Patrick's Cathedral (6), the General Electric Building (7), Radio City Music Hall (8), Rockefeller Center (9), the Paramount Building (10), the New York Times Building (11), Times Square (12), the General Society of Mechanics and Tradesmen (13), Grand Central Terminal (14), and the Chrysler Building (15).</small></p>
+<!-- Step 2 -->
+<p>We will represent the map of Manhattan as a directed graph <em>ManhattanGraph</em> in which we model each intersection as a node and represent each city block between two intersections as a directed edge indicating the legal direction of travel (↓ or →), as shown below. We then assign each directed edge a <strong>weight</strong> equal to the number of attractions along the corresponding block. The starting (blue) node is called the <strong>source node</strong>, and the ending (red) node is called the <strong>sink node</strong>. Adding the weights along a path from the source to the sink yields the number of attractions along that path; therefore, to solve the Manhattan Tourist Problem, we need to find a <strong>maximum-weight path</strong> connecting the source to the sink (also called a <strong>longest path</strong>) in <em>ManhattanGraph</em>.<br/></p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Manhattan graph" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/manhattan_graph.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/manhattan_graph.png" width="442px"/></p></span>
+<p><small><strong>Figure:</strong> The directed graph <em>ManhattanGraph</em> in which every edge is weighted by the number of attractions along that city block (edge weights equal to 0 are not shown).</small></p>
+<!-- Step 3 -->
+<p>We can model any rectangular grid of streets using a similar directed graph; the figure below shows the graph for a hypothetical city with even more attractions. In contrast to the Cartesian plane, we orient the axes of this grid down and to the right. Therefore, the blue source node is assigned the coordinates (0, 0), and the red sink node is assigned the coordinates (<em>n</em>, <em>m</em>).</p>
+<p>This discussion implies the following generalization of our original problem.</p>
+<p><strong>Manhattan Tourist Problem:</strong> <em>Find a longest path in a rectangular city.</em></p>
+<ul><li><strong>Input:</strong><span> A weighted </span><em>n</em><span> × </span><em>m</em><span> rectangular grid with </span><em>n</em><span> + 1 rows and </span><em>m</em><span> + 1 columns.</span></li><li><strong>Output:</strong><span> A longest path from source (0,0) to sink (</span><em>n</em><span>, </span><em>m</em><span>) in the grid.</span></li></ul>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Additional square city" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/additional_square_city.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/additional_square_city.png" width="395px"/></p></span>
+<p><small><strong>Figure:</strong> An <em>n</em> × <em>m</em> city grid represented as a graph with weighted edges for <em>n</em> = <em>m</em> = 4. The bottom left node is indexed as (4, 0), and the upper right node is indexed as (0, 4).</small></p>
+<!-- Step 4 -->
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span>How many different paths are there from source to sink in a 16 × 12 rectangular grid? Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p><strong>Note:</strong> Keep in mind that according to our notation, a 16 × 12 grid contains 17 × 13 = 221 nodes.</p>
+<!-- Step 5 -->
+<p>Applying a brute force approach to the Manhattan Tourist Problem is impractical because the number of paths is huge. A sensible greedy approach would choose between the two possible directions at each node (→ or ↓) according to how many attractions you would see if you moved only one block south versus moving one block east. For example, in the figure below, we start off by moving east from (0, 0) rather than south because the horizontal edge has three attractions, while the vertical edge has only one. Unfortunately, this greedy strategy may miss the longest path in the long run.</p>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Find a longer path in the graph below.<br/></p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Greedy manhattan path" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/greedy_manhattan_path.png" style="max-width: 100%" title="Image: /media/attachments/lessons/241/greedy_manhattan_path_2.png" width="379px"/></p></span>
+<div style="text-align: left;"><small><strong>Figure: </strong>The highlighted path through this graph, which is found by the greedy algorithm, is not the longest path.</small></div>
+<!-- Step 6 -->
+<h2 id="sightseeing-in-an-arbitrary-directed-graph">Sightseeing in an arbitrary directed graph</h2>
+<p>In reality, the streets in Midtown Manhattan do not form a perfect rectangular grid because Broadway Avenue cuts diagonally across the grid, but the network of streets can still be represented by a directed graph. In fact, the Manhattan Tourist Problem is just a special case of the more general problem of finding the longest path in an arbitrary directed graph, such as the ones shown below.</p>
+<p><strong>Longest Path in a Directed Graph Problem:</strong> <em>Find a longest path between two nodes in an edge-weighted directed graph.</em></p>
+<ul><li><strong>Input:</strong><span> An edge-weighted directed graph with source and sink nodes.</span></li><li><strong>Output:</strong><span> A longest path from source to sink in the directed graph.</span></li></ul>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> What is the length of a longest path between the source and sink in the directed graph shown on the right in the figure below?</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Irregular grids" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/irregular_grids.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/irregular_grids.png" width="661px"/></p></span>
+<div style="text-align: center;"><small><strong>Figure:</strong> Directed graphs corresponding to hypothetical irregular city grids.</small></div>
+<!-- Step 7 -->
+<p>If a directed graph contained a directed cycle (e.g., the four central edges of weight 1 in the graph below), then a tourist could traverse this cycle indefinitely, revisiting the same attractions over and over again and creating a path of huge length. For this reason, the graphs that we will consider in this chapter do not contain directed cycles; such graphs are called <strong>directed acyclic graphs</strong> (<strong>DAGs</strong>).</p>
+<p><strong>Longest Path in a DAG Problem:</strong> <em>Find a longest path between two nodes in an edge-weighted DAG.</em></p>
+<ul><li><strong>Input:</strong><span> An edge-weighted DAG with source and sink nodes.</span></li><li><strong>Output:</strong><span> A longest path from source to sink in the DAG.</span></li></ul>
+<p class="callout callout-think"><span class="callout-label">STOP and Think</span> Do you see any similarities between the Longest Path in a DAG Problem and the Longest Common Subsequence Problem?</p>
+<span class="image-wrapper"><p style="text-align: center;"><img alt="Directed graph 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/directed_graph-2.png" style="max-width: 100%" width="322px"/></p></span>

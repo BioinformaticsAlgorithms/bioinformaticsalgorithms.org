@@ -1,0 +1,29 @@
+---
+title: Contact
+seo_title: "Contact the Authors: Instructors, Adoption and Learner Questions"
+description: "Get in touch about adopting Bioinformatics Algorithms in your course, instructor resources such as slides and quizzes, bulk orders, or questions about the book."
+lede: "Whether you are an instructor considering the book for your course or a learner with a question, we would be happy to hear from you."
+---
+<div class="contact-grid">
+  <div class="card">
+    <h2 style="margin-top:0">Send us a message</h2>
+    <form id="contact-form" action="mailto:{{ site.contact_email }}" method="post" enctype="text/plain">
+      <p><label>Your name<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit"></label></p>
+      <p><label>Your email<br><input name="email" type="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit"></label></p>
+      <p><label>I am<br><select name="role" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit"><option>An instructor</option><option>A learner</option><option>Ordering books for a course or bookstore</option><option>Something else</option></select></label></p>
+      <p><label>Message<br><textarea name="message" rows="6" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit"></textarea></label></p>
+      <p><button class="btn btn-buy" type="submit" style="cursor:pointer">Send</button></p>
+    </form>
+    <p style="font-size:.93rem;color:var(--muted)">Or email us directly at <a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>.</p>
+  </div>
+  <div>
+    <h2 style="margin-top:0">For instructors</h2>
+    <p>More than 200 institutions have adopted the book. We share lecture slides for every chapter, quiz questions, and additional assessments with our network of instructors, and we offer a discounted classroom license for the <a href="{{ '/online-courses' | relative_url }}">interactive text</a>, which comes with autograded code challenges.</p>
+    <h2>Free for everyone</h2>
+    <ul>
+      <li><a href="{{ '/read-the-book' | relative_url }}">Chapters 1 to 5</a>, one page per lesson</li>
+      <li><a href="{{ '/lecture-videos' | relative_url }}">Lecture videos</a> for all eleven chapters</li>
+      <li><a href="{{ '/faq-home' | relative_url }}">Learner FAQ</a> with nearly 200 answers</li>
+    </ul>
+  </div>
+</div>

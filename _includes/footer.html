@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">Bioinformatics Algorithms</p>
+      <p>An Active Learning Approach, by Phillip Compeau and Pavel Pevzner. Published by Active Learning Publishers.</p>
+      <p><a class="btn btn-small" href="{{ site.buy_url | relative_url }}">Buy the print book</a></p>
+    </div>
+    <div>
+      <p class="footer-head">Read free</p>
+      <ul>
+        {% for c in site.data.chapters %}{% if c.free %}
+        <li><a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}">Chapter {{ c.n }}: {{ c.topic }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Learn more</p>
+      <ul>
+        <li><a href="{{ '/lecture-videos' | relative_url }}">Lecture videos</a></li>
+        <li><a href="{{ '/online-courses' | relative_url }}">Interactive course and certificate</a></li>
+        <li><a href="{{ '/faq-home' | relative_url }}">Learner FAQ</a></li>
+        <li><a href="https://rosalind.info/problems/list-view/?location=bioinformatics-textbook-track" target="_blank" rel="noopener">Rosalind textbook track</a></li>
+        <li><a href="{{ site.youtube_url }}" target="_blank" rel="noopener">YouTube channel</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">About</p>
+      <ul>
+        <li><a href="{{ '/authors' | relative_url }}">Authors and team</a></li>
+        <li><a href="{{ '/contact' | relative_url }}">Contact and instructors</a></li>
+        <li><a href="{{ '/returns' | relative_url }}">Return policy</a></li>
+        <li><a href="https://www.termsfeed.com/live/12a21a5c-141f-4dd7-8ca3-087c9d03a386" target="_blank" rel="noopener">Terms and conditions</a></li>
+        <li><a href="https://www.privacypolicies.com/live/b63a8277-1659-40e7-95e3-68725752c109" target="_blank" rel="noopener">Privacy policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-legal">&copy; {{ site.time | date: "%Y" }} Phillip Compeau and Pavel Pevzner. All rights reserved.{% if site.isbn != "" %} ISBN {{ site.isbn }}.{% endif %}</div>
+</footer>

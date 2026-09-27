@@ -1,0 +1,8 @@
+---
+layout: default
+---
+<div class="wrap page">
+  {% unless page.hide_title %}<h1 class="page-title">{{ page.title }}</h1>{% endunless %}
+  {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+  {{ content }}
+</div>
