@@ -1,7 +1,7 @@
 title: Bioinformatics Algorithms
 tagline: "An Active Learning Approach"
 description: "Bioinformatics Algorithms, the bestselling textbook by Phillip Compeau and Pavel Pevzner. Read the first five chapters free, watch the lecture videos, and learn bioinformatics by solving real problems."
-url: "https://bioinformaticsalgorithms.github.io"  # PREVIEW. Set to https://www.bioinformaticsalgorithms.org at cutover.
+url: "https://bioinformaticsalgorithms.com"  # PREVIEW. Set to https://www.bioinformaticsalgorithms.org at cutover.
 baseurl: "/bioinformaticsalgorithms.org"  # PREVIEW. Set to "" at cutover.
 author: "Phillip Compeau and Pavel Pevzner"
 logo: /assets/images/site/bioinformatics-algorithms-3rd-edition-900.jpg
