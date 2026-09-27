@@ -1,0 +1,120 @@
+/* Widget "gibbs": RandomizedMotifSearch and GibbsSampler, step by step.
+   Everything is scoped under .w-gibbs and uses the site tokens. */
+
+.w-gibbs {
+  --wg-a: var(--nt-a, #a03881);
+  --wg-c: var(--nt-c, #64b0f4);
+  --wg-g: var(--nt-g, #ff4363);
+  --wg-t: var(--nt-t, #66cc66);
+  font-family: var(--ui);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius, 10px);
+  padding: 14px 16px 12px;
+  margin: 1.6em 0;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.w-gibbs .widget-head { font-family: var(--ui); font-weight: 800; color: var(--navy); font-size: 1.05rem; line-height: 1.3; margin: 0 0 10px; }
+.w-gibbs .widget-kicker { display: inline-block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--paper); background: var(--teal); border-radius: 999px; padding: 0.15em 0.7em; margin-right: 0.4em; vertical-align: 0.1em; }
+.w-gibbs .widget-foot { font-family: var(--read); font-size: 0.98rem; color: var(--muted); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
+
+.w-gibbs .wg-body { font-size: 0.95rem; line-height: 1.5; }
+.w-gibbs p { margin: 0 0 0.5em; }
+.w-gibbs [hidden] { display: none !important; }
+
+.w-gibbs .wg-settings { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 6px; }
+.w-gibbs .wg-field { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.w-gibbs .wg-field-name { font-weight: 700; color: var(--navy); font-size: 0.8rem; }
+.w-gibbs .wg-select, .w-gibbs .wg-number, .w-gibbs .wg-textarea {
+  font-family: var(--ui); font-size: 0.9rem; color: var(--ink); background: var(--wash);
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; max-width: 100%;
+}
+.w-gibbs .wg-number { width: 6em; }
+.w-gibbs .wg-textarea { display: block; width: 100%; box-sizing: border-box; font-family: var(--mono); letter-spacing: 0.05em; resize: vertical; margin: 2px 0 4px; }
+.w-gibbs .wg-textarea[aria-invalid="true"] { border-color: var(--red); }
+.w-gibbs .wg-select:focus, .w-gibbs .wg-number:focus, .w-gibbs .wg-textarea:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+.w-gibbs .wg-custom { border: 1px dashed var(--line); border-radius: 8px; padding: 8px 10px; margin: 6px 0; }
+.w-gibbs .wg-error { color: var(--red); font-weight: 600; font-size: 0.88rem; }
+.w-gibbs .wg-error:empty { display: none; }
+
+.w-gibbs .wg-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.w-gibbs .btn-small { cursor: pointer; }
+.w-gibbs .btn-small:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+.w-gibbs .btn-small[aria-pressed="true"] { background: var(--navy); color: var(--paper); }
+.w-gibbs .wg-seed { font-size: 0.82rem; color: var(--muted); }
+
+.w-gibbs .wg-status { font-size: 0.9rem; background: var(--wash); border-left: 4px solid var(--teal); border-radius: 6px; padding: 6px 10px; min-height: 2.9em; }
+
+.w-gibbs .wg-scoreboard { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.w-gibbs .wg-stat { border: 1px solid var(--line); border-radius: 8px; padding: 3px 10px; display: flex; flex-direction: column; min-width: 5.5em; }
+.w-gibbs .wg-stat-name { font-size: 0.72rem; color: var(--muted); }
+.w-gibbs .wg-stat-value { font-size: 1rem; color: var(--navy); }
+
+.w-gibbs .wg-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); margin: 6px 0; }
+.w-gibbs .wg-scroll:focus-visible, .w-gibbs .wg-die-box:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+.w-gibbs .wg-dna { padding: 6px 10px; }
+.w-gibbs .wg-box-title { font-size: 0.8rem; color: var(--muted); margin: 0 0 4px; }
+.w-gibbs .wg-dna-row { display: flex; align-items: center; gap: 8px; white-space: nowrap; padding: 1px 4px; border-radius: 4px; }
+.w-gibbs .wg-dna-row.wg-removed { background: var(--wash); outline: 1px dashed var(--orange); }
+.w-gibbs .wg-dna-label { font-size: 0.75rem; color: var(--muted); width: 1.4em; text-align: right; flex: none; }
+.w-gibbs .wg-strand { font-family: var(--mono); font-size: 0.95rem; letter-spacing: 0.06em; }
+.w-gibbs .wg-out { color: var(--muted); opacity: 0.75; }
+.w-gibbs .wg-in-motif { font-weight: 700; background: var(--wash); }
+.w-gibbs .wg-motif-start { border-radius: 4px 0 0 4px; box-shadow: inset 2px 0 0 var(--navy); }
+.w-gibbs .wg-motif-end { border-radius: 0 4px 4px 0; box-shadow: inset -2px 0 0 var(--navy); }
+.w-gibbs .wg-motif-start.wg-motif-end { box-shadow: inset 2px 0 0 var(--navy), inset -2px 0 0 var(--navy); border-radius: 4px; }
+.w-gibbs .wg-row-note { font-size: 0.78rem; color: var(--orange); font-weight: 700; }
+.w-gibbs .wg-consensus { font-size: 0.85rem; color: var(--muted); margin: 6px 0 0; }
+
+.w-gibbs .wg-nt-a { color: var(--wg-a); }
+.w-gibbs .wg-nt-c { color: var(--wg-c); }
+.w-gibbs .wg-nt-g { color: var(--wg-g); }
+.w-gibbs .wg-nt-t { color: var(--wg-t); }
+.w-gibbs .wg-kmer { font-family: var(--mono); font-weight: 700; letter-spacing: 0.04em; }
+
+.w-gibbs table.wg-table { display: table; border-collapse: collapse; margin: 0; font-family: var(--mono); font-size: 0.85rem; line-height: 1.25; }
+.w-gibbs .wg-caption { font-family: var(--ui); font-size: 0.8rem; color: var(--muted); padding: 5px 8px 2px; margin: 0; white-space: normal; }
+.w-gibbs .wg-profile { min-width: 0; }
+.w-gibbs .wg-table th, .w-gibbs .wg-table td { border: 0; padding: 2px 6px; text-align: center; white-space: nowrap; min-width: 2.4em; }
+.w-gibbs .wg-table thead th { color: var(--muted); font-size: 0.72rem; font-weight: 400; }
+.w-gibbs .wg-table .wg-rowlabel { text-align: right; font-weight: 700; position: sticky; left: 0; background: var(--paper); }
+
+.w-gibbs .wg-subhead { font-weight: 700; color: var(--navy); font-size: 0.88rem; margin: 12px 0 4px; }
+.w-gibbs .wg-die-box { max-height: 15em; overflow: auto; border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; }
+.w-gibbs .wg-die { list-style: none; margin: 0; padding: 0; }
+.w-gibbs .wg-face { display: grid; grid-template-columns: auto minmax(40px, 1fr) 5.5em; align-items: center; gap: 8px; padding: 1px 4px; border-radius: 4px; font-size: 0.85rem; }
+.w-gibbs .wg-face.wg-chosen { background: var(--wash); outline: 2px solid var(--orange); outline-offset: -2px; }
+.w-gibbs .wg-bar-track { display: block; height: 0.7em; background: var(--wash); border-radius: 3px; overflow: hidden; }
+.w-gibbs .wg-bar { display: block; height: 100%; background: var(--teal); }
+.w-gibbs .wg-chosen .wg-bar { background: var(--orange); }
+.w-gibbs .wg-share { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); text-align: right; }
+.w-gibbs .wg-chosen .wg-share { color: var(--ink); font-weight: 700; }
+
+.w-gibbs .wg-chart { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.w-gibbs .wg-chart-svg { display: block; width: 100%; height: auto; }
+.w-gibbs .wg-grid { stroke: var(--line); stroke-width: 1; }
+.w-gibbs .wg-axis-text { fill: var(--muted); font-family: var(--ui); font-size: 11px; }
+.w-gibbs .wg-restart { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.6; }
+.w-gibbs .wg-score-line { fill: none; stroke: var(--navy); stroke-width: 2; stroke-linejoin: round; }
+.w-gibbs .wg-best-line { fill: none; stroke: var(--orange); stroke-width: 2.5; stroke-dasharray: 6 3; }
+.w-gibbs .wg-score-dot { fill: var(--navy); }
+.w-gibbs .wg-legend { font-size: 0.8rem; color: var(--muted); margin: 4px 0 0; }
+.w-gibbs .wg-swatch { display: inline-block; width: 18px; height: 0; vertical-align: middle; margin-left: 6px; }
+.w-gibbs .wg-swatch-score { border-top: 2px solid var(--navy); }
+.w-gibbs .wg-swatch-best { border-top: 2px dashed var(--orange); }
+.w-gibbs .wg-swatch-restart { width: 0; height: 12px; border-left: 1px dashed var(--muted); }
+
+.w-gibbs .wg-best-list { font-size: 0.9rem; overflow-wrap: anywhere; margin: 0; }
+.w-gibbs .wg-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 480px) {
+  .w-gibbs { padding: 12px 10px 10px; }
+  .w-gibbs .wg-strand { font-size: 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .w-gibbs * { transition: none !important; animation: none !important; }
+}

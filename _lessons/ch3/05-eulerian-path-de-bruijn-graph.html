@@ -8,6 +8,13 @@ number: '3.5'
 order: 5
 slug: eulerian-path-de-bruijn-graph
 permalink: /bioinformatics-chapter-3/eulerian-path-de-bruijn-graph/
+cogniterra_lesson: 29888
+cogniterra_url: https://cogniterra.org/lesson/29888/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-path-de-bruijn-graph
+code_challenges: 1
+video: xYHpuZLvB2s
+video_title: String Reconstruction as an Eulerian Path Problem
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-3-cover.jpg
 ---
 <h2 id="eulerian-paths">Eulerian paths</h2>
 <p>Even though we have glued together nodes to form the de Bruijn graph, we have not changed its edges, and so the path from <samp><strong>TA</strong></samp> to <samp><strong><span style="color:#a03881">TT</span></strong></samp> reconstructing the genome is still hiding in <em>DeBruijn</em><sub>3</sub>(<samp><strong>TA</strong><strong><span style="color:#64b0f4">ATG</span></strong><strong><span style="color:#ff4363">CC</span></strong><strong><span style="color:#64b0f4">ATG</span></strong><strong><span style="color:#66cc66">GG</span></strong><strong><span style="color:#64b0f4">ATG</span></strong><strong><span style="color:#a03881">TT</span></strong></samp>) (see the figure below), although this path has become “tangled" after gluing. Therefore, solving the String Reconstruction Problem reduces to finding a path in the de Bruijn graph that visits every <em>edge</em> exactly once. Such a path is called an <strong>Eulerian Path</strong> in honor of the great mathematician Leonhard Euler (pronounced “oiler").</p>
@@ -43,12 +50,14 @@ permalink: /bioinformatics-chapter-3/eulerian-path-de-bruijn-graph/
 <p>For every <em>k</em>-mer in <em>Patterns</em>, we connect its prefix node to its suffix node by a directed edge in order to produce <em>DeBruijn</em>(<em>Patterns</em>). You can verify that this process produces the same de Bruijn graph that we have been working with (shown below).</p>
 <p style="text-align: center;"><img alt="Debruijn graph alternate rendering" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/debruijn_graph_alternate_rendering.png" style="max-width:100%" width="700px"/></p>
 <p style="text-align: center;"><small><strong>Figure:</strong> The graph above is the de Bruijn graph we have been working with, although we have drawn it differently.</small></p>
+{% include widgets/debruijn.html %}
+
 <p><strong>DeBruijn Graph from <em>k</em>-mers Problem:</strong> <em>Construct the de Bruijn graph from a set of k-mers.</em></p>
 <ul>
 <li><strong>Input:</strong> A collection of <em>k</em>-mers <em>Patterns</em>.</li>
 <li><strong>Output:</strong> The adjacency list of the de Bruijn graph <em>DeBruijn</em>(<em>Patterns</em>).</li>
 </ul>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span>Solve the de Bruijn Graph from <em>k</em>-mers Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3e/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span>Solve the de Bruijn Graph from <em>k</em>-mers Problem. (Solve at <a href="https://cogniterra.org/lesson/29888/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-path-de-bruijn-graph" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3e/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29888/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-path-de-bruijn-graph" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <h2 id="de-bruijn-graphs-versus-overlap-graphs">De Bruijn graphs versus overlap graphs</h2>
 <p>We now have two ways of solving the String Reconstruction Problem. We can either find a Hamiltonian path in the overlap graph (top) or find an Eulerian path in the de Bruijn graph (bottom). Your inner voice may have already started complaining: <em>was it really worth my time to learn two slightly different ways of solving the same problem?</em> After all, we have only changed a single word in the statements of the Hamiltonian and Eulerian Path Problems, from finding a path visiting every <em>node</em> exactly once to finding a path visiting every <em>edge</em> exactly once.</p>
 <p style="text-align: center;"><img alt="Overlap graph lex" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/overlap_graph_lex.png" style="max-width:100%" width="700px"/></p>

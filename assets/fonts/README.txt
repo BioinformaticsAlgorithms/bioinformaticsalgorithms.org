@@ -1,0 +1,1 @@
+The Pagella web fonts here are subsets of TeX Gyre Pagella (c) GUST e-foundry, distributed under the GUST Font License, a free license based on the LaTeX Project Public License. See https://www.gust.org.pl/projects/e-foundry/licenses

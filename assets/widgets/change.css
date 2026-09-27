@@ -1,0 +1,71 @@
+/* Change Problem widget (lesson 5.5). Everything is scoped under .w-change. */
+.w-change .wc-app { font-family: var(--ui); color: var(--ink); }
+.w-change p { margin: 0 0 0.5em; }
+.w-change .wc-mono { font-family: var(--mono); font-size: 0.9rem; overflow-wrap: anywhere; }
+
+.w-change .wc-controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end; margin-bottom: 6px; }
+.w-change .wc-field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.w-change .wc-preset { flex: 1 1 100%; }
+.w-change .wc-coins-field { flex: 1 1 14em; }
+.w-change .wc-coins-field .wc-input { width: 100%; }
+.w-change .wc-label { font-family: var(--ui); font-size: 0.8rem; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; }
+.w-change .wc-input { font-family: var(--mono); font-size: 0.95rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; max-width: 100%; }
+.w-change select.wc-input { font-family: var(--ui); }
+.w-change .wc-input:focus-visible, .w-change .btn:focus-visible, .w-change .wc-tree-box:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.w-change .btn[disabled] { opacity: 0.45; cursor: default; }
+
+.w-change .wc-caps { font-size: 0.8rem; }
+.w-change .wc-note { font-size: 0.85rem; color: var(--muted); }
+.w-change .wc-error { color: var(--red); font-weight: 700; font-size: 0.9rem; }
+.w-change .wc-problem { color: var(--navy); font-weight: 600; margin: 4px 0 10px; }
+
+.w-change .wc-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 640px) {
+  .w-change .wc-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .w-change .wc-dp { grid-column: 1 / -1; }
+}
+.w-change .wc-panel { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--paper); min-width: 0; }
+.w-change .wc-panel-title { font-family: var(--ui); font-size: 0.95rem; font-weight: 800; color: var(--navy); margin: 0 0 6px; letter-spacing: 0.02em; }
+.w-change .wc-big { font-family: var(--ui); font-size: 1.35rem; font-weight: 800; color: var(--ink); line-height: 1.2; overflow-wrap: anywhere; }
+.w-change .wc-verdict { font-weight: 700; font-size: 0.9rem; }
+.w-change .wc-good { color: var(--teal); }
+.w-change .wc-bad { color: var(--red); }
+.w-change .wc-repeat { font-size: 0.88rem; }
+
+/* Recursion tree */
+.w-change .wc-tree-box { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
+.w-change .wc-tree-box svg { display: block; }
+.w-change .wc-edge { stroke: var(--muted); stroke-width: 1; opacity: 0.55; }
+.w-change .wc-edge-hot { stroke: var(--red); stroke-width: 2; opacity: 1; }
+.w-change .wc-node { cursor: pointer; }
+.w-change .wc-node circle { fill: var(--paper); stroke: var(--muted); stroke-width: 1.2; }
+.w-change .wc-node text { fill: var(--ink); font-family: var(--mono); font-size: 10px; pointer-events: none; }
+.w-change .wc-node-root circle { stroke: var(--navy); stroke-width: 2; }
+.w-change .wc-node-hot circle { stroke: var(--red); stroke-width: 2.4; }
+.w-change .wc-node-hot text { fill: var(--red); font-weight: 700; }
+.w-change .wc-picker { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
+
+/* DP array */
+.w-change .wc-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.w-change .wc-recurrence { background: var(--wash); border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; min-height: 5.5em; }
+.w-change .wc-rec-head { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.w-change .wc-attempts { list-style: none; margin: 0 0 4px; padding: 0; }
+.w-change .wc-attempts li { margin: 1px 0; font-size: 0.85rem; }
+.w-change .wc-attempt-win { color: var(--red); font-weight: 700; }
+.w-change .wc-attempt-skip { color: var(--muted); }
+.w-change .wc-rec-result { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; color: var(--navy); margin: 0; }
+
+.w-change .wc-array { display: flex; flex-wrap: wrap; gap: 3px; max-height: 260px; overflow-y: auto; position: relative; padding: 2px; }
+.w-change .wc-cell { width: 38px; border: 1px solid var(--line); border-radius: 4px; text-align: center; background: var(--paper); line-height: 1.15; padding: 2px 0 3px; }
+.w-change .wc-cell-index { display: block; font-family: var(--ui); font-size: 0.66rem; color: var(--muted); }
+.w-change .wc-cell-value { display: block; font-family: var(--mono); font-size: 0.9rem; font-weight: 600; min-height: 1.1em; color: var(--ink); }
+.w-change .wc-filled { background: var(--wash); }
+.w-change .wc-lookup { border: 2px dashed var(--orange); }
+.w-change .wc-winner { border: 2px solid var(--red); }
+.w-change .wc-current { border: 2px solid var(--teal); box-shadow: 0 0 0 2px var(--teal) inset; }
+.w-change .wc-dp-summary { font-size: 0.9rem; font-weight: 700; margin: 8px 0 0; }
+
+.w-change .wc-status { font-size: 0.85rem; color: var(--muted); margin: 10px 0 0; min-height: 1.3em; }
+@media (prefers-reduced-motion: reduce) {
+  .w-change * { transition: none !important; }
+}

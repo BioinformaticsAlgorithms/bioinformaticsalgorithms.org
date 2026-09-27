@@ -8,6 +8,13 @@ number: '1.4'
 order: 5
 slug: clump-finding-problem
 permalink: /bioinformatics-chapter-1/clump-finding-problem/
+cogniterra_lesson: 29852
+cogniterra_url: https://cogniterra.org/lesson/29852/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=clump-finding-problem
+code_challenges: 1
+video: EcK0JGdTig0
+video_title: The Search for Hidden Messages in the Replication Origin (Part 2)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-1-cover.jpg
 ---
 <h2 id="looking-for-hidden-messages-in-multiple-genomes">Looking for hidden messages in multiple genomes</h2>
 <p>We should not jump to the conclusion that <samp><strong><span style="color: #64b0f4;">ATGATCAAG</span></strong></samp>/<samp><span style="color:coral"><strong>CTTGATCAT</strong></span></samp> is a hidden message for all bacterial genomes without first checking whether it even appears in known <em>ori</em> regions from other bacteria. After all, maybe the clumping effect of <samp><strong><span style="color: #64b0f4;">ATGATCAAG</span></strong></samp>/<samp><span style="color:coral"><strong>CTTGATCAT</strong></span></samp> in the <em>ori</em> region of <em>Vibrio cholerae</em> is simply a statistical fluke that has nothing to do with replication. Or maybe different bacteria have different <em>DnaA</em> boxes…</p>
@@ -43,7 +50,9 @@ CCTACCACC   GGTAGGTTT   TGGTAGGTT</samp></p>
                 append <em>s</em> to <em>Patterns</em>
     remove duplicates from <em>Patterns</em>
     <strong>return </strong><em>Patterns</em></code></small></pre>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Clump Finding Problem. (Solve on <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba1e/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Clump Finding Problem. (Solve on <a href="https://cogniterra.org/lesson/29852/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=clump-finding-problem" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba1e/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29852/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=clump-finding-problem" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
+{% include widgets/clumps.html %}
+
 <p class="callout callout-exercise"><span class="callout-label">Exercise Break</span><span style="color: #a03881;">:</span><span> If you think your solution to the Clump Finding Problem is efficient enough, try it out on the <em>E. coli</em> genome, the workhorse of bacterial genomics. How many </span><em>different</em><span> 9-mers form (500,3)-clumps in the </span><em>E. coli</em><span> genome? (In other words, do not count a 9-mer more than once.)</span></p>
 <p><a href="https://bioinformaticsalgorithms.com/data/realdatasets/Rearrangements/E_coli.txt" rel="noopener" target="_blank">Download Genome (4.6 MB)</a></p>
 <p>We find hundreds of different 9-mers forming (500,3)-clumps in the <em>E. coli</em> genome, and it is absolutely unclear which of these 9-mers might represent a <em>DnaA</em> box in the bacterium’s <em>ori</em> region.</p>

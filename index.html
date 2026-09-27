@@ -18,19 +18,20 @@ jsonld: >-
     <div>
       <p class="kicker">The bestselling bioinformatics textbook</p>
       <h1>Bioinformatics Algorithms</h1>
-      <p class="lede">Journey to the frontier of computational biology with the gold standard of bioinformatics education. Every chapter starts with a real biological question and builds the algorithms you need to answer it.</p>
+      <p class="lede">Journey to the frontier of computational biology with the gold standard of bioinformatics education. Every chapter starts with a real biological question and builds the algorithms you need to answer it, and you learn them by implementing them.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="{{ '/read-the-book' | relative_url }}">Read 5 chapters free</a>
-        <a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy the print book, {{ site.buy_price }}</a>
+        <a class="btn btn-primary" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=home&utm_campaign=hero" target="_blank" rel="noopener">Start the interactive course free</a>
+        <a class="btn btn-ghost" href="{{ '/read-the-book' | relative_url }}">Read 5 chapters free</a>
       </div>
-      <p class="hero-note">No sign-up needed to read. Prefer autograded code challenges and a certificate? <a href="{{ site.cogniterra_url }}" target="_blank" rel="noopener">Try the interactive course free</a>.</p>
+      <p class="hero-note">Autograded code challenges, debug datasets and a certificate in the interactive text. Prefer paper? <a href="{{ site.buy_url | relative_url }}">Get the print book</a>.</p>
+      <p class="resume">Pick up where you left off: <a href="#">your last lesson</a></p>
       <div class="stats">
-        <div class="stat"><strong>200+</strong><span>institutions have adopted it</span></div>
-        <div class="stat"><strong>45</strong><span>countries</span></div>
+        <div class="stat"><strong>230+</strong><span>institutions teach with it</span></div>
+        <div class="stat"><strong>45+</strong><span>countries</span></div>
         <div class="stat"><strong>Hundreds of thousands</strong><span>of online learners</span></div>
       </div>
     </div>
-    <div class="hero-art"><img src="{{ '/assets/images/site/hero-book.jpg' | relative_url }}" alt="Bioinformatics Algorithms: An Active Learning Approach, 3rd edition, by Phillip Compeau and Pavel Pevzner" width="1000" height="1000"></div>
+    <div class="hero-art"><img src="{{ '/assets/images/site/monkey-1000.png' | relative_url }}" alt="The book's mascot, a monkey in a ruffled collar, typing a scroll of DNA on a typewriter" width="1000" height="668"></div>
   </div>
 </section>
 
@@ -44,6 +45,18 @@ jsonld: >-
         <img src="{{ '/assets/images/site/' | append: c.cover | relative_url }}" alt="Chapter {{ c.n }}: {{ c.question }}" loading="lazy" width="420" height="620">
         <span class="cc-body"><span class="cc-num">Chapter {{ c.n }} &middot; {{ c.topic }}</span><span class="cc-q">{{ c.question }}</span><span class="cc-tag">{% if c.free %}Free to read{% else %}In the print book{% endif %}</span></span>
       </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">Play with the algorithms</h2>
+    <p class="section-lede">Every free chapter has interactive figures you can poke at. Each one shows its work, one step at a time.</p>
+    <div class="features play-grid">
+      {% for w in site.data.widgets %}{% capture inc %}widgets/{{ w.id }}.html{% endcapture %}
+      <a class="feature play-card" href="{{ w.lesson | relative_url }}"><span class="widget-kicker">Try it</span><h3>{{ w.title }}</h3><p>{{ w.blurb }}</p></a>
       {% endfor %}
     </div>
   </div>
@@ -65,20 +78,20 @@ jsonld: >-
 
 <section class="section">
   <div class="wrap">
-    <h2 class="section-title">Get the book</h2>
-    <p class="section-lede">Choose the version that fits how you learn.</p>
+    <h2 class="section-title">Three ways to learn from the book</h2>
+    <p class="section-lede">Reading is free. Doing is where the learning happens.</p>
     <div class="buy-grid">
-      <div class="buy-card best">
+      <div class="buy-card best" data-label="Recommended">
+        <h3>Interactive text</h3>
+        <p class="price">Free to try <small>then {{ site.cogniterra_price }} once</small></p>
+        <ul><li>All eleven chapters, always up to date</li><li>Hundreds of autograded code challenges</li><li>Debug datasets for every problem</li><li>Certificate of completion</li></ul>
+        <a class="btn btn-primary" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=home&utm_campaign=buy-grid" target="_blank" rel="noopener">Start free</a>
+      </div>
+      <div class="buy-card">
         <h3>Print book, direct</h3>
         <p class="price">{{ site.buy_price }}</p>
         <ul><li>All eleven chapters</li><li>Detours and Charging Stations not included online</li><li>Our best price, shipped from us</li></ul>
         <a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy direct</a>
-      </div>
-      <div class="buy-card">
-        <h3>Interactive course</h3>
-        <p class="price">Free to try <small>then {{ site.cogniterra_price }} once</small></p>
-        <ul><li>The full text with autograded code challenges</li><li>Certificate of completion</li><li>Hosted on Cogniterra</li></ul>
-        <a class="btn btn-primary" href="{{ site.cogniterra_url }}" target="_blank" rel="noopener">Start free</a>
       </div>
       <div class="buy-card">
         <h3>Print book on Amazon</h3>
@@ -92,8 +105,8 @@ jsonld: >-
 
 <section class="section section-dark">
   <div class="wrap">
-    <h2 class="section-title">Adopted by 200 institutions in 45 countries</h2>
-    <p class="section-lede">We share slides, quiz questions, and a discounted classroom version of the interactive text with instructors. <a href="{{ '/contact' | relative_url }}" style="color:#fff">Get in touch</a> if you teach.</p>
+    <h2 class="section-title">Taught at more than 230 institutions in over 45 countries</h2>
+    <p class="section-lede">We share slides, quiz questions, and a discounted classroom copy of the interactive text with instructors. <a href="{{ '/instructors' | relative_url }}" style="color:#fff">See what we offer instructors</a>.</p>
     <div class="quotes">
       <blockquote class="quote"><p>&ldquo;This lively and unique text on bioinformatics motivates algorithmic thinking with an abundance of up-to-date examples from molecular biology.&rdquo;</p><footer>Michael Waterman, University Professor of Biological Sciences, Mathematics, and Computer Science, USC</footer></blockquote>
       <blockquote class="quote"><p>&ldquo;I can&rsquo;t imagine a more rewarding or worthwhile subject to work in than bioinformatics, and both Prof. Compeau and Prof. Pevzner played a significant part in my discovery and continued work in the field!&rdquo;</p><footer>Graeme Benstead-Hume, University of Sussex</footer></blockquote>

@@ -8,6 +8,13 @@ number: '3.8'
 order: 8
 slug: eulerian-cycle-algorithm
 permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
+cogniterra_lesson: 29891
+cogniterra_url: https://cogniterra.org/lesson/29891/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm
+code_challenges: 4
+video: e3rvwuC49PM
+video_title: Returning to Konigsberg
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-3-cover.jpg
 ---
 <h2 id="constructing-eulerian-cycles">Constructing Eulerian cycles</h2>
 <p>The proof of Euler’s Theorem offers an example of what mathematicians call a <strong>constructive proof</strong>, which not only proves the desired result, but also provides us with a method for constructing the object we need. In short, we track Leo’s movements until he inevitably produces an Eulerian cycle in a balanced and strongly connected graph <em>Graph</em>, as summarized in the following pseudocode.</p>
@@ -20,7 +27,9 @@ permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
         <em>Cycle</em> ← <em>Cycle</em>’
     <strong>return</strong> <em>Cycle</em></code></small></pre>
 <p>You should now be prepared to solve the Eulerian Cycle Problem for any graph. It may not be obvious, but a good implementation of <strong>EulerianCycle</strong> will work in linear time. To achieve this runtime speedup, you would need to use an efficient data structure in order to maintain the current cycle that Leo is building as well as the list of unused edges incident to each node and the list of nodes on the current cycle that have unused edges.</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Cycle Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3f/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+{% include widgets/euler.html %}
+
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Cycle Problem. (Solve at <a href="https://cogniterra.org/lesson/29891/step/2?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3f/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29891/step/2?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li>     <strong>Input:</strong> The adjacency list of an Eulerian directed graph.</li>
 <li>     <strong>Output:</strong> An Eulerian cycle in this graph.</li>
@@ -32,8 +41,8 @@ permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
 <p style="text-align: center;"><small><strong>Figure: </strong>Transforming an Eulerian path (left) into an Eulerian cycle (right) by adding an edge.</small></p>
 <p>More generally, consider a graph that does not have an Eulerian cycle but does have an Eulerian path. If an Eulerian path in this graph connects a node <em>v</em> to a different node <em>w</em>, then the graph is <strong>nearly balanced</strong>, meaning that all its nodes except <em>v</em> and <em>w</em> are balanced. In this case, adding an extra edge from <em>w</em> to <em>v</em> transforms the Eulerian path into an Eulerian cycle. Thus, a nearly balanced graph has an Eulerian path if and only if adding an edge between its unbalanced nodes makes the graph balanced and strongly connected.</p>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Find an analogue of the nearly balanced condition that will determine when an <em>undirected</em> graph has an Eulerian path.</p>
-<p>The analogue of Euler’s theorem for undirected graphs immediately implies that there is no Eulerian path in <em>Königsberg</em>. However, the story is different in modern-day Kaliningrad; for more details, see "DETOUR: The Bridges of Kaliningrad" in the <a href="{{ site.baseurl }}/">print companion</a> or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Path Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3g/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p>The analogue of Euler’s theorem for undirected graphs immediately implies that there is no Eulerian path in <em>Königsberg</em>. However, the story is different in modern-day Kaliningrad; for more details, see "DETOUR: The Bridges of Kaliningrad" in the <a href="{{ site.baseurl }}/">print companion</a> or at <a href="https://cogniterra.org/lesson/29891/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Eulerian Path Problem. (Solve at <a href="https://cogniterra.org/lesson/29891/step/6?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3g/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29891/step/6?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> The adjacency list of a directed graph that has an Eulerian path.</li>
 <li><strong>Output:</strong> An Eulerian path in this graph.</li>
@@ -50,7 +59,7 @@ permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
         <em>path</em> ← <strong>EulerianPath</strong>(<em>dB</em>)
         <em>Text</em>﻿ ← <strong>PathToGenome</strong>(<em>path</em>)
         <strong>return</strong> <em>Text</em></code></small></pre>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the String Reconstruction Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3h/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the String Reconstruction Problem. (Solve at <a href="https://cogniterra.org/lesson/29891/step/7?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3h/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29891/step/7?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> An integer <em>k</em> followed by a list of <em>k</em>-mers <em>Patterns</em>.</li>
 <li><strong>Output:</strong> A string <em>Text</em> with <em>k-mer</em> composition equal to <em>Patterns</em>. (If multiple answers exist, you may return any one.)</li>
@@ -73,7 +82,7 @@ permalink: /bioinformatics-chapter-3/eulerian-cycle-algorithm/
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> The figure below illustrates that <em>DeBruijn</em>(<em>BinaryStrings</em><sub>4</sub>) is balanced and strongly connected and is thus Eulerian. Can you prove that for any <em>k</em>, <em>DeBruijn</em>(<em>BinaryStrings<sub>k</sub></em>) is Eulerian?</p>
 <p style="text-align: center;"><img alt="4 universal string" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/4_universal_string.png" style="max-width:100%" width="650px"/></p>
 <p style="text-align: center;"><small><strong>Figure:</strong> An Eulerian cycle spelling the cyclic 4-universal string <samp>0000110010111101</samp> in <em>DeBruijn</em>(<em>BinaryStrings</em><sub>4</sub>).</small></p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the <em>k</em>-Universal Circular String Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3i/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the <em>k</em>-Universal Circular String Problem. (Solve at <a href="https://cogniterra.org/lesson/29891/step/11?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3i/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29891/step/11?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=eulerian-cycle-algorithm" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> An integer <em>k</em>.</li>
 <li><strong>Output:</strong> A <em>k</em>-universal circular string.</li>

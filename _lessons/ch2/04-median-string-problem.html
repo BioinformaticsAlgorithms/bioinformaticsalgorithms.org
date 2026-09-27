@@ -8,6 +8,13 @@ number: '2.4'
 order: 4
 slug: median-string-problem
 permalink: /bioinformatics-chapter-2/median-string-problem/
+cogniterra_lesson: 29869
+cogniterra_url: https://cogniterra.org/lesson/29869/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=median-string-problem
+code_challenges: 1
+video: 4wo2d2_OMyE
+video_title: From Implanted Patterns to Regulatory Motifs (Part 3)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-2-cover.jpg
 ---
 <h2 id="the-motif-finding-problem">The Motif Finding Problem</h2>
 <p>Now that we have a good grasp of scoring a collection of <em>k</em>-mers, we are ready to formulate the Motif Finding Problem.</p>
@@ -72,9 +79,9 @@ permalink: /bioinformatics-chapter-2/median-string-problem/
                 <em>Median</em> ← <em>Pattern</em>
     <strong>return</strong> <em>Median</em></code></small></pre>
 
-<p>Although this pseudocode is short, it is not without potential pitfalls. Check out "Charging Station: Solving the Median String Problem" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> if you fall into one of them.</p>
+<p>Although this pseudocode is short, it is not without potential pitfalls. Check out "Charging Station: Solving the Median String Problem" in the print companion or at <a href="https://cogniterra.org/lesson/29869/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=median-string-problem" rel="noopener" target="_blank">Cogniterra</a> if you fall into one of them.</p>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Instead of making a time-consuming search through all possible <em>k</em>-mers in <b>MedianString</b>, can you only search through all <em>k</em>-mers that appear in <em>Dna</em>?</p>
-<p class="callout callout-challenge"><span style="color: #66cc66;"><span class="callout-label">Code Challenge</span></span> Implement <b>MedianString</b>. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2b/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span style="color: #66cc66;"><span class="callout-label">Code Challenge</span></span> Implement <b>MedianString</b>. (Solve at <a href="https://cogniterra.org/lesson/29869/step/9?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=median-string-problem" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2b/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29869/step/9?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=median-string-problem" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> An integer <em>k</em>, followed by a collection of strings <em>Dna</em>.</li>
 <li><strong>Output:</strong> A <em>k</em>-mer <em>Pattern</em> that minimizes <em>d</em>(<em>Pattern</em>, <em>Dna</em>) among all possible choices of <em>k</em>-mers. (If there are multiple such strings <em>Pattern</em>, then you may return any one.)</li>

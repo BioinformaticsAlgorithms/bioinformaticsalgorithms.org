@@ -8,6 +8,13 @@ number: '2.6'
 order: 6
 slug: pseudocounts-laplace-rule-of-succession
 permalink: /bioinformatics-chapter-2/pseudocounts-laplace-rule-of-succession/
+cogniterra_lesson: 29871
+cogniterra_url: https://cogniterra.org/lesson/29871/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=pseudocounts-laplace-rule-of-succession
+code_challenges: 1
+video: sUXe2G2I9IA
+video_title: How Rolling Dice Helps Us Find Regulatory Motifs (Part 1)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-2-cover.jpg
 ---
 <h2 id="what-is-the-probability-that-the-sun-will-not-rise-tomorrow">What is the probability that the sun will not rise tomorrow?</h2>
 <p>In 1650, after the Scots proclaimed Charles II as king during the English Civil War, Oliver Cromwell made a famous appeal to the Church of Scotland. Urging them to see the error of their royal alliance, he pleaded,</p>
@@ -69,7 +76,7 @@ permalink: /bioinformatics-chapter-2/pseudocounts-laplace-rule-of-succession/
 <p><span class="center"><img alt="Greedy profile 12" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/greedy_profile_12.png" style="max-width:100%" width="600px"/></span></p>
 <p>The <i>Profile</i>-most probable 4-mer of the fifth string in <i>Dna</i> is <samp><span style="color: #64b0f4;"><b>A</b><span style="color: #ff4363;"><b>G</b></span><b>GT</b></span></samp>, the implanted 4-mer. As a result, <b>GreedyMotifSearch</b> has produced the following motif matrix, which implies the correct consensus string <samp><span style="color: #64b0f4;"><b>ACGT</b></span></samp>:</p>
 <p><span class="center"><img alt="Greedy profile 13" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/greedy_profile_13.png" style="max-width:60%" width="200px"/></span></p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>GreedyMotifSearch</b> with pseudocounts. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2e/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>GreedyMotifSearch</b> with pseudocounts. (Solve at <a href="https://cogniterra.org/lesson/29871/step/9?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=pseudocounts-laplace-rule-of-succession" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2e/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29871/step/9?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=pseudocounts-laplace-rule-of-succession" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> Integers <em>k</em> and <em>t</em>, followed by a collection of strings <em>Dna</em>.</li>
 <li><strong>Output:</strong> A collection of strings <em>BestMotifs</em> resulting from applying <b>GreedyMotifSearch</b>(<em>Dna</em>, <em>k</em>, <em>t</em>) with pseudocounts. If at any step you find more than one <em>Profile</em>-most probable <em>k</em>-mer in a given string, use the one occurring first.</li>

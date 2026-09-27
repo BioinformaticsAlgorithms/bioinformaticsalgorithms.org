@@ -8,6 +8,13 @@ number: '1.9'
 order: 10
 slug: finding-dnaa-boxes-in-e-coli
 permalink: /bioinformatics-chapter-1/finding-dnaa-boxes-in-e-coli/
+cogniterra_lesson: 29857
+cogniterra_url: https://cogniterra.org/lesson/29857/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=finding-dnaa-boxes-in-e-coli
+code_challenges: 0
+video: LRnS8cuF6iU
+video_title: From a Biological Insight Toward an Algorithm for Finding the Replication Origin (Part 2)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-1-cover.jpg
 ---
 <p>We now make a final attempt to find <em>DnaA</em> boxes in <em>E. coli</em> by finding the most frequent 9-mers with mismatches and reverse complements in the region suggested by the minimum skew as <em>ori</em>. Although the minimum of the skew diagram for <em>E. coli</em> is found at position 3923620, we should not assume that its <em>ori</em> is found exactly at this position due to random fluctuations in the skew.  To remedy this issue, we could choose a larger window size (e.g., <em>L</em> = 1000), but expanding the window introduces the risk that we may bring in other clumped 9-mers that do not represent <em>DnaA</em> boxes but appear in this window more often than the true <em>DnaA</em> box.  It makes more sense to try a small window either starting, ending, or centered at the position of minimum skew.</p>
 <p>Let’s cross our fingers and identify the most frequent 9-mers (with 1 mismatch and reverse complements) within a window of length 500 starting at position 3923620 of the <a href="https://bioinformaticsalgorithms.com/data/realdatasets/Replication/E_coli.txt" rel="noopener" target="_blank"><em>E. coli</em> genome</a>. Bingo! The experimentally confirmed <em>DnaA</em> box in <em>E. coli</em> (<samp><span style="color:olivedrab"><strong>TTATCCACA</strong></span></samp>) is indeed a most frequent 9-mer with 1 mismatch, along with its reverse complement <samp><span style="color:saddlebrown"><strong>TGTGGATAA</strong></span></samp>:</p>

@@ -1,0 +1,78 @@
+/* Alignment graph widget (Chapter 5). Everything is scoped under .w-alignment. */
+.w-alignment .wa-app { font-family: var(--ui); color: var(--ink); }
+.w-alignment p { margin: 0 0 0.5em; }
+.w-alignment .wa-mono { font-family: var(--mono); }
+.w-alignment .wa-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Controls */
+.w-alignment .wa-controls { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.w-alignment .wa-field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.w-alignment .wa-label { font-family: var(--ui); font-size: 0.8rem; font-weight: 700; color: var(--muted); letter-spacing: 0.02em; }
+.w-alignment .wa-input { font-family: var(--mono); font-size: 0.95rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; max-width: 100%; }
+.w-alignment select.wa-input { font-family: var(--ui); }
+.w-alignment .wa-input:disabled, .w-alignment select.wa-input:disabled { opacity: 0.5; }
+.w-alignment .wa-strings { display: flex; flex-wrap: wrap; gap: 10px 14px; }
+.w-alignment .wa-strings .wa-input { text-transform: uppercase; letter-spacing: 0.06em; }
+.w-alignment .wa-modes { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px 8px; margin: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.w-alignment .wa-modes legend { padding: 0 4px; }
+.w-alignment .wa-radio { font-size: 0.92rem; cursor: pointer; }
+.w-alignment .wa-params { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: flex-end; }
+.w-alignment .wa-num .wa-input { width: 4.2em; }
+.w-alignment .wa-muted .wa-label { opacity: 0.6; }
+.w-alignment .wa-build { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.w-alignment .wa-note { font-size: 0.85rem; color: var(--muted); }
+.w-alignment .wa-error { color: var(--red); font-weight: 700; font-size: 0.9rem; }
+.w-alignment .btn[disabled] { opacity: 0.45; cursor: default; }
+.w-alignment .wa-input:focus-visible, .w-alignment .btn:focus-visible, .w-alignment .wa-grid-box:focus-visible, .w-alignment .wa-radio input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* Step controls and explanation */
+.w-alignment .wa-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 10px; }
+.w-alignment .wa-explain { background: var(--wash); border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; min-height: 6.4em; }
+.w-alignment .wa-explain-head { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.w-alignment .wa-candidates { list-style: none; margin: 0 0 4px; padding: 0; }
+.w-alignment .wa-candidates li { font-size: 0.84rem; margin: 1px 0; overflow-wrap: anywhere; }
+.w-alignment .wa-win { color: var(--red); font-weight: 700; }
+.w-alignment .wa-result { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; color: var(--navy); margin: 0; }
+
+/* The grid scrolls inside its own box on narrow screens */
+.w-alignment .wa-grid-box { overflow: auto; max-width: 100%; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); -webkit-overflow-scrolling: touch; }
+.w-alignment table.wa-grid { border-collapse: separate; border-spacing: 2px; margin: 4px; display: table; font-family: var(--mono); }
+.w-alignment .wa-grid th, .w-alignment .wa-grid td { border: 0; padding: 0; }
+.w-alignment .wa-grid .wa-head { font-family: var(--mono); font-weight: 700; color: var(--navy); font-size: 0.95rem; text-align: center; min-width: 22px; height: 22px; }
+.w-alignment .wa-grid td.wa-cell { position: relative; width: 38px; min-width: 38px; height: 34px; text-align: center; vertical-align: middle; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); }
+.w-alignment .wa-arrow { position: absolute; top: 0; left: 3px; font-size: 0.68rem; line-height: 1.1; color: var(--muted); }
+.w-alignment .wa-value { font-size: 0.82rem; font-weight: 600; color: var(--ink); display: inline-block; padding-top: 6px; }
+.w-alignment .wa-grid td.wa-filled { background: var(--wash); }
+.w-alignment .wa-grid td.wa-candidate { border: 2px dashed var(--orange); }
+.w-alignment .wa-grid td.wa-winner { border: 2px solid var(--red); }
+.w-alignment .wa-grid td.wa-current { border: 2px solid var(--teal); box-shadow: 0 0 0 2px var(--teal) inset; }
+.w-alignment .wa-grid td.wa-best { border: 2px solid var(--teal); }
+.w-alignment .wa-grid td.wa-path { border: 2px solid var(--red); }
+.w-alignment .wa-grid td.wa-path .wa-value, .w-alignment .wa-grid td.wa-path .wa-arrow { color: var(--red); font-weight: 800; }
+
+/* Legends */
+.w-alignment .wa-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.78rem; color: var(--muted); margin: 6px 0 10px; }
+.w-alignment .wa-legend-item { display: inline-flex; align-items: center; gap: 5px; white-space: pre; }
+.w-alignment .wa-key { display: inline-block; width: 14px; height: 12px; border-radius: 3px; background: var(--paper); }
+.w-alignment .wa-key-current { border: 2px solid var(--teal); }
+.w-alignment .wa-key-candidate { border: 2px dashed var(--orange); }
+.w-alignment .wa-key-winner, .w-alignment .wa-key-path { border: 2px solid var(--red); }
+
+/* Alignment output: colors follow the book's alignment game figure */
+.w-alignment .wa-alignment-wrap { overflow-x: auto; }
+.w-alignment .wa-alignment { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--paper); margin-top: 4px; }
+.w-alignment .wa-aln { font-family: var(--mono); font-size: 1.05rem; line-height: 1.35; margin: 4px 0 8px; overflow-x: auto; }
+.w-alignment .wa-aln-row { white-space: nowrap; }
+.w-alignment .wa-aln-label { display: inline-block; width: 1.6em; color: var(--muted); font-size: 0.8rem; }
+.w-alignment .wa-col { display: inline-block; width: 1.2em; text-align: center; font-weight: 700; }
+.w-alignment .wa-match { color: var(--red); }
+.w-alignment .wa-mismatch { color: var(--think-edge, #a03881); }
+.w-alignment .wa-insertion { color: var(--exercise-edge, #3d86d8); }
+.w-alignment .wa-deletion { color: var(--challenge-edge, #3f9a4f); }
+.w-alignment .wa-marker { color: var(--muted); font-weight: 400; }
+.w-alignment .wa-aln-legend .wa-legend-item { font-weight: 700; }
+
+.w-alignment .wa-status { font-size: 0.85rem; color: var(--muted); margin: 8px 0 0; min-height: 1.3em; }
+@media (prefers-reduced-motion: reduce) {
+  .w-alignment * { transition: none !important; }
+}

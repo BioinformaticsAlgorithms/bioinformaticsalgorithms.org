@@ -8,6 +8,13 @@ number: Epilogue
 order: 14
 slug: epilogue
 permalink: /bioinformatics-chapter-5/epilogue/
+cogniterra_lesson: 29942
+cogniterra_url: https://cogniterra.org/lesson/29942/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=epilogue
+code_challenges: 2
+video: CTPiYiTQcuA
+video_title: Multiple Sequence Alignment
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <h2 id="building-a-three-dimensional-manhattan">Building a three-dimensional Manhattan</h2>
@@ -35,7 +42,7 @@ permalink: /bioinformatics-chapter-5/epilogue/
 <p style="text-align: center;"><img alt="Alignment cube" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_cube.png" style="max-width: 100%" width="563px"/></p>
 </div>
 <!-- Step 3 -->
-<p>The score of a multiple alignment is defined as the sum of scores of the alignment columns (or, equivalently, weights of edges in the alignment path), with an optimal alignment being one that maximizes this score. In the case of an amino acid alphabet, we can use a very general scoring method that is defined by a <em>t</em>-dimensional matrix containing 21<em><sup>t</sup></em> entries that describes the scores of all possible combinations of <em>t</em> symbols (representing 20 amino acids and the space symbol). Intuitively, we should reward more conserved columns with higher scores. For more details, see "DETOUR: Scoring Multiple Alignments" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p>The score of a multiple alignment is defined as the sum of scores of the alignment columns (or, equivalently, weights of edges in the alignment path), with an optimal alignment being one that maximizes this score. In the case of an amino acid alphabet, we can use a very general scoring method that is defined by a <em>t</em>-dimensional matrix containing 21<em><sup>t</sup></em> entries that describes the scores of all possible combinations of <em>t</em> symbols (representing 20 amino acids and the space symbol). Intuitively, we should reward more conserved columns with higher scores. For more details, see "DETOUR: Scoring Multiple Alignments" in the print companion or at <a href="https://cogniterra.org/lesson/29942/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=epilogue" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <p><strong>Multiple Alignment Problem:</strong> <em>Find the highest-scoring alignment between multiple strings under a given scoring matrix.</em></p>
 <ul>
 <li><strong>Input:</strong> A collection of <em>t</em> strings and a <em>t</em>-dimensional matrix <em>Score</em>.</li>
@@ -47,7 +54,7 @@ permalink: /bioinformatics-chapter-5/epilogue/
 <p>In the case of <em>t</em> sequences of length <em>n</em>, the alignment graph consists of approximately <em>n</em><sup><em>t</em></sup> nodes, and each node has up to 2<sup><em>t</em></sup> − 1 incoming edges, yielding a total runtime of O(<em>n</em><sup><em>t</em></sup>  · 2<sup><em>t</em></sup>).  As <em>t</em> grows, the dynamic programming algorithm becomes impractical. Many heuristics for suboptimal multiple alignments have been proposed to address this runtime bottleneck.</p>
 <!-- Step 5 -->
 <p>In the <strong>Multiple Longest Common Subsequence Problem</strong>, the score of a column of the alignment matrix is equal to 1 if all of the column's symbols are identical, and 0 if even one symbol disagrees.</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Multiple Longest Common Subsequence Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5m/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Multiple Longest Common Subsequence Problem. Solve at <a href="https://cogniterra.org/lesson/29942/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=epilogue" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5m/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29942/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=epilogue" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul><li><strong>Input:</strong> Three DNA strings of length at most 10.</li><li><strong>Output:</strong> The length of a longest common subsequence of these three strings, followed by a multiple alignment of the three strings corresponding to such an alignment.</li></ul>
 <!-- Step 6 -->
 <h2 id="a-greedy-multiple-alignment-algorithm">A greedy multiple alignment algorithm</h2>
@@ -79,7 +86,7 @@ permalink: /bioinformatics-chapter-5/epilogue/
 <!-- Step 9 -->
 <p>Although greedy multiple alignment algorithms work well for similar sequences, their performance deteriorates for dissimilar sequences because greedy methods may be misled by a spurious pairwise alignment. If the first two sequences picked for building a multiple alignment are aligned in a way that is incompatible with the optimal multiple alignment, then the error in this initial pairwise alignment will propagate all the way through to the final multiple alignment.</p>
 <p>After learning how to align multiple sequences, you are now ready to solve a challenge problem that is comparable to the task that Marahiel and his collaborators faced in 1999.</p>
-<p class="callout callout-challenge"><span class="callout-label">Final Challenge</span> In 1999, Marahiel derived the non-ribosomal code for only 14 of the 20 proteinogenic amino acids (<samp>Ala</samp>, <samp>Asn</samp>, <samp>Asp</samp>, <samp>Cys</samp>, <samp>Gln</samp>, <samp>Glu</samp>, <samp>Ile</samp>, <samp>Leu</samp>, <samp>Phe</samp>, <samp>Pro</samp>, <samp>Ser</samp>, <samp>Thr</samp>, <samp>Tyr</samp>, <samp>Val</samp>) because he lacked A-domain sequences for the remaining 6 amino acids. With the availability of many more A-domains, you now have the chance to fill in the gaps in Marahiel’s original paper. Construct the multiple alignment of 397 A-domains, reveal the conservative columns in this alignment, and make your best guess about the signatures encoding all 20 proteinogenic amino acids based on Marahiel’s alignment.</p>
+<p class="callout callout-challenge"><span class="callout-label">Final Challenge</span> In 1999, Marahiel derived the non-ribosomal code for only 14 of the 20 proteinogenic amino acids (<samp>Ala</samp>, <samp>Asn</samp>, <samp>Asp</samp>, <samp>Cys</samp>, <samp>Gln</samp>, <samp>Glu</samp>, <samp>Ile</samp>, <samp>Leu</samp>, <samp>Phe</samp>, <samp>Pro</samp>, <samp>Ser</samp>, <samp>Thr</samp>, <samp>Tyr</samp>, <samp>Val</samp>) because he lacked A-domain sequences for the remaining 6 amino acids. With the availability of many more A-domains, you now have the chance to fill in the gaps in Marahiel’s original paper. Construct the multiple alignment of 397 A-domains, reveal the conservative columns in this alignment, and make your best guess about the signatures encoding all 20 proteinogenic amino acids based on Marahiel’s alignment.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29942/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=epilogue" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <div><p><a class="button" href="https://bioinformaticsalgorithms.com/data/challengedatasets/Marahiel_data.csv" rel="noopener" target="_blank">Download A-Domain Data (.csv format)</a></p>
 </div>
 <!-- Step 10 -->

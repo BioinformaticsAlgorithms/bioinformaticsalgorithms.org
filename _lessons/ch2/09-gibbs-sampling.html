@@ -8,6 +8,13 @@ number: '2.9'
 order: 9
 slug: gibbs-sampling
 permalink: /bioinformatics-chapter-2/gibbs-sampling/
+cogniterra_lesson: 29874
+cogniterra_url: https://cogniterra.org/lesson/29874/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=gibbs-sampling
+code_challenges: 1
+video: P0Befhof0jU
+video_title: How Rolling Dice Helps Us Find Regulatory Motifs (Part 3)
+video_date: '2014-01-14'
+image: /assets/images/site/chapter-2-cover.jpg
 ---
 <p>Note that <strong>RandomizedMotifSearch</strong> may change all <em>t</em> strings <em>Motifs</em> in a single iteration. This strategy may prove reckless, since some correct motifs (captured in <em>Motifs</em>) may potentially be discarded at the next iteration. <strong>GibbsSampler</strong> is a more cautious iterative algorithm that discards a single <em>k</em>-mer from the current set of motifs at each iteration and decides to either keep it or replace it with a new one. This algorithm thus moves with more caution in the space of all motifs, as illustrated below.</p>
 <p><span class="center"><img alt="Randomized vs gibbs" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/randomized_vs_gibbs.png" style="max-width:100%" width="650px"/></span></p>
@@ -29,7 +36,7 @@ permalink: /bioinformatics-chapter-2/gibbs-sampling/
             <em>BestMotifs</em> ← <em>Motifs</em>
     <strong>return</strong> <em>BestMotifs</em></code></small></pre>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Note that in contrast to <b>RandomizedMotifSearch</b>, which always moves from higher to lower scoring <em>Motifs</em>, <b>GibbsSampler</b> may move from lower to higher scoring <em>Motifs</em>. Why is this reasonable?</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>GibbsSampler</b>. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2g/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>GibbsSampler</b>. (Solve at <a href="https://cogniterra.org/lesson/29874/step/11?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=gibbs-sampling" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2g/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29874/step/11?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=gibbs-sampling" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> Integers <em>k</em>, <em>t</em>, and <em>N</em>, followed by a collection of strings <em>Dna</em>.</li>
 <li><strong>Output:</strong> The strings <em>BestMotifs</em> resulting from running <b>GibbsSampler</b>(<em>Dna</em>, <em>k</em>, <em>t</em>, <em>N</em>) with 20 random starts. Remember to use pseudocounts!</li>

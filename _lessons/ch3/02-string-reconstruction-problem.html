@@ -8,6 +8,13 @@ number: '3.2'
 order: 2
 slug: string-reconstruction-problem
 permalink: /bioinformatics-chapter-3/string-reconstruction-problem/
+cogniterra_lesson: 29885
+cogniterra_url: https://cogniterra.org/lesson/29885/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=string-reconstruction-problem
+code_challenges: 1
+video: 9O3hAXp8gdM
+video_title: The String Reconstruction Problem
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-3-cover.jpg
 ---
 <h2 id="genome-assembly-is-more-difficult-than-you-think">Genome assembly is more difficult than you think</h2>
 <p>Before we introduce a computational problem modeling genome assembly, we will take a moment to discuss a few practical complications that make genome assembly more difficult than the Newspaper Problem.</p>
@@ -22,7 +29,7 @@ permalink: /bioinformatics-chapter-3/string-reconstruction-problem/
 <li style="text-align: left;"><strong>Input:</strong> An integer <em>k</em> and a string <em>Text</em>.</li>
 <li style="text-align: left;"><strong>Output:</strong> <em>Composition<sub>k</sub></em>(<em>Text</em>), where the <em>k</em>-mers are arranged in lexicographic order.</li>
 </ul>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the String Composition Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3a/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the String Composition Problem. (Solve at <a href="https://cogniterra.org/lesson/29885/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=string-reconstruction-problem" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba3a/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29885/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=string-reconstruction-problem" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> An integer <em>k</em> and a string <em>Text</em>.</li>
 <li><strong>Output:</strong> <em>Composition</em><sub><em>k</em></sub>(<em>Text</em>).</li>
@@ -93,7 +100,7 @@ there is only one such 3-mer, <samp>AAT</samp>. In turn, <samp>AAT</samp> can on
 <p style="text-align: left;">Yet this assembly is incorrect because we have only used fourteen of the fifteen 3-mers in the composition (we omitted <samp>GGG</samp>), making our reconstructed genome one nucleotide too short.</p>
 <h2 id="repeats-complicate-genome-assembly">Repeats complicate genome assembly</h2>
 <p>The difficulty in assembling this simulated genome arises because <samp>ATG</samp> is <em>repeated</em> three times in the 3-mer composition, which causes us to have the three choices <samp>TGG</samp>, <samp>TGC</samp>, and <samp>TGT</samp> by which to extend <samp>ATG</samp>. Repeated substrings in the genome are not a serious problem when we have just 15 reads, but with millions of reads, repeats make it much more difficult to "look ahead" and construct the correct assembly.</p>
-<p>If you followed our discussion of finding the origin of replication in bacterial genomes, you know how unlikely it is to witness a long repeat in a randomly generated sequence of nucleotides. You also know that real genomes are anything but random. Indeed, approximately 50% of the human genome is made up of repeats, e.g., the approximately 300 nucleotide-long <strong>Alu sequence</strong> is repeated over a million times, with only a few nucleotides inserted/deleted/substituted each time. For more details, see "DETOUR: Repeats in the Human Genome" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p>If you followed our discussion of finding the origin of replication in bacterial genomes, you know how unlikely it is to witness a long repeat in a randomly generated sequence of nucleotides. You also know that real genomes are anything but random. Indeed, approximately 50% of the human genome is made up of repeats, e.g., the approximately 300 nucleotide-long <strong>Alu sequence</strong> is repeated over a million times, with only a few nucleotides inserted/deleted/substituted each time. For more details, see "DETOUR: Repeats in the Human Genome" in the print companion or at <a href="https://cogniterra.org/lesson/29885/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=string-reconstruction-problem" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <p>An analogy illustrating the difficulty of assembling a genome with many repeats is the Triazzle® jigsaw puzzle (shown below). People usually put together jigsaw puzzles by connecting matching pieces. However, every piece in the Triazzle matches more than one other piece; in the Triazzle below, each frog appears several times. If you proceed carelessly, then you will likely match most of the pieces but fail to fit the remaining ones. And yet the Triazzle has only sixteen pieces, which should give us pause about assembling a genome from millions of reads.</p>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Design a strategy for assembling the Triazzle puzzle.</p>
 <p><span class="image-wrapper"><p style="text-align: center;"><img alt="Triazzle" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Assembly/triazzle.png" style="max-width:100%" width="650px"/></p></span></p>

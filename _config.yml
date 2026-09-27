@@ -45,6 +45,8 @@ plugins:
 
 exclude:
   - scripts
+  - docs
+  - tests
   - README.md
   - Gemfile
   - Gemfile.lock

@@ -1,0 +1,14 @@
+{% assign cc = page.code_challenges | default: 0 %}
+<aside class="next-steps">
+  <div class="ns-main">
+    <div>
+      <p class="ns-head">{% if cc > 0 %}Now solve this lesson's {% if cc == 1 %}code challenge{% else %}{{ cc }} code challenges{% endif %} with instant feedback{% else %}Keep going in the interactive text{% endif %}</p>
+      <p>The interactive version of the book on Cogniterra has every chapter, autograded code challenges, debug datasets for every problem, and a certificate when you finish. It is the version we keep up to date.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ page.cogniterra_url | default: site.cogniterra_url }}" target="_blank" rel="noopener">{% if cc > 0 %}Solve them free{% else %}Continue free{% endif %}</a>
+  </div>
+  <div class="ns-print">
+    <img src="{{ '/assets/images/site/bioinformatics-algorithms-3rd-edition-small.jpg' | relative_url }}" alt="" width="54" height="55" loading="lazy">
+    <span>Rather read on paper? The <a href="{{ site.buy_url | relative_url }}">print edition</a> has all eleven chapters plus the Detours and Charging Stations, {{ site.buy_price }} direct from us.</span>
+  </div>
+</aside>

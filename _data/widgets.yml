@@ -1,0 +1,11 @@
+# Interactive widgets and the lessons that hold them (shown on the home page).
+- {id: skew, title: "Draw a genome's GC skew", lesson: /bioinformatics-chapter-1/skew-diagram/, blurb: "Watch the skew fall and rise across real E. coli DNA and find where replication begins."}
+- {id: clumps, title: "Hunt for hidden messages", lesson: /bioinformatics-chapter-1/clump-finding-problem/, blurb: "Slide a window along the Vibrio cholerae origin and find the 9-mers that clump."}
+- {id: profile, title: "Build a motif logo", lesson: /bioinformatics-chapter-2/scoring-motifs/, blurb: "Edit a motif matrix and see its profile, entropy and logo change, then roll the profile dice."}
+- {id: gibbs, title: "Watch Gibbs sampling converge", lesson: /bioinformatics-chapter-2/gibbs-sampling-in-action/, blurb: "Step a randomized algorithm as it homes in on implanted motifs."}
+- {id: debruijn, title: "Assemble a genome with a de Bruijn graph", lesson: /bioinformatics-chapter-3/eulerian-path-de-bruijn-graph/, blurb: "Glue k-mers into a graph and walk the path that spells the genome."}
+- {id: euler, title: "Find an Eulerian cycle", lesson: /bioinformatics-chapter-3/eulerian-cycle-algorithm/, blurb: "Step through Euler's algorithm, and see why Königsberg has no answer."}
+- {id: spectrum, title: "Shatter a peptide", lesson: /bioinformatics-chapter-4/mass-spectrometry-theoretical-spectrum/, blurb: "Compute the theoretical spectrum of a cyclic peptide, one subpeptide at a time."}
+- {id: convolution, title: "Sequence an antibiotic from a noisy spectrum", lesson: /bioinformatics-chapter-4/spectral-convolution/, blurb: "Use the spectral convolution and a leaderboard to recover Tyrocidine B1."}
+- {id: change, title: "Make change three ways", lesson: /bioinformatics-chapter-5/change-problem-dynamic-programming/, blurb: "Greedy, recursive and dynamic programming, side by side."}
+- {id: alignment, title: "Align two sequences", lesson: /bioinformatics-chapter-5/backtracking-alignment-graph/, blurb: "Fill the alignment grid cell by cell, then backtrack to the best alignment."}

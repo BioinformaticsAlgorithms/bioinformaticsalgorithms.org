@@ -1,0 +1,5 @@
+---
+layout: null
+sitemap: false
+---
+[{% for l in site.lessons %}{"kind":"Lesson","title":{{ l.number | prepend: "Lesson " | append: ": " | append: l.title | jsonify }},"url":{{ l.url | relative_url | jsonify }},"text":{{ l.content | strip_html | normalize_whitespace | truncate: 12000 | jsonify }}},{% endfor %}{% for c in site.data.chapters %}{% capture key %}faq-chapter-{{ c.n }}{% endcapture %}{% assign items = site.data.faq[key] %}{% for e in items %}{"kind":"FAQ, Chapter {{ c.n }}","title":{{ e.q | jsonify }},"url":{{ '/' | append: key | append: '#q' | append: forloop.index | relative_url | jsonify }},"text":{{ e.a | strip_html | normalize_whitespace | jsonify }}},{% endfor %}{% endfor %}{"kind":"Page","title":"Buy the print book","url":{{ '/shop' | relative_url | jsonify }},"text":"Print edition of Bioinformatics Algorithms, all eleven chapters. Price, shipping and returns."}]

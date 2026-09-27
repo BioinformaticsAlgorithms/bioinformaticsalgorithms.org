@@ -1,8 +1,13 @@
-<aside class="cta-book">
-  <img src="{{ '/assets/images/site/bioinformatics-algorithms-3rd-edition-small.jpg' | relative_url }}" alt="Bioinformatics Algorithms, 3rd edition, print book" width="120" height="122" loading="lazy">
-  <div>
-    <p class="cta-head">Keep the whole book on your desk</p>
-    <p>The print edition has all eleven chapters, plus the Detours and Charging Stations that are not online. {{ site.buy_price }} direct from us, less than on Amazon.</p>
-    <p class="cta-actions"><a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy the print book</a> <a class="btn btn-ghost" href="{{ site.cogniterra_url }}" target="_blank" rel="noopener">Try the interactive course free</a></p>
+<aside class="next-steps">
+  <div class="ns-main">
+    <div>
+      <p class="ns-head">Learn it by doing it</p>
+      <p>The interactive text on Cogniterra has all eleven chapters, hundreds of autograded code challenges, debug datasets for every problem, and a certificate. It is free to start and it is the version we keep up to date.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=cta&utm_campaign={{ page.url | slugify }}" target="_blank" rel="noopener">Start free</a>
+  </div>
+  <div class="ns-print">
+    <img src="{{ '/assets/images/site/bioinformatics-algorithms-3rd-edition-small.jpg' | relative_url }}" alt="" width="54" height="55" loading="lazy">
+    <span>Rather read on paper? The <a href="{{ site.buy_url | relative_url }}">print edition</a> has all eleven chapters plus the Detours and Charging Stations, {{ site.buy_price }} direct from us.</span>
   </div>
 </aside>

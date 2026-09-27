@@ -1,0 +1,47 @@
+/* Spectral convolution + leaderboard widget. Everything is scoped under .w-convolution. */
+.w-convolution { color: var(--ink); min-width: 0; max-width: 100%; }
+.w-convolution *, .w-convolution *::before, .w-convolution *::after { box-sizing: border-box; }
+.w-convolution-body { padding: 14px 18px; font-size: 0.95rem; line-height: 1.5; min-width: 0; }
+
+.w-convolution .wc-hint, .w-convolution .wc-note { font-size: 0.85rem; color: var(--muted); margin: 0 0 8px; }
+.w-convolution .wc-label { display: inline-block; font-weight: 700; font-size: 0.9rem; margin: 0 6px 4px 0; }
+.w-convolution .wc-presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.w-convolution .wc-preset { font-family: var(--ui); font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border: 1px solid var(--muted); border-radius: 999px; background: var(--wash); color: var(--ink); cursor: pointer; }
+.w-convolution .wc-textarea { display: block; width: 100%; box-sizing: border-box; font-family: var(--mono); font-size: 0.88rem; padding: 6px 8px; border: 1px solid var(--muted); border-radius: 6px; background: var(--paper); color: var(--ink); resize: vertical; }
+.w-convolution .wc-number { font-family: var(--mono); font-size: 0.95rem; width: 4.5em; padding: 4px 6px; border: 1px solid var(--muted); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.w-convolution .wc-error { color: var(--red); font-size: 0.9rem; margin: 6px 0 0; min-height: 1.2em; }
+.w-convolution .wc-subhead { font-family: var(--ui); font-size: 0.95rem; color: var(--navy); margin: 16px 0 6px; }
+.w-convolution .wc-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 8px; }
+.w-convolution .wc-field { display: inline-flex; align-items: center; gap: 6px; }
+.w-convolution .wc-field .wc-label { margin: 0; }
+.w-convolution .wc-toggles { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--muted); border-radius: 12px; overflow: hidden; }
+.w-convolution .wc-toggle { font-family: var(--ui); font-size: 0.82rem; font-weight: 700; padding: 6px 12px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
+.w-convolution .wc-toggle[aria-pressed="true"] { background: var(--navy); color: var(--paper); }
+.w-convolution button:focus-visible, .w-convolution .wc-textarea:focus-visible, .w-convolution .wc-number:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.w-convolution button:disabled { opacity: 0.45; cursor: default; }
+
+.w-convolution .wc-mono { font-family: var(--mono); }
+.w-convolution .wc-multiset { font-family: var(--mono); font-size: 0.8rem; max-height: 6.5em; overflow-y: auto; margin: 0 0 8px; padding: 6px 8px; background: var(--wash); border-radius: 6px; overflow-wrap: anywhere; }
+.w-convolution .wc-histogram { overflow-x: auto; }
+.w-convolution .wc-histogram-svg { display: block; width: 100%; min-width: 320px; height: auto; background: var(--paper); }
+.w-convolution .wc-axis { stroke: var(--ink); stroke-width: 1; }
+.w-convolution .wc-tick { font-family: var(--ui); font-size: 11px; fill: var(--muted); }
+.w-convolution .wc-bar { fill: var(--muted); opacity: 0.55; }
+.w-convolution .wc-bar-on { fill: var(--teal); opacity: 1; }
+.w-convolution .wc-bar-label { font-family: var(--ui); font-size: 9px; font-weight: 700; fill: var(--ink); }
+.w-convolution .wc-top-line { margin: 0 0 6px; font-size: 0.92rem; }
+
+.w-convolution .wc-status { font-weight: 700; margin: 6px 0; }
+.w-convolution .wc-leader-line { margin: 0 0 4px; font-size: 0.95rem; }
+.w-convolution .wc-leader-line strong { color: var(--teal); }
+.w-convolution .wc-round { max-height: 340px; overflow: auto; border: 1px solid var(--line); border-radius: 6px; margin-top: 8px; }
+.w-convolution .wc-round > .wc-note { padding: 6px 8px; margin: 0; }
+.w-convolution .wc-table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+.w-convolution .wc-table caption { text-align: left; font-weight: 700; font-size: 0.82rem; color: var(--navy); padding: 6px 8px; }
+.w-convolution .wc-table th, .w-convolution .wc-table td { padding: 3px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+.w-convolution .wc-table th { position: sticky; top: 0; background: var(--paper); color: var(--muted); font-weight: 700; }
+.w-convolution .wc-table td.wc-mono { text-align: left; }
+.w-convolution .wc-kept td { color: var(--ink); }
+.w-convolution .wc-cut td { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.w-convolution .wc-cut td:last-child { text-decoration: none; }
+.w-convolution .wc-cutline td { border-bottom: 2px solid var(--red); }

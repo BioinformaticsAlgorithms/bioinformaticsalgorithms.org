@@ -1,0 +1,75 @@
+/* Eulerian cycle widget. Everything is scoped under .w-euler. */
+.w-euler .eul-body { font-family: var(--ui); color: var(--ink); }
+.w-euler .eul-section { margin: 0 0 14px; }
+.w-euler .eul-konigsberg { border-top: 1px solid var(--line); padding-top: 12px; }
+.w-euler .eul-subhead { font-weight: 800; color: var(--navy); margin: 0 0 8px; }
+.w-euler .eul-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 8px; }
+.w-euler .eul-field { display: flex; flex-direction: column; gap: 2px; margin: 0 0 8px; }
+.w-euler .eul-field-name { font-weight: 700; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.02em; }
+.w-euler .eul-input {
+  font-family: var(--mono); font-size: 0.9rem; line-height: 1.4; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; width: 100%; resize: vertical;
+}
+.w-euler .eul-input:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+.w-euler .eul-note { font-size: 0.8rem; color: var(--muted); }
+.w-euler .eul-error { margin: 0 0 8px; color: var(--red); font-size: 0.9rem; }
+.w-euler .eul-error:empty { display: none; }
+.w-euler .btn-small:disabled { opacity: 0.45; cursor: default; }
+.w-euler .btn-small:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+.w-euler .eul-code {
+  font-family: var(--mono); font-size: 0.78rem; line-height: 1.5; background: var(--wash); color: var(--muted);
+  border-radius: 6px; padding: 8px 10px; margin: 0 0 8px; overflow-x: auto; white-space: pre;
+}
+.w-euler .eul-code-line { display: inline-block; padding: 0 4px; border-radius: 3px; }
+.w-euler .eul-code-line.is-active { color: var(--ink); font-weight: 700; background: var(--paper); box-shadow: inset 3px 0 0 var(--orange); }
+
+.w-euler .eul-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--paper);
+}
+.w-euler .eul-svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.w-euler .eul-ksvg { min-width: 460px; }
+.w-euler .eul-backdrop { fill: var(--paper); }
+
+.w-euler .eul-edge-line { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.w-euler .eul-edge-arrow { fill: var(--muted); }
+.w-euler .eul-edge.is-unused .eul-edge-line { stroke-dasharray: 5 4; opacity: 0.8; }
+.w-euler .eul-edge.is-unused .eul-edge-arrow { opacity: 0.8; }
+.w-euler .eul-edge.is-bridge .eul-edge-line { stroke: var(--muted); stroke-width: 3; }
+.w-euler .eul-edge.is-used .eul-edge-line { stroke-width: 3; }
+.w-euler .eul-edge.is-current .eul-edge-line { stroke-width: 5; }
+.w-euler .eul-edge-label {
+  font-size: 12px; font-weight: 700; fill: var(--ink);
+  paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round;
+}
+
+/* One color per iteration: Cycle0, Cycle1, ... */
+.w-euler .eul-it-0 { --eul-color: var(--teal); }
+.w-euler .eul-it-1 { --eul-color: var(--orange); }
+.w-euler .eul-it-2 { --eul-color: var(--red); }
+.w-euler .eul-it-3 { --eul-color: var(--nt-c, #64b0f4); }
+.w-euler .eul-it-4 { --eul-color: var(--nt-a, #a03881); }
+.w-euler .eul-it-5 { --eul-color: var(--nt-t, #66cc66); }
+.w-euler .eul-edge.is-used .eul-edge-line { stroke: var(--eul-color); }
+.w-euler .eul-edge.is-used .eul-edge-arrow { fill: var(--eul-color); }
+.w-euler .eul-seq-step { color: var(--eul-color); font-weight: 700; }
+
+.w-euler .eul-node ellipse { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+.w-euler .eul-node-label { font-family: var(--ui); font-size: 13px; font-weight: 700; fill: var(--ink); }
+.w-euler .eul-node.is-here ellipse { fill: var(--wash); stroke: var(--orange); stroke-width: 3.5; }
+.w-euler .eul-node.is-candidate ellipse { stroke: var(--teal); stroke-width: 3; stroke-dasharray: 4 3; }
+.w-euler .eul-node.is-newstart ellipse { fill: var(--wash); stroke: var(--teal); stroke-width: 4; stroke-dasharray: none; }
+
+.w-euler .eul-steps { margin-top: 10px; }
+.w-euler .eul-status { font-family: var(--read); font-size: 1rem; line-height: 1.5; margin: 6px 0 4px; min-height: 3em; }
+.w-euler .eul-cycle { margin: 0 0 6px; overflow-wrap: anywhere; }
+.w-euler .eul-sequence { font-family: var(--mono); font-size: 0.92rem; }
+
+.w-euler .eul-table { border-collapse: collapse; margin: 10px 0 6px; font-size: 0.9rem; }
+.w-euler .eul-table caption { text-align: left; font-weight: 700; font-size: 0.8rem; color: var(--muted); padding-bottom: 4px; }
+.w-euler .eul-table th, .w-euler .eul-table td { border-bottom: 1px solid var(--line); padding: 3px 14px 3px 0; text-align: left; }
+.w-euler .eul-num { font-family: var(--mono); }
+.w-euler .eul-odd { color: var(--red); font-weight: 700; }
+.w-euler .eul-even { color: var(--teal); font-weight: 700; }
+.w-euler .eul-verdict { font-family: var(--read); line-height: 1.5; margin: 6px 0 10px; }

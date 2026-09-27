@@ -8,6 +8,10 @@ number: '5.4'
 order: 4
 slug: alignment-graph
 permalink: /bioinformatics-chapter-5/alignment-graph/
+cogniterra_lesson: 29932
+cogniterra_url: https://cogniterra.org/lesson/29932/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=alignment-graph
+code_challenges: 0
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <p>Below, we add two arrays of integers to an alignment of ATGTTATA and ATCGTCC. The array [0 1 2 2 3 4 5 6 7 8] holds the number of symbols of ATGTTATA used up to a given column in the alignment. Similarly, the array [0 1 2 3 4 5 5 6 6 7] holds the number of symbols of ATCGTCC used up to a given column.</p>
@@ -23,7 +27,7 @@ permalink: /bioinformatics-chapter-5/alignment-graph/
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Can you use the alignment graph to find a longest common subsequence of two strings?</p>
 <p style="text-align: center;"><img alt="Alignment path 1" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_path-1.png" style="max-width: 100%" width="392px"/></p>
 <!-- Step 3 -->
-<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Construct the alignment of <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp> corresponding to the alignment path shown below. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Construct the alignment of <samp>ATGTTATA</samp> and <samp>ATCGTCC</samp> corresponding to the alignment path shown below. Solve at <a href="https://cogniterra.org/lesson/29932/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=alignment-graph" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <span class="image-wrapper"><p style="text-align: center;"><img alt="Alignment path 2" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/alignment_path-2.png" style="max-width: 100%" title="Image: /media/attachments/lessons/242/alignment_path-2_1.png" width="443px"/></p></span>
 <!-- Step 4 -->
 <p>Recall that finding a longest common subsequence of two strings is equivalent to finding an alignment of these strings maximizing the number of matches. In the figure below, we highlight all diagonal edges of <em>AlignmentGraph</em>(<samp>ATGTTATA</samp>, <samp>ATCGTCC</samp>) corresponding to matches. If we assign a weight of 1 to all these edges and 0 to all other edges, then the Longest Common Subsequence Problem is equivalent to finding a longest path in this weighted DAG!

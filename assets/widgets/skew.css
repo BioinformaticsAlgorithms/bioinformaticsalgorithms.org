@@ -1,0 +1,50 @@
+/* GC skew explorer. Everything is scoped under .w-skew and uses the site tokens. */
+.w-skew { color: var(--ink); min-width: 0; max-width: 100%; }
+.w-skew *, .w-skew *::before, .w-skew *::after { box-sizing: border-box; }
+.w-skew-body { padding: 14px 18px; font-size: 0.95rem; line-height: 1.5; }
+.w-skew-controls { display: flex; flex-direction: column; gap: 6px; }
+.w-skew-label { font-weight: 700; font-size: 0.85rem; color: var(--muted); }
+.w-skew-select, .w-skew-text {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  width: 100%;
+  max-width: 100%;
+}
+.w-skew-text { font-family: var(--mono); font-size: 0.82rem; line-height: 1.45; resize: vertical; word-break: break-all; }
+.w-skew-select:focus-visible, .w-skew-text:focus-visible, .w-skew-canvas:focus-visible, .w-skew .btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.w-skew-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.w-skew .btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+.w-skew-message { color: var(--red); font-weight: 700; margin: 0; min-height: 0; }
+.w-skew-message:empty { display: none; }
+
+.w-skew-section { margin-top: 18px; }
+.w-skew-subhead { font-family: var(--ui); font-size: 1rem; font-weight: 800; color: var(--navy); margin: 0 0 4px; }
+.w-skew-note, .w-skew-hint { color: var(--muted); font-size: 0.88rem; margin: 0 0 8px; }
+.w-skew-chart { width: 100%; min-width: 0; overflow: hidden; border-radius: 8px; }
+.w-skew-canvas { display: block; touch-action: pan-y; cursor: crosshair; border-radius: 8px; }
+.w-skew-readout { font-family: var(--mono); font-size: 0.85rem; margin: 6px 0; overflow-wrap: anywhere; }
+.w-skew-minima { margin: 6px 0; overflow-wrap: anywhere; }
+.w-skew-status { color: var(--muted); font-size: 0.88rem; margin: 4px 0 0; min-height: 1.5em; }
+
+.w-skew-steps { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.w-skew .w-skew-table { display: table; border-collapse: collapse; font-family: var(--mono); font-size: 0.82rem; margin: 0; }
+.w-skew-table th { position: sticky; left: 0; z-index: 1; background: var(--wash); font-family: var(--ui); font-size: 0.75rem; font-weight: 700; color: var(--muted); text-align: right; white-space: nowrap; padding: 3px 8px; border-right: 1px solid var(--line); }
+.w-skew-table td { text-align: center; min-width: 2.2em; padding: 3px 4px; border-bottom: 1px solid var(--line); }
+.w-skew-table tr:last-child td { border-bottom: 0; font-weight: 700; }
+.w-skew-table td.w-skew-start { color: var(--muted); border-right: 1px dashed var(--line); }
+.w-skew-table td.w-skew-pending { color: var(--muted); opacity: 0.55; }
+.w-skew-table td.w-skew-current { background: var(--wash); box-shadow: inset 0 -3px 0 var(--orange); opacity: 1; }
+.w-skew-nt { font-weight: 700; }
+.w-skew-nt-A { color: var(--nt-a, #a03881); }
+.w-skew-nt-C { color: var(--nt-c, #64b0f4); }
+.w-skew-nt-G { color: var(--nt-g, #ff4363); }
+.w-skew-nt-T { color: var(--nt-t, #66cc66); }
+.w-skew-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 480px) {
+  .w-skew-body { padding: 12px; }
+}

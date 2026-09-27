@@ -1,26 +1,42 @@
 <a class="skip" href="#main">Skip to content</a>
+<div class="read-progress" aria-hidden="true"><span></span></div>
 <header class="site-header">
   <div class="wrap header-row">
     <a class="brand" href="{{ '/' | relative_url }}" aria-label="Bioinformatics Algorithms home">
-      <span class="brand-bar"></span>
-      <span class="brand-text">Bioinformatics<br>Algorithms</span>
+      <img class="brand-monkey" src="{{ '/assets/images/site/monkey-160.png' | relative_url }}" alt="" width="72" height="48">
+      <span class="brand-words"><span class="brand-title">Bioinformatics Algorithms</span><span class="brand-sub">An Active Learning Approach</span></span>
     </a>
-    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav" onclick="var n=document.getElementById('site-nav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
-      <nav class="site-nav" id="site-nav" aria-label="Main">
-        <div class="nav-group">
-          <a href="{{ '/read-the-book' | relative_url }}">Read free</a>
-          <div class="nav-menu">
-            {% for c in site.data.chapters %}{% if c.free %}
-            <a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}"><span class="nav-num">{{ c.n }}</span> {{ c.topic }}</a>
-            {% endif %}{% endfor %}
-          </div>
+    <div class="header-tools">
+      <button class="icon-btn search-open" type="button" aria-label="Search the book" data-search-open>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch between light and dark" data-theme-toggle>
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+      </button>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span></span><span></span><span></span></button>
+    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <div class="nav-group">
+        <a href="{{ '/read-the-book' | relative_url }}">Read free</a>
+        <div class="nav-menu">
+          {% for c in site.data.chapters %}{% if c.free %}
+          <a href="{{ '/bioinformatics-chapter-' | append: c.n | append: '/' | relative_url }}"><span class="nav-num">{{ c.n }}</span> {{ c.topic }}</a>
+          {% endif %}{% endfor %}
         </div>
-        <a href="{{ '/lecture-videos' | relative_url }}">Videos</a>
-        <a href="{{ '/online-courses' | relative_url }}">Online course</a>
-        <a href="{{ '/faq-home' | relative_url }}">FAQ</a>
-        <a href="{{ '/authors' | relative_url }}">Authors</a>
-        <a href="{{ '/contact' | relative_url }}">Contact</a>
-        <a class="btn btn-buy" href="{{ site.buy_url | relative_url }}">Buy the book</a>
-      </nav>
+      </div>
+      <a href="{{ '/lecture-videos' | relative_url }}">Lectures</a>
+      <a href="{{ '/instructors' | relative_url }}">Instructors</a>
+      <a href="{{ '/authors' | relative_url }}">Authors</a>
+      <a href="{{ site.buy_url | relative_url }}">Print book</a>
+      <a class="btn btn-primary nav-cta" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=header&utm_campaign=nav" target="_blank" rel="noopener">Start the interactive course</a>
+    </nav>
   </div>
 </header>
+<div class="search-panel" id="search-panel" role="dialog" aria-modal="true" aria-label="Search" hidden>
+  <div class="search-box">
+    <input type="search" id="search-input" placeholder="Search lessons, algorithms and FAQ" autocomplete="off" aria-label="Search">
+    <button class="icon-btn" type="button" aria-label="Close search" data-search-close>&times;</button>
+  </div>
+  <ol class="search-results" id="search-results" aria-live="polite"></ol>
+</div>

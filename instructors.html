@@ -1,0 +1,47 @@
+---
+title: For Instructors
+seo_title: "Teach with Bioinformatics Algorithms: Slides, Autograders and a Classroom Copy"
+description: "More than 200 universities teach with Bioinformatics Algorithms. Get lecture slides, quiz questions, and your own classroom copy of the interactive text with autograded code challenges."
+lede: "More than 200 institutions in over 45 countries teach with Bioinformatics Algorithms. Here is what we give you to do the same."
+---
+<img class="monkey-float" src="{{ '/assets/images/site/monkey-480.png' | relative_url }}" alt="" width="220" height="147" loading="lazy">
+<div class="adopt-stats">
+  <div class="stat"><strong>{{ site.data.adopters.size }}</strong><span>institutions on our instructor list</span></div>
+  {% assign n_instructors = 0 %}{% for a in site.data.adopters %}{% assign n_instructors = n_instructors | plus: a.instructors.size %}{% endfor %}
+  <div class="stat"><strong>{{ n_instructors }}</strong><span>instructors</span></div>
+  {% assign countries = site.data.adopters | map: "country" | uniq %}
+  <div class="stat"><strong>{{ countries.size }}</strong><span>countries</span></div>
+  </div>
+
+<div class="features" style="margin:10px 0 40px">
+  <div class="feature"><div class="icon">&#9638;</div><h3>Your own classroom copy</h3><p>We make you a private copy of the interactive text on Cogniterra with every autograded code challenge, a gradebook, and our learner FAQ pinned to the steps where students get stuck. Students pay a discounted per-student price.</p></div>
+  <div class="feature"><div class="icon">&#9654;</div><h3>Slides and lectures</h3><p>PowerPoint slides for every chapter, plus free <a href="{{ '/lecture-videos' | relative_url }}">lecture videos</a> you can assign before class.</p></div>
+  <div class="feature"><div class="icon">?</div><h3>Quizzes and assessments</h3><p>Quiz questions and additional assessments for each chapter, shared through our instructor network.</p></div>
+  <div class="feature"><div class="icon">&#8634;</div><h3>A flipped classroom that works</h3><p>Students work through the interactive text at home, and class time goes to problem solving. We describe how in <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006764" target="_blank" rel="noopener">PLOS Computational Biology</a>.</p></div>
+</div>
+
+<p><a class="btn btn-primary" href="{{ '/contact' | relative_url }}?role=instructor">Request instructor materials</a> <a class="btn btn-ghost" href="mailto:{{ site.contact_email }}?subject=Classroom%20copy%20of%20Bioinformatics%20Algorithms">Ask about a classroom copy</a></p>
+
+<h2 style="margin-top:44px">Where the book is taught</h2>
+<p class="section-lede">Each dot is an institution where instructors have taught with the book. Click a dot to see who, or browse the list below. Teach with the book and are not here? <a href="{{ '/contact' | relative_url }}">Tell us</a>.</p>
+<div id="adopt-map" class="adopt-map" role="img" aria-label="World map of institutions that teach with Bioinformatics Algorithms"></div>
+<details style="margin:18px 0 40px"><summary style="cursor:pointer;font-weight:700;color:var(--navy)">Browse all {{ site.data.adopters.size }} institutions by country</summary>
+{% assign by_country = site.data.adopters | group_by: "country" | sort: "name" %}
+<div style="columns: 3 240px; column-gap: 28px; margin-top: 14px; font-size: .95rem">
+{% for g in by_country %}<div style="break-inside: avoid; margin-bottom: 14px"><strong>{{ g.name }}</strong><br>{% assign items = g.items | sort: "name" %}{% for a in items %}{{ a.name }}{% if a.instructors.size > 0 %} <span style="color:var(--muted)">({{ a.instructors | join: ", " }})</span>{% endif %}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</div>{% endfor %}
+</div>
+</details>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  var places = {{ site.data.adopters | jsonify }};
+  var map = L.map("adopt-map", { scrollWheelZoom: false, worldCopyJump: true }).setView([30, 10], 2);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 12, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+  places.forEach(function (p) {
+    if (p.lat === null || p.lat === undefined) { return; }
+    L.circleMarker([p.lat, p.lon], { radius: 6, color: "#2c365e", weight: 1.5, fillColor: "#e1a64a", fillOpacity: 0.9 }).addTo(map).bindPopup("<strong>" + p.name + "</strong><br>" + p.country + (p.instructors.length ? "<br><span style=\"color:#5b6275\">" + p.instructors.join(", ") + "</span>" : ""));
+  });
+})();
+</script>

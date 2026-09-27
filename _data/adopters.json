@@ -1,0 +1,2133 @@
+[
+ {
+  "name": "Epoka University",
+  "country": "Albania",
+  "lat": 41.4046352,
+  "lon": 19.7075388,
+  "instructors": [
+   "Albana Halili"
+  ]
+ },
+ {
+  "name": "Universidad de San Martín -- CONICET",
+  "country": "Argentina",
+  "lat": -34.579,
+  "lon": -58.526,
+  "instructors": [
+   "Fernan Aguero"
+  ]
+ },
+ {
+  "name": "Flinders University",
+  "country": "Australia",
+  "lat": -35.0248752,
+  "lon": 138.5734181,
+  "instructors": [
+   "Rob Edwards"
+  ]
+ },
+ {
+  "name": "University of New South Wales",
+  "country": "Australia",
+  "lat": -33.9175994,
+  "lon": 151.2312369,
+  "instructors": [
+   "Bruno Gaeta"
+  ]
+ },
+ {
+  "name": "University of Tasmania",
+  "country": "Australia",
+  "lat": -42.906822,
+  "lon": 147.3218083,
+  "instructors": [
+   "Michael Charleston"
+  ]
+ },
+ {
+  "name": "Shahjalal University of Science and Technology",
+  "country": "Bangladesh",
+  "lat": 24.9200204,
+  "lon": 91.8314022,
+  "instructors": [
+   "Eamin Rahman"
+  ]
+ },
+ {
+  "name": "Catholic University of Louvain",
+  "country": "Belgium",
+  "lat": 50.6681,
+  "lon": 4.6118,
+  "instructors": [
+   "Daniele Catanzaro"
+  ]
+ },
+ {
+  "name": "Ghent University",
+  "country": "Belgium",
+  "lat": 51.0078485,
+  "lon": 3.7108831,
+  "instructors": [
+   "Veerle Fack"
+  ]
+ },
+ {
+  "name": "University of Namur",
+  "country": "Belgium",
+  "lat": 50.4663739,
+  "lon": 4.8585708,
+  "instructors": [
+   "Jean-Marie Jacquet"
+  ]
+ },
+ {
+  "name": "Sarajevo School of Science and Technology",
+  "country": "Bosnia and Herzegovina",
+  "lat": 43.8238836,
+  "lon": 18.3085122,
+  "instructors": [
+   "Jasminka Hasic Telalovic"
+  ]
+ },
+ {
+  "name": "Universidade Federal de Viçosa",
+  "country": "Brazil",
+  "lat": -20.767635,
+  "lon": -42.8587855,
+  "instructors": [
+   "Sabrina Silveira"
+  ]
+ },
+ {
+  "name": "McGill University",
+  "country": "Canada",
+  "lat": 45.4318428,
+  "lon": -73.9452864,
+  "instructors": [
+   "Parsa Bargerzadeh"
+  ]
+ },
+ {
+  "name": "Queen's University Canada",
+  "country": "Canada",
+  "lat": 44.2263489,
+  "lon": -76.4957555,
+  "instructors": [
+   "David Rappaport"
+  ]
+ },
+ {
+  "name": "Quest University Canada",
+  "country": "Canada",
+  "lat": 49.6980743,
+  "lon": -123.155861,
+  "instructors": [
+   "Robert Williamson"
+  ]
+ },
+ {
+  "name": "Red River College",
+  "country": "Canada",
+  "lat": 49.9718086,
+  "lon": -98.2822431,
+  "instructors": [
+   "Jeffrey Lanyon"
+  ]
+ },
+ {
+  "name": "University of Alberta",
+  "country": "Canada",
+  "lat": 53.52682,
+  "lon": -113.5244937,
+  "instructors": [
+   "Hosna Jabbari"
+  ]
+ },
+ {
+  "name": "University of Northern British Columbia",
+  "country": "Canada",
+  "lat": 53.8925662,
+  "lon": -122.8147159,
+  "instructors": [
+   "Zhaowei Liang"
+  ]
+ },
+ {
+  "name": "University of Saskatchewan",
+  "country": "Canada",
+  "lat": 52.1344194,
+  "lon": -106.6277843,
+  "instructors": [
+   "Lingling Jin"
+  ]
+ },
+ {
+  "name": "University of Victoria",
+  "country": "Canada",
+  "lat": 48.4620599,
+  "lon": -123.3114198,
+  "instructors": [
+   "Ibrahim Numanagic"
+  ]
+ },
+ {
+  "name": "University of Waterloo",
+  "country": "Canada",
+  "lat": 43.4701994,
+  "lon": -80.5452429,
+  "instructors": [
+   "Pablo Arias"
+  ]
+ },
+ {
+  "name": "Andres Bello University Chile",
+  "country": "Chile",
+  "lat": -33.4516029,
+  "lon": -70.6681831,
+  "instructors": [
+   "Daniel Aguayo"
+  ]
+ },
+ {
+  "name": "Fudan University",
+  "country": "China",
+  "lat": 31.3011748,
+  "lon": 121.4974703,
+  "instructors": [
+   "Yuzhen Ye",
+   "Shanfeng Zhu"
+  ]
+ },
+ {
+  "name": "Hunan Agricultural University",
+  "country": "China",
+  "lat": 28.1843409,
+  "lon": 113.0783731,
+  "instructors": [
+   "Enrico Rubagotti"
+  ]
+ },
+ {
+  "name": "Hunan University",
+  "country": "China",
+  "lat": 28.1795483,
+  "lon": 112.9403739,
+  "instructors": [
+   "Xiao Luo"
+  ]
+ },
+ {
+  "name": "Westlake University",
+  "country": "China",
+  "lat": 30.3359809,
+  "lon": 120.0319713,
+  "instructors": [
+   "Kai Zhang"
+  ]
+ },
+ {
+  "name": "Zhejiang-University-University of Edinburgh",
+  "country": "China",
+  "lat": 30.5142256,
+  "lon": 120.6759733,
+  "instructors": [
+   "Wanyu Liu"
+  ]
+ },
+ {
+  "name": "Masaryk University",
+  "country": "Czech Republic",
+  "lat": 49.2099967,
+  "lon": 16.5992487,
+  "instructors": [
+   "Radka Varekova"
+  ]
+ },
+ {
+  "name": "University of Copenhagen",
+  "country": "Denmark",
+  "lat": 55.6801502,
+  "lon": 12.572327,
+  "instructors": [
+   "Amelie Stein"
+  ]
+ },
+ {
+  "name": "Cairo University",
+  "country": "Egypt",
+  "lat": 30.026812,
+  "lon": 31.2059186,
+  "instructors": [
+   "Emad Nabil"
+  ]
+ },
+ {
+  "name": "E-Just University",
+  "country": "Egypt",
+  "lat": 30.8585059,
+  "lon": 29.5649376,
+  "instructors": [
+   "Mohamed Issa"
+  ]
+ },
+ {
+  "name": "Fayoum University",
+  "country": "Egypt",
+  "lat": 29.3212445,
+  "lon": 30.8355711,
+  "instructors": [
+   "Hala Abdel Hamid"
+  ]
+ },
+ {
+  "name": "University of Helsinki",
+  "country": "Finland",
+  "lat": 60.2267221,
+  "lon": 25.01767,
+  "instructors": [
+   "Juha Kärkkäinen"
+  ]
+ },
+ {
+  "name": "Aachen University",
+  "country": "Germany",
+  "lat": 50.7791732,
+  "lon": 6.0689207,
+  "instructors": [
+   "Ivan Costa"
+  ]
+ },
+ {
+  "name": "Humboldt University",
+  "country": "Germany",
+  "lat": 52.5185793,
+  "lon": 13.3935975,
+  "instructors": [
+   "Uwe Ohler"
+  ]
+ },
+ {
+  "name": "Johannes Gutenberg-University Mainz",
+  "country": "Germany",
+  "lat": 49.9920396,
+  "lon": 8.2371107,
+  "instructors": [
+   "Lukas Hellmann"
+  ]
+ },
+ {
+  "name": "Ludwig-Maximilians-University at Munich",
+  "country": "Germany",
+  "lat": 48.1504758,
+  "lon": 11.5798356,
+  "instructors": [
+   "Ralf Zimmer"
+  ]
+ },
+ {
+  "name": "Philipps-University Marburg",
+  "country": "Germany",
+  "lat": 50.8124763,
+  "lon": 8.7722345,
+  "instructors": [
+   "Sebastian Wild"
+  ]
+ },
+ {
+  "name": "Technische Hochschule Deggendorf",
+  "country": "Germany",
+  "lat": 48.8295544,
+  "lon": 12.954735,
+  "instructors": [
+   "Melanie Kappelmann-Fenzl"
+  ]
+ },
+ {
+  "name": "Universitat Dusseldorf",
+  "country": "Germany",
+  "lat": 51.1907733,
+  "lon": 6.7935167,
+  "instructors": [
+   "Gunnar Klau"
+  ]
+ },
+ {
+  "name": "University of Erlangen–Nuremberg",
+  "country": "Germany",
+  "lat": 49.5978,
+  "lon": 11.0046,
+  "instructors": [
+   "David Blumenthal"
+  ]
+ },
+ {
+  "name": "University of Regensburg",
+  "country": "Germany",
+  "lat": 48.9966127,
+  "lon": 12.0940697,
+  "instructors": [
+   "Stefan Canzar"
+  ]
+ },
+ {
+  "name": "University of Rostock",
+  "country": "Germany",
+  "lat": 54.4308835,
+  "lon": 12.6856683,
+  "instructors": [
+   "Georg Feullen"
+  ]
+ },
+ {
+  "name": "Westphalian University of Applied Sciences",
+  "country": "Germany",
+  "lat": 51.5749582,
+  "lon": 7.0262442,
+  "instructors": [
+   "Daniela Beisser"
+  ]
+ },
+ {
+  "name": "Open Hellenic University",
+  "country": "Greece",
+  "lat": 38.2065694,
+  "lon": 21.7679368,
+  "instructors": [
+   "Lefteris Koumakis"
+  ]
+ },
+ {
+  "name": "University of Athens",
+  "country": "Greece",
+  "lat": 37.970038,
+  "lon": 23.7652367,
+  "instructors": [
+   "Theodore Dalamagas"
+  ]
+ },
+ {
+  "name": "Chinese University of Hong Kong",
+  "country": "Hong Kong",
+  "lat": 22.4137195,
+  "lon": 114.2098955,
+  "instructors": [
+   "Nandita Mullapudi"
+  ]
+ },
+ {
+  "name": "Hong Kong University of Science and Technology",
+  "country": "Hong Kong",
+  "lat": 22.3386077,
+  "lon": 114.2620008,
+  "instructors": [
+   "Meredith Sun",
+   "Weichuan Yu"
+  ]
+ },
+ {
+  "name": "University of Iceland",
+  "country": "Iceland",
+  "lat": 64.1401832,
+  "lon": -21.9539633,
+  "instructors": [
+   "Pall Melsted"
+  ]
+ },
+ {
+  "name": "IIT Delhi",
+  "country": "India",
+  "lat": 28.5449971,
+  "lon": 77.1891506,
+  "instructors": [
+   "Ishaan Gupta"
+  ]
+ },
+ {
+  "name": "IIT Kanpur",
+  "country": "India",
+  "lat": 26.513188,
+  "lon": 80.2364843,
+  "instructors": [
+   "Hamim Zafar"
+  ]
+ },
+ {
+  "name": "IIT Madras",
+  "country": "India",
+  "lat": 12.9941561,
+  "lon": 80.2366826,
+  "instructors": [
+   "Mani Narayanan"
+  ]
+ },
+ {
+  "name": "SASTRA Deemed to be University",
+  "country": "India",
+  "lat": 10.9628655,
+  "lon": 79.3853065,
+  "instructors": [
+   "Alex Stanley"
+  ]
+ },
+ {
+  "name": "Surya University",
+  "country": "Indonesia",
+  "lat": -6.207347,
+  "lon": 106.6185898,
+  "instructors": [
+   "Fransiskus Ivan"
+  ]
+ },
+ {
+  "name": "Azarbaijan University of Tabriz",
+  "country": "Iran",
+  "lat": 37.9298041,
+  "lon": 46.1512104,
+  "instructors": [
+   "Neda Soltani"
+  ]
+ },
+ {
+  "name": "Graduate University of Advanced Technology",
+  "country": "Iran",
+  "lat": 30.2839,
+  "lon": 57.0788,
+  "instructors": [
+   "Saeid Mirzaei"
+  ]
+ },
+ {
+  "name": "Iran University of Science and Technology",
+  "country": "Iran",
+  "lat": 35.7427943,
+  "lon": 51.5057386,
+  "instructors": [
+   "Sauleh Eetemadi"
+  ]
+ },
+ {
+  "name": "Pars Silico Company",
+  "country": "Iran",
+  "lat": 35.6892523,
+  "lon": 51.3896004,
+  "instructors": [
+   "Mohsen Yazdani"
+  ]
+ },
+ {
+  "name": "Sharif University",
+  "country": "Iran",
+  "lat": 35.7057413,
+  "lon": 51.3541472,
+  "instructors": [
+   "Ali Sharifi-Zarchi"
+  ]
+ },
+ {
+  "name": "University of Tehran",
+  "country": "Iran",
+  "lat": 35.704584,
+  "lon": 51.394761,
+  "instructors": [
+   "Hesam Montazeri"
+  ]
+ },
+ {
+  "name": "NUI Galway",
+  "country": "Ireland",
+  "lat": 53.2932299,
+  "lon": -9.0777541,
+  "instructors": [
+   "Derek Morris"
+  ]
+ },
+ {
+  "name": "Weizmann Institute of Science",
+  "country": "Israel",
+  "lat": 31.9078499,
+  "lon": 34.8133409,
+  "instructors": [
+   "Dena Leshkowitz"
+  ]
+ },
+ {
+  "name": "Zefat Academic College",
+  "country": "Israel",
+  "lat": 32.9646,
+  "lon": 35.496,
+  "instructors": [
+   "Malik Yousef"
+  ]
+ },
+ {
+  "name": "University of Naples \"Federico II\"",
+  "country": "Italy",
+  "lat": 40.847759,
+  "lon": 14.2566037,
+  "instructors": [
+   "Michele Ceccarelli",
+   "Dario Righelli",
+   "Giovanni Scala"
+  ]
+ },
+ {
+  "name": "University of Padova",
+  "country": "Italy",
+  "lat": 45.4066496,
+  "lon": 11.8774407,
+  "instructors": [
+   "Cinzia Pizzi"
+  ]
+ },
+ {
+  "name": "University of Salerno",
+  "country": "Italy",
+  "lat": 40.7553681,
+  "lon": 14.7807307,
+  "instructors": [
+   "Pierluigi Ritrovato",
+   "Rosalba Zizza"
+  ]
+ },
+ {
+  "name": "University of Sannio",
+  "country": "Italy",
+  "lat": 41.1307,
+  "lon": 14.781,
+  "instructors": [
+   "Luigi Cerulo"
+  ]
+ },
+ {
+  "name": "University of Turin",
+  "country": "Italy",
+  "lat": 45.051165,
+  "lon": 7.6811479,
+  "instructors": [
+   "Michele Cassele"
+  ]
+ },
+ {
+  "name": "University of Verona",
+  "country": "Italy",
+  "lat": 45.4363395,
+  "lon": 11.0030301,
+  "instructors": [
+   "Roberto Posenato"
+  ]
+ },
+ {
+  "name": "Hanyang University",
+  "country": "Korea",
+  "lat": 37.5557232,
+  "lon": 127.0436441,
+  "instructors": [
+   "Eunok Paek",
+   "Mina Rho"
+  ]
+ },
+ {
+  "name": "Hongik University",
+  "country": "Korea",
+  "lat": 37.5566261,
+  "lon": 126.9235144,
+  "instructors": [
+   "Joon-Sang Park"
+  ]
+ },
+ {
+  "name": "Incheon National University",
+  "country": "Korea",
+  "lat": 37.386116,
+  "lon": 126.6394474,
+  "instructors": [
+   "Hyundoo Jeong"
+  ]
+ },
+ {
+  "name": "KAIST",
+  "country": "Korea",
+  "lat": 36.3703054,
+  "lon": 127.3620118,
+  "instructors": [
+   "Young-suk Lee"
+  ]
+ },
+ {
+  "name": "Konkuk University",
+  "country": "Korea",
+  "lat": 37.5407875,
+  "lon": 127.0681712,
+  "instructors": [
+   "Haejun Jeong"
+  ]
+ },
+ {
+  "name": "Korea Institute for Advanced Study",
+  "country": "Korea",
+  "lat": 37.5928947,
+  "lon": 127.0457539,
+  "instructors": [
+   "Irving Rondon"
+  ]
+ },
+ {
+  "name": "Seoul National University",
+  "country": "Korea",
+  "lat": 37.4669776,
+  "lon": 126.9491379,
+  "instructors": [
+   "Hyeshik Chang"
+  ]
+ },
+ {
+  "name": "Sungshin Women's University",
+  "country": "Korea",
+  "lat": 37.5913559,
+  "lon": 127.0222074,
+  "instructors": [
+   "Sang Chul Choi"
+  ]
+ },
+ {
+  "name": "American University of Beirut",
+  "country": "Lebanon",
+  "lat": 33.9000264,
+  "lon": 35.4823838,
+  "instructors": [
+   "Rida Assaf"
+  ]
+ },
+ {
+  "name": "University of Technology, Malaysia",
+  "country": "Malaysia",
+  "lat": 3.0559218,
+  "lon": 101.699854,
+  "instructors": [
+   "Haslina Hashim"
+  ]
+ },
+ {
+  "name": "UNAM",
+  "country": "Mexico",
+  "lat": 19.321597,
+  "lon": -99.1849259,
+  "instructors": [
+   "Jeronimo Roberto Miranda"
+  ]
+ },
+ {
+  "name": "Mohammed VI Polytechnic University",
+  "country": "Morocco",
+  "lat": 32.2186496,
+  "lon": -7.9363261,
+  "instructors": [
+   "Achraf El Allali"
+  ]
+ },
+ {
+  "name": "Leiden University Medical Center",
+  "country": "Netherlands",
+  "lat": 52.1666076,
+  "lon": 4.4770577,
+  "instructors": [
+   "Ahmed Mahfouz"
+  ]
+ },
+ {
+  "name": "TU Delft",
+  "country": "Netherlands",
+  "lat": 51.9988274,
+  "lon": 4.3739604,
+  "instructors": [
+   "Thomas Abeel",
+   "Marcel Reinders"
+  ]
+ },
+ {
+  "name": "University of Oslo",
+  "country": "Norway",
+  "lat": 59.9414173,
+  "lon": 10.7227683,
+  "instructors": [
+   "Torbjørn Rognes"
+  ]
+ },
+ {
+  "name": "Ghulam Ishaq Khan Institute of Engineering",
+  "country": "Pakistan",
+  "lat": 34.0744351,
+  "lon": 72.6459234,
+  "instructors": [
+   "Ahmar Rashid"
+  ]
+ },
+ {
+  "name": "Institute of Business Administration, Karachi",
+  "country": "Pakistan",
+  "lat": 24.9406048,
+  "lon": 67.1144248,
+  "instructors": [
+   "Imran Rauf"
+  ]
+ },
+ {
+  "name": "An-Najah National University",
+  "country": "Palestine",
+  "lat": 32.2280769,
+  "lon": 35.222255,
+  "instructors": [
+   "Mai Kanaan"
+  ]
+ },
+ {
+  "name": "Gdansk University",
+  "country": "Poland",
+  "lat": 54.396405,
+  "lon": 18.57401,
+  "instructors": [
+   "Danuta Makowiek"
+  ]
+ },
+ {
+  "name": "Instituto Superior Técnico (Lisbon)",
+  "country": "Portugal",
+  "lat": 38.7367455,
+  "lon": -9.1383914,
+  "instructors": [
+   "Susana Vinga"
+  ]
+ },
+ {
+  "name": "Instituto Superior de Engenharia de Lisboa (ISEL)",
+  "country": "Portugal",
+  "lat": 38.7564142,
+  "lon": -9.116317,
+  "instructors": [
+   "Cátia Vaz"
+  ]
+ },
+ {
+  "name": "University of Lisbon",
+  "country": "Portugal",
+  "lat": 38.7527961,
+  "lon": -9.1570276,
+  "instructors": [
+   "Francisco Couto"
+  ]
+ },
+ {
+  "name": "CMU-Qatar",
+  "country": "Qatar",
+  "lat": 25.3159401,
+  "lon": 51.4390245,
+  "instructors": [
+   "Madhavi Ganapathiraju"
+  ]
+ },
+ {
+  "name": "Qatar University",
+  "country": "Qatar",
+  "lat": 25.3719714,
+  "lon": 51.4879579,
+  "instructors": [
+   "Junaid Qadir"
+  ]
+ },
+ {
+  "name": "Moscow Institute of Physics and Technology",
+  "country": "Russia",
+  "lat": 55.929035,
+  "lon": 37.5186681,
+  "instructors": [
+   "Mikhail Roytberg"
+  ]
+ },
+ {
+  "name": "Nizhny Novgorod State University",
+  "country": "Russia",
+  "lat": 56.2985773,
+  "lon": 43.9805774,
+  "instructors": [
+   "Nikolay Vyahhi"
+  ]
+ },
+ {
+  "name": "Saint Petersburg Academic University",
+  "country": "Russia",
+  "lat": 60.0025574,
+  "lon": 30.3739126,
+  "instructors": [
+   "Kira Vyatkina"
+  ]
+ },
+ {
+  "name": "Saint Petersburg State University",
+  "country": "Russia",
+  "lat": 59.9406782,
+  "lon": 30.2964999,
+  "instructors": [
+   "Alexey Gurevich"
+  ]
+ },
+ {
+  "name": "KAUST",
+  "country": "Saudi Arabia",
+  "lat": 22.3223754,
+  "lon": 39.1173835,
+  "instructors": [
+   "Robert Hoehndorf",
+   "Maxat Kulmanov",
+   "Othman Soufan"
+  ]
+ },
+ {
+  "name": "King Saud University",
+  "country": "Saudi Arabia",
+  "lat": 24.7248229,
+  "lon": 46.6233911,
+  "instructors": [
+   "Isra Al-Turaiki"
+  ]
+ },
+ {
+  "name": "University of Belgrade",
+  "country": "Serbia",
+  "lat": 44.8179654,
+  "lon": 20.4507765,
+  "instructors": [
+   "Jovana Kovacevic"
+  ]
+ },
+ {
+  "name": "Kempelen Institute of Intelligent Technologies",
+  "country": "Slovakia",
+  "lat": 48.1516988,
+  "lon": 17.1093063,
+  "instructors": [
+   "Anna Bou Ezzedine"
+  ]
+ },
+ {
+  "name": "University of Ljubljana",
+  "country": "Slovenia",
+  "lat": 46.0744053,
+  "lon": 14.5141463,
+  "instructors": [
+   "Tomaž Curk",
+   "Blaž Zupan"
+  ]
+ },
+ {
+  "name": "Autonomous University of Barcelona",
+  "country": "Spain",
+  "lat": 41.5015527,
+  "lon": 2.1062607,
+  "instructors": [
+   "Sonia Casillas Viladerrams"
+  ]
+ },
+ {
+  "name": "Technical University of Catalonia",
+  "country": "Spain",
+  "lat": 41.2214475,
+  "lon": 1.7301449,
+  "instructors": [
+   "Gabriel Valiente"
+  ]
+ },
+ {
+  "name": "University of Salamanca",
+  "country": "Spain",
+  "lat": 40.9621455,
+  "lon": -5.6690588,
+  "instructors": [
+   "Rodrigo Santamaría"
+  ]
+ },
+ {
+  "name": "National Taiwan University",
+  "country": "Taiwan",
+  "lat": 25.0168175,
+  "lon": 121.5384571,
+  "instructors": [
+   "Kun-Mao Chao"
+  ]
+ },
+ {
+  "name": "Chulalongkorn University",
+  "country": "Thailand",
+  "lat": 13.7430893,
+  "lon": 100.5328725,
+  "instructors": [
+   "Duangdao Wichadakul"
+  ]
+ },
+ {
+  "name": "Faculty of Economic Sciences and Management of Tunis",
+  "country": "Tunisia",
+  "lat": 36.8321463,
+  "lon": 10.1517169,
+  "instructors": [
+   "Mourad Elloumi"
+  ]
+ },
+ {
+  "name": "Bilkent University",
+  "country": "Turkey",
+  "lat": 39.870469,
+  "lon": 32.7539193,
+  "instructors": [
+   "Can Alkan"
+  ]
+ },
+ {
+  "name": "Bogazici University",
+  "country": "Turkey",
+  "lat": 41.0832734,
+  "lon": 29.0505009,
+  "instructors": [
+   "Melih Barsbey",
+   "Arzucan Ozgur"
+  ]
+ },
+ {
+  "name": "Kadir Has University",
+  "country": "Turkey",
+  "lat": 41.0253903,
+  "lon": 28.9581685,
+  "instructors": [
+   "Bahar Delibas"
+  ]
+ },
+ {
+  "name": "Koc University",
+  "country": "Turkey",
+  "lat": 41.2060623,
+  "lon": 29.0738014,
+  "instructors": [
+   "Nurcan Tuncbag"
+  ]
+ },
+ {
+  "name": "Konya Food and Agriculture University",
+  "country": "Turkey",
+  "lat": 37.8746284,
+  "lon": 32.4739562,
+  "instructors": [
+   "Arda Söylev"
+  ]
+ },
+ {
+  "name": "Marmara University",
+  "country": "Turkey",
+  "lat": 40.9872142,
+  "lon": 29.052956,
+  "instructors": [
+   "Betul Boz"
+  ]
+ },
+ {
+  "name": "Ozyegin University",
+  "country": "Turkey",
+  "lat": 41.0320475,
+  "lon": 29.259788,
+  "instructors": [
+   "Emre Sefer",
+   "Olcay Taner Yidiz"
+  ]
+ },
+ {
+  "name": "Sabanci University",
+  "country": "Turkey",
+  "lat": 40.8927159,
+  "lon": 29.3786332,
+  "instructors": [
+   "Tastan Okan"
+  ]
+ },
+ {
+  "name": "Antelope Valley College",
+  "country": "USA",
+  "lat": 34.6789309,
+  "lon": -118.1881094,
+  "instructors": [
+   "Dang Huynh"
+  ]
+ },
+ {
+  "name": "Arizona State University",
+  "country": "USA",
+  "lat": 33.4213174,
+  "lon": -111.9331631,
+  "instructors": [
+   "Heewook Lee"
+  ]
+ },
+ {
+  "name": "Asbury University",
+  "country": "USA",
+  "lat": 37.8635807,
+  "lon": -84.6653085,
+  "instructors": [
+   "Don Burgess"
+  ]
+ },
+ {
+  "name": "Auburn University at Montgomery",
+  "country": "USA",
+  "lat": 32.3709721,
+  "lon": -86.1771873,
+  "instructors": [
+   "Sutanu Bhattacharya"
+  ]
+ },
+ {
+  "name": "Baylor University",
+  "country": "USA",
+  "lat": 31.5504341,
+  "lon": -97.1102906,
+  "instructors": [
+   "Mary Lauren Benton"
+  ]
+ },
+ {
+  "name": "Berry College",
+  "country": "USA",
+  "lat": 34.290842,
+  "lon": -85.1890789,
+  "instructors": [
+   "Garner Cochran"
+  ]
+ },
+ {
+  "name": "Binghamton University",
+  "country": "USA",
+  "lat": 42.0877998,
+  "lon": -75.9706607,
+  "instructors": [
+   "Gregory Hallenbeck"
+  ]
+ },
+ {
+  "name": "Boston University",
+  "country": "USA",
+  "lat": 42.3504215,
+  "lon": -71.1032247,
+  "instructors": [
+   "Pawel Przytycki"
+  ]
+ },
+ {
+  "name": "Brigham Young Univ",
+  "country": "USA",
+  "lat": 40.2498073,
+  "lon": -111.6499458,
+  "instructors": [
+   "Amy Williams"
+  ]
+ },
+ {
+  "name": "Brigham Young University",
+  "country": "USA",
+  "lat": 40.2498073,
+  "lon": -111.6499458,
+  "instructors": [
+   "Mark Clement",
+   "Perry Ridge"
+  ]
+ },
+ {
+  "name": "Bucknell University",
+  "country": "USA",
+  "lat": 40.9515356,
+  "lon": -76.8879603,
+  "instructors": [
+   "Jessen Havill"
+  ]
+ },
+ {
+  "name": "Cal Poly",
+  "country": "USA",
+  "lat": 35.3074623,
+  "lon": -120.6646483,
+  "instructors": [
+   "Paul Anderson"
+  ]
+ },
+ {
+  "name": "Cal Poly Humboldt",
+  "country": "USA",
+  "lat": 40.8764763,
+  "lon": -124.0800564,
+  "instructors": [
+   "Catalina Cuellar-Gempeler"
+  ]
+ },
+ {
+  "name": "Cal State University Long Beach",
+  "country": "USA",
+  "lat": 33.7817709,
+  "lon": -118.1152001,
+  "instructors": [
+   "Arjang Fahim"
+  ]
+ },
+ {
+  "name": "California Polytechnic University",
+  "country": "USA",
+  "lat": 35.3074623,
+  "lon": -120.6646483,
+  "instructors": [
+   "Jean Davidson"
+  ]
+ },
+ {
+  "name": "Caltech",
+  "country": "USA",
+  "lat": 34.1370138,
+  "lon": -118.1252883,
+  "instructors": [
+   "Smuthi Karthikeyan"
+  ]
+ },
+ {
+  "name": "Carnegie Mellon University",
+  "country": "USA",
+  "lat": 40.4439193,
+  "lon": -79.9428267,
+  "instructors": [
+   "Phillip Compeau"
+  ]
+ },
+ {
+  "name": "City University of New York Lehman College",
+  "country": "USA",
+  "lat": 40.8722825,
+  "lon": -73.8948917,
+  "instructors": [
+   "Megan Owen"
+  ]
+ },
+ {
+  "name": "Claremont McKenna",
+  "country": "USA",
+  "lat": 34.0999577,
+  "lon": -117.7061792,
+  "instructors": [
+   "Shibu Yooseph"
+  ]
+ },
+ {
+  "name": "Colorado State University",
+  "country": "USA",
+  "lat": 40.5706567,
+  "lon": -105.0853995,
+  "instructors": [
+   "Asa Ben-Hur"
+  ]
+ },
+ {
+  "name": "Cornell College",
+  "country": "USA",
+  "lat": 41.9258988,
+  "lon": -91.4254156,
+  "instructors": [
+   "Lauren Jepsen"
+  ]
+ },
+ {
+  "name": "Cornell University",
+  "country": "USA",
+  "lat": 42.452916,
+  "lon": -76.4800635,
+  "instructors": [
+   "Mina Moghadam"
+  ]
+ },
+ {
+  "name": "Crown College",
+  "country": "USA",
+  "lat": 36.9998905,
+  "lon": -122.0547572,
+  "instructors": [
+   "Aeisha Thomas"
+  ]
+ },
+ {
+  "name": "Dartmouth College",
+  "country": "USA",
+  "lat": 43.7046757,
+  "lon": -72.2942089,
+  "instructors": [
+   "Aaron McKenna"
+  ]
+ },
+ {
+  "name": "Duke University",
+  "country": "USA",
+  "lat": 36.0001557,
+  "lon": -78.9442297,
+  "instructors": [
+   "Rohan Maddamsetti",
+   "Paul Magwene"
+  ]
+ },
+ {
+  "name": "Eckerd College",
+  "country": "USA",
+  "lat": 27.7142658,
+  "lon": -82.6855432,
+  "instructors": [
+   "Holger Mauch"
+  ]
+ },
+ {
+  "name": "Elizabeth City State University",
+  "country": "USA",
+  "lat": 36.2800894,
+  "lon": -76.2133643,
+  "instructors": [
+   "Mohamed ElBakary"
+  ]
+ },
+ {
+  "name": "Emory University",
+  "country": "USA",
+  "lat": 33.8004547,
+  "lon": -84.3172378,
+  "instructors": [
+   "Yana Bromberg",
+   "Michelangelo Grigni"
+  ]
+ },
+ {
+  "name": "Florida Institute of Technology",
+  "country": "USA",
+  "lat": 28.064271,
+  "lon": -80.623004,
+  "instructors": [
+   "David Luginbuhl"
+  ]
+ },
+ {
+  "name": "George Washington University",
+  "country": "USA",
+  "lat": 38.899865,
+  "lon": -77.0474485,
+  "instructors": [
+   "Max Alekseyev"
+  ]
+ },
+ {
+  "name": "Georgetown University",
+  "country": "USA",
+  "lat": 38.9089393,
+  "lon": -77.0745796,
+  "instructors": [
+   "Nathan Edwards"
+  ]
+ },
+ {
+  "name": "Georgia Tech University",
+  "country": "USA",
+  "lat": 33.7760948,
+  "lon": -84.3988077,
+  "instructors": [
+   "Mark Borodovsky"
+  ]
+ },
+ {
+  "name": "Gettysburg College",
+  "country": "USA",
+  "lat": 39.8374688,
+  "lon": -77.2396405,
+  "instructors": [
+   "Melanie Eshelman"
+  ]
+ },
+ {
+  "name": "Hiram College",
+  "country": "USA",
+  "lat": 41.3135388,
+  "lon": -81.1385858,
+  "instructors": [
+   "Louis Oliphant"
+  ]
+ },
+ {
+  "name": "Indiana University",
+  "country": "USA",
+  "lat": 39.1802358,
+  "lon": -86.5093526,
+  "instructors": [
+   "Volker Brendel",
+   "Haixu Tang",
+   "Chenghua Tao"
+  ]
+ },
+ {
+  "name": "Indiana University South Bend",
+  "country": "USA",
+  "lat": 41.6659017,
+  "lon": -86.2205351,
+  "instructors": [
+   "Murli Nair"
+  ]
+ },
+ {
+  "name": "Iowa State University",
+  "country": "USA",
+  "lat": 42.0279608,
+  "lon": -93.6447375,
+  "instructors": [
+   "Iddo Friedberg"
+  ]
+ },
+ {
+  "name": "Johns Hopkins University",
+  "country": "USA",
+  "lat": 39.3302023,
+  "lon": -76.6218536,
+  "instructors": [
+   "Sidney Rubey",
+   "Steven Salzberg"
+  ]
+ },
+ {
+  "name": "Kansas State University",
+  "country": "USA",
+  "lat": 39.2086412,
+  "lon": -96.5884966,
+  "instructors": [
+   "Hande McGinty"
+  ]
+ },
+ {
+  "name": "King University",
+  "country": "USA",
+  "lat": 36.5877694,
+  "lon": -82.1598014,
+  "instructors": [
+   "Kelly Vaughan"
+  ]
+ },
+ {
+  "name": "Long Island University",
+  "country": "USA",
+  "lat": 40.6911022,
+  "lon": -73.9803965,
+  "instructors": [
+   "Fabrizio Spagnolo"
+  ]
+ },
+ {
+  "name": "Loyola University Chicago",
+  "country": "USA",
+  "lat": 41.9990955,
+  "lon": -87.6572748,
+  "instructors": [
+   "Heather Wheeler"
+  ]
+ },
+ {
+  "name": "MIT",
+  "country": "USA",
+  "lat": 42.3582529,
+  "lon": -71.0966272,
+  "instructors": [
+   "Bonnie Berger"
+  ]
+ },
+ {
+  "name": "Meharry Medical College",
+  "country": "USA",
+  "lat": 36.166023,
+  "lon": -86.8075619,
+  "instructors": [
+   "Bishnu Sarker"
+  ]
+ },
+ {
+  "name": "Middlebury College",
+  "country": "USA",
+  "lat": 44.0036696,
+  "lon": -73.1729528,
+  "instructors": [
+   "Michael Linderman"
+  ]
+ },
+ {
+  "name": "Mississippi Valley State University",
+  "country": "USA",
+  "lat": 33.5112688,
+  "lon": -90.3426363,
+  "instructors": [
+   "Satish Muthu"
+  ]
+ },
+ {
+  "name": "NC State University",
+  "country": "USA",
+  "lat": 35.7718497,
+  "lon": -78.674087,
+  "instructors": [
+   "Louise-Marie Bobay",
+   "Steffen Heber"
+  ]
+ },
+ {
+  "name": "New Mexico State University",
+  "country": "USA",
+  "lat": 32.2729032,
+  "lon": -106.7434927,
+  "instructors": [
+   "Joe Song"
+  ]
+ },
+ {
+  "name": "New York Institute of Technology (Manhattan)",
+  "country": "USA",
+  "lat": 40.7698455,
+  "lon": -73.982869,
+  "instructors": [
+   "Leonidas Salichos"
+  ]
+ },
+ {
+  "name": "Northeastern Illinois University",
+  "country": "USA",
+  "lat": 41.9785497,
+  "lon": -87.7184592,
+  "instructors": [
+   "Rachel Trana"
+  ]
+ },
+ {
+  "name": "Northeastern University",
+  "country": "USA",
+  "lat": 42.3351065,
+  "lon": -71.0892575,
+  "instructors": [
+   "Marcus Sherman"
+  ]
+ },
+ {
+  "name": "Ohio State University",
+  "country": "USA",
+  "lat": 40.0056982,
+  "lon": -83.0286573,
+  "instructors": [
+   "Qin Ma"
+  ]
+ },
+ {
+  "name": "Oregon Health and Science University",
+  "country": "USA",
+  "lat": 45.4981929,
+  "lon": -122.6864957,
+  "instructors": [
+   "Christina Zheng"
+  ]
+ },
+ {
+  "name": "PA Cyber Charter School",
+  "country": "USA",
+  "lat": 40.6325655,
+  "lon": -80.4464547,
+  "instructors": [
+   "Mike Giles"
+  ]
+ },
+ {
+  "name": "Park Tudor High School",
+  "country": "USA",
+  "lat": 39.8857388,
+  "lon": -86.148318,
+  "instructors": [
+   "Ryan Ritz"
+  ]
+ },
+ {
+  "name": "Pennsylvania State University",
+  "country": "USA",
+  "lat": 40.8128971,
+  "lon": -77.8710571,
+  "instructors": [
+   "Shaun Mahony"
+  ]
+ },
+ {
+  "name": "Princeton University",
+  "country": "USA",
+  "lat": 40.3386752,
+  "lon": -74.6583655,
+  "instructors": [
+   "Sneha Goenka",
+   "Ben Raphael"
+  ]
+ },
+ {
+  "name": "Purdue University",
+  "country": "USA",
+  "lat": 40.430028,
+  "lon": -86.9264211,
+  "instructors": [
+   "Majid Kajemian",
+   "Alex Pothen"
+  ]
+ },
+ {
+  "name": "Ramapo College",
+  "country": "USA",
+  "lat": 41.0822446,
+  "lon": -74.1738235,
+  "instructors": [
+   "Ash Stuart"
+  ]
+ },
+ {
+  "name": "Reed College",
+  "country": "USA",
+  "lat": 45.4814993,
+  "lon": -122.6310136,
+  "instructors": [
+   "Anna Ritz"
+  ]
+ },
+ {
+  "name": "Rhodes College",
+  "country": "USA",
+  "lat": 35.1556437,
+  "lon": -89.9889355,
+  "instructors": [
+   "Catie Welsh"
+  ]
+ },
+ {
+  "name": "Rowan University",
+  "country": "USA",
+  "lat": 39.7103526,
+  "lon": -75.1193267,
+  "instructors": [
+   "Robi Polikar"
+  ]
+ },
+ {
+  "name": "Saint Louis University",
+  "country": "USA",
+  "lat": 38.635359,
+  "lon": -90.231845,
+  "instructors": [
+   "Tae-Hyuk Ahn"
+  ]
+ },
+ {
+  "name": "Smith College",
+  "country": "USA",
+  "lat": 42.3162239,
+  "lon": -72.6403932,
+  "instructors": [
+   "Haile Rando"
+  ]
+ },
+ {
+  "name": "Southern Connecticut State University",
+  "country": "USA",
+  "lat": 41.3342104,
+  "lon": -72.9450826,
+  "instructors": [
+   "Sahar Al Seesi"
+  ]
+ },
+ {
+  "name": "Southern Illinois University",
+  "country": "USA",
+  "lat": 37.7083423,
+  "lon": -89.2275556,
+  "instructors": [
+   "Xiaolan Huang"
+  ]
+ },
+ {
+  "name": "St Mary's University",
+  "country": "USA",
+  "lat": 29.4523049,
+  "lon": -98.5645515,
+  "instructors": [
+   "Erika Schwarz Taylor"
+  ]
+ },
+ {
+  "name": "St. Thomas University",
+  "country": "USA",
+  "lat": 25.9212861,
+  "lon": -80.2564809,
+  "instructors": [
+   "Kenichi Okamoto"
+  ]
+ },
+ {
+  "name": "Stony Brook University",
+  "country": "USA",
+  "lat": 40.9090809,
+  "lon": -73.1205518,
+  "instructors": [
+   "Dominik Kempa",
+   "Rob Patro"
+  ]
+ },
+ {
+  "name": "Texas A&M University–Kingsville",
+  "country": "USA",
+  "lat": 27.5279817,
+  "lon": -97.8836721,
+  "instructors": [
+   "Avdesh Mishra"
+  ]
+ },
+ {
+  "name": "Trinity University",
+  "country": "USA",
+  "lat": 29.4616913,
+  "lon": -98.4835083,
+  "instructors": [
+   "Matt Hibbs"
+  ]
+ },
+ {
+  "name": "Tulane University",
+  "country": "USA",
+  "lat": 29.9412196,
+  "lon": -90.1201009,
+  "instructors": [
+   "Xiaowen Liu",
+   "Ram Mettu"
+  ]
+ },
+ {
+  "name": "UMBC",
+  "country": "USA",
+  "lat": 39.252377,
+  "lon": -76.7089181,
+  "instructors": [
+   "Jeff Robinson"
+  ]
+ },
+ {
+  "name": "UMass Lowell",
+  "country": "USA",
+  "lat": 42.6518734,
+  "lon": -71.3172611,
+  "instructors": [
+   "Byung Kim"
+  ]
+ },
+ {
+  "name": "UT San Antonio",
+  "country": "USA",
+  "lat": 29.583,
+  "lon": -98.6197,
+  "instructors": [
+   "Jeffrey Vedanayagam"
+  ]
+ },
+ {
+  "name": "University of Alabama at Birmingham",
+  "country": "USA",
+  "lat": 33.5016153,
+  "lon": -86.8060476,
+  "instructors": [
+   "Zechen Chong",
+   "Andrei Leier",
+   "Ryan Melvin"
+  ]
+ },
+ {
+  "name": "University of California Davis",
+  "country": "USA",
+  "lat": 38.5337904,
+  "lon": -121.7907544,
+  "instructors": [
+   "Ameen Eetemadi",
+   "Ilias Tagkopoulos"
+  ]
+ },
+ {
+  "name": "University of California Los Angeles",
+  "country": "USA",
+  "lat": 34.0708777,
+  "lon": -118.4468503,
+  "instructors": [
+   "Jason Ernst",
+   "Eleazar Eskin",
+   "Harold Pimentel",
+   "Jae Hoon Sul"
+  ]
+ },
+ {
+  "name": "University of California Riverside",
+  "country": "USA",
+  "lat": 33.9642576,
+  "lon": -117.3398097,
+  "instructors": [
+   "Tao Jiang",
+   "Stefano Lonardi"
+  ]
+ },
+ {
+  "name": "University of California San Diego",
+  "country": "USA",
+  "lat": 32.8792438,
+  "lon": -117.2311247,
+  "instructors": [
+   "Pavel Pevzner",
+   "Yana Safonova"
+  ]
+ },
+ {
+  "name": "University of California Santa Barbara",
+  "country": "USA",
+  "lat": 34.4146025,
+  "lon": -119.84581,
+  "instructors": [
+   "Sung Soo Kim"
+  ]
+ },
+ {
+  "name": "University of California Santa Cruz",
+  "country": "USA",
+  "lat": 37.0001245,
+  "lon": -122.0622122,
+  "instructors": [
+   "David Bernick",
+   "Ali Shariati"
+  ]
+ },
+ {
+  "name": "University of Central Florida",
+  "country": "USA",
+  "lat": 28.599591,
+  "lon": -81.1971284,
+  "instructors": [
+   "Shaojie Zhang"
+  ]
+ },
+ {
+  "name": "University of Colorado Denver",
+  "country": "USA",
+  "lat": 39.7460707,
+  "lon": -105.001771,
+  "instructors": [
+   "Ashis Kumer"
+  ]
+ },
+ {
+  "name": "University of Connecticut",
+  "country": "USA",
+  "lat": 41.8119263,
+  "lon": -72.2647704,
+  "instructors": [
+   "Ion Mandoiu"
+  ]
+ },
+ {
+  "name": "University of Georgia",
+  "country": "USA",
+  "lat": 33.9404278,
+  "lon": -83.3730682,
+  "instructors": [
+   "Shannon Quinn"
+  ]
+ },
+ {
+  "name": "University of Illinois Chicago",
+  "country": "USA",
+  "lat": 41.8748613,
+  "lon": -87.6519866,
+  "instructors": [
+   "Hao Chen"
+  ]
+ },
+ {
+  "name": "University of Iowa",
+  "country": "USA",
+  "lat": 41.6311024,
+  "lon": -91.540752,
+  "instructors": [
+   "Bin He"
+  ]
+ },
+ {
+  "name": "University of Kentucky",
+  "country": "USA",
+  "lat": 38.0266291,
+  "lon": -84.5047222,
+  "instructors": [
+   "Sujin Kim"
+  ]
+ },
+ {
+  "name": "University of MIssouri-Columbia",
+  "country": "USA",
+  "lat": 38.9364147,
+  "lon": -92.329703,
+  "instructors": [
+   "Dong Xu"
+  ]
+ },
+ {
+  "name": "University of Maryland",
+  "country": "USA",
+  "lat": 38.9904124,
+  "lon": -76.9438586,
+  "instructors": [
+   "Neyaz Ahmed",
+   "Hector Corrada Bravo",
+   "Jarred Callura",
+   "Mihai Pop"
+  ]
+ },
+ {
+  "name": "University of Massachusetts Dartmouth",
+  "country": "USA",
+  "lat": 41.6225037,
+  "lon": -71.0073448,
+  "instructors": [
+   "Firas Khatib"
+  ]
+ },
+ {
+  "name": "University of Montana",
+  "country": "USA",
+  "lat": 46.8541841,
+  "lon": -113.9655283,
+  "instructors": [
+   "Lucia Williams"
+  ]
+ },
+ {
+  "name": "University of North Carolina",
+  "country": "USA",
+  "lat": 35.9050354,
+  "lon": -79.0477533,
+  "instructors": [
+   "Leonard McMillan"
+  ]
+ },
+ {
+  "name": "University of North Carolina at Charlotte",
+  "country": "USA",
+  "lat": 35.3071,
+  "lon": -80.7352,
+  "instructors": [
+   "Zhengchang Su"
+  ]
+ },
+ {
+  "name": "University of North Texas",
+  "country": "USA",
+  "lat": 33.2098922,
+  "lon": -97.1514763,
+  "instructors": [
+   "Serdar Bozdag"
+  ]
+ },
+ {
+  "name": "University of Oklahoma",
+  "country": "USA",
+  "lat": 35.1959878,
+  "lon": -97.4457083,
+  "instructors": [
+   "Marmar Moussa"
+  ]
+ },
+ {
+  "name": "University of San Diego",
+  "country": "USA",
+  "lat": 32.7726302,
+  "lon": -117.1891347,
+  "instructors": [
+   "Mark Chapman"
+  ]
+ },
+ {
+  "name": "University of Texas Rio Grande Valley",
+  "country": "USA",
+  "lat": 26.3071534,
+  "lon": -98.1728187,
+  "instructors": [
+   "Andreas Figueroa"
+  ]
+ },
+ {
+  "name": "University of Texas at Arlington",
+  "country": "USA",
+  "lat": 32.7315155,
+  "lon": -97.1171533,
+  "instructors": [
+   "Jeffery Demuth"
+  ]
+ },
+ {
+  "name": "University of Texas at El Paso",
+  "country": "USA",
+  "lat": 31.7757794,
+  "lon": -106.5078711,
+  "instructors": [
+   "Dan DeBlasio"
+  ]
+ },
+ {
+  "name": "University of Texas at Tyler",
+  "country": "USA",
+  "lat": 32.3163078,
+  "lon": -95.2536994,
+  "instructors": [
+   "Matthew Greenwold"
+  ]
+ },
+ {
+  "name": "University of Wisconsin - Eau Claire",
+  "country": "USA",
+  "lat": 44.7655005,
+  "lon": -91.5090036,
+  "instructors": [
+   "Nora Mitchell"
+  ]
+ },
+ {
+  "name": "Upper St. Clair High School",
+  "country": "USA",
+  "lat": 40.3347309,
+  "lon": -80.0708493,
+  "instructors": [
+   "Jack Zebo"
+  ]
+ },
+ {
+  "name": "Utah State",
+  "country": "USA",
+  "lat": 41.1150367,
+  "lon": -112.0253068,
+  "instructors": [
+   "Nicholas Flann"
+  ]
+ },
+ {
+  "name": "Virginia Commonwealth University",
+  "country": "USA",
+  "lat": 37.5461246,
+  "lon": -77.4540609,
+  "instructors": [
+   "Gamze Bulut"
+  ]
+ },
+ {
+  "name": "Wellesley College",
+  "country": "USA",
+  "lat": 42.2895485,
+  "lon": -71.3144942,
+  "instructors": [
+   "Rhys Price Jones"
+  ]
+ },
+ {
+  "name": "Western Michigan University",
+  "country": "USA",
+  "lat": 42.2832928,
+  "lon": -85.6102812,
+  "instructors": [
+   "Elise de Doncker"
+  ]
+ },
+ {
+  "name": "Whitman College",
+  "country": "USA",
+  "lat": 46.0705767,
+  "lon": -118.3303124,
+  "instructors": [
+   "Matthew Tien"
+  ]
+ },
+ {
+  "name": "Whitworth University",
+  "country": "USA",
+  "lat": 47.7541813,
+  "lon": -117.4178865,
+  "instructors": [
+   "Aaron Putzke"
+  ]
+ },
+ {
+  "name": "Wofford College",
+  "country": "USA",
+  "lat": 34.9611582,
+  "lon": -81.9353216,
+  "instructors": [
+   "Joseph Sloan"
+  ]
+ },
+ {
+  "name": "Wright State University",
+  "country": "USA",
+  "lat": 39.7842039,
+  "lon": -84.0567799,
+  "instructors": [
+   "Courtney Sulentic"
+  ]
+ },
+ {
+  "name": "Xavier University of Louisiana",
+  "country": "USA",
+  "lat": 29.9638897,
+  "lon": -90.1092236,
+  "instructors": [
+   "Matthew Hayes"
+  ]
+ },
+ {
+  "name": "Yale University",
+  "country": "USA",
+  "lat": 41.2571306,
+  "lon": -72.9896696,
+  "instructors": [
+   "Jihoon Kim"
+  ]
+ },
+ {
+  "name": "Bioinformatics School",
+  "country": "Ukraine",
+  "lat": 50.4500336,
+  "lon": 30.5241361,
+  "instructors": []
+ },
+ {
+  "name": "Cambridge University",
+  "country": "United Kingdom",
+  "lat": 52.2068904,
+  "lon": 0.1151126,
+  "instructors": [
+   "Simon Frost",
+   "Archana Singh"
+  ]
+ },
+ {
+  "name": "University of Edinburgh",
+  "country": "United Kingdom",
+  "lat": 55.9440765,
+  "lon": -3.1883736,
+  "instructors": [
+   "Graeme Cowan"
+  ]
+ },
+ {
+  "name": "University of Warwick",
+  "country": "United Kingdom",
+  "lat": 52.3813073,
+  "lon": -1.5639569,
+  "instructors": [
+   "Fayyaz-ul-Amir Afsar Minhas"
+  ]
+ }
+]

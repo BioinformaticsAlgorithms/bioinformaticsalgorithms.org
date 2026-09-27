@@ -14,7 +14,7 @@ body_class: chapter-page
       <p class="kicker">Chapter {{ chapter.n }} &middot; {{ chapter.algorithms }} &middot; Free to read</p>
       <h1>{{ chapter.question }}</h1>
       <p class="lede">{{ chapter.blurb }}</p>
-      <p class="hero-actions"><a class="btn btn-primary" href="{{ lessons[0].url | relative_url }}">Start reading</a> <a class="btn btn-ghost" href="https://www.youtube.com/playlist?list={{ chapter.playlist }}" target="_blank" rel="noopener">Watch the lectures</a></p>
+      <p class="hero-actions"><a class="btn btn-primary" href="{{ lessons[0].url | relative_url }}">Start reading</a> <a class="btn btn-ghost" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=chapter&utm_campaign=ch{{ chapter.n }}-hero" target="_blank" rel="noopener">Solve it with autograders</a></p>
     </div>
   </div>
 </section>
@@ -22,13 +22,13 @@ body_class: chapter-page
   <h2>Lessons in this chapter</h2>
   <ol class="lesson-list">
     {% for l in lessons %}
-    <li><a href="{{ l.url | relative_url }}"><span class="ll-num">{{ l.number }}</span><span class="ll-text"><strong>{{ l.title }}</strong><small>{{ l.seo_title }}</small></span></a></li>
+    <li data-lesson-url="{{ l.url | relative_url }}"><a href="{{ l.url | relative_url }}"><span class="ll-num">{{ l.number }}</span><span class="ll-text"><strong>{{ l.title }}</strong><small>{{ l.seo_title }}</small></span></a></li>
     {% endfor %}
   </ol>
   <div class="chapter-extras">
-    <a class="extra" href="{{ '/faq-chapter-' | append: chapter.n | relative_url }}"><strong>Chapter {{ chapter.n }} FAQ</strong><span>Answers to the questions learners ask most</span></a>
-    <a class="extra" href="https://www.youtube.com/playlist?list={{ chapter.playlist }}" target="_blank" rel="noopener"><strong>Lecture videos</strong><span>The full Chapter {{ chapter.n }} playlist on YouTube</span></a>
-    <a class="extra" href="{{ site.cogniterra_url }}" target="_blank" rel="noopener"><strong>Autograded code challenges</strong><span>Solve every problem in the interactive text</span></a>
+    <a class="extra" href="{{ site.cogniterra_url }}?utm_source=bioinformaticsalgorithms.org&utm_medium=chapter&utm_campaign=ch{{ chapter.n }}" target="_blank" rel="noopener"><strong>Solve the code challenges</strong><span>Every problem in this chapter, autograded, in the interactive text</span></a>
+    <a class="extra" href="https://www.youtube.com/playlist?list={{ chapter.playlist }}" target="_blank" rel="noopener"><strong>Lecture videos</strong><span>The full Chapter {{ chapter.n }} playlist</span></a>
   </div>
+  <p class="chapter-faq">Stuck on something? See the <a href="{{ '/faq-chapter-' | append: chapter.n | relative_url }}">Chapter {{ chapter.n }} learner FAQ</a>.</p>
   {% include cta-book.html %}
 </div>

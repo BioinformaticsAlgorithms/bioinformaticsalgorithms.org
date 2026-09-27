@@ -8,6 +8,13 @@ number: '2.2'
 order: 2
 slug: implanted-motif-problem
 permalink: /bioinformatics-chapter-2/implanted-motif-problem/
+cogniterra_lesson: 29867
+cogniterra_url: https://cogniterra.org/lesson/29867/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=implanted-motif-problem
+code_challenges: 1
+video: tmhmdai14oE
+video_title: From Implanted Patterns to Regulatory Motifs (Part 1)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-2-cover.jpg
 ---
 <h2 id="identifying-the-evening-element">Identifying the evening element</h2>
 <p>In 2000, Steve Kay used <strong>DNA arrays</strong> to determine which genes in the plant <em>Arabidopsis thaliana</em> are activated at different times of the day (for more details, see "DETOUR: DNA Arrays" in the <a href="https://bioinformaticsalgorithms.com" rel="noopener" target="_blank">print companion</a>). He then extracted the upstream regions of nearly 500 genes that exhibited circadian behavior and looked for frequently appearing patterns in their upstream regions. If you concatenated these upstream regions into a single string, you would find that <samp>AAAATATCT</samp> is a surprisingly frequent word, appearing 46 times.</p>
@@ -71,7 +78,7 @@ permalink: /bioinformatics-chapter-2/implanted-motif-problem/
 <li><strong>Output:</strong> All (<em>k</em>, <em>d</em>)-motifs in <em>Dna</em>.</li>
 </ul>
 <p><strong>Brute force</strong> (also known as <strong>exhaustive search</strong>) is a general problem-solving technique that explores all possible solution candidates and checks whether each candidate solves the problem. Such algorithms require little effort to design and are guaranteed to produce a correct solution, but they may take an enormous amount of time, and the number of candidates may be too large to check.</p>
-<p>A brute force approach for solving the Implanted Motif Problem is based on the observation that any (<em>k</em>, <em>d</em>)-motif must be at most <em>d</em> mismatches apart from some <em>k</em>-mer appearing in the first string in <em>Dna</em>. Therefore, we can generate all such <em>k</em>-mers and then check which of them are (<em>k</em>, <em>d</em>)-motifs. If you have forgotten how to generate these <i>k</i>-mers, take a look at "Charging Station: Generating the Neighborhood of a String" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p>A brute force approach for solving the Implanted Motif Problem is based on the observation that any (<em>k</em>, <em>d</em>)-motif must be at most <em>d</em> mismatches apart from some <em>k</em>-mer appearing in the first string in <em>Dna</em>. Therefore, we can generate all such <em>k</em>-mers and then check which of them are (<em>k</em>, <em>d</em>)-motifs. If you have forgotten how to generate these <i>k</i>-mers, take a look at "Charging Station: Generating the Neighborhood of a String" in the print companion or at <a href="https://cogniterra.org/lesson/29867/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=implanted-motif-problem" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <pre><small><code><b>MotifEnumeration</b>(<em>Dna</em>, <em>k</em>, <em>d</em>)
     <i>Patterns</i> ← an empty set
     <strong>for</strong> each <em>k</em>-mer <em>Pattern</em> in the first string in <em>Dna</em>
@@ -81,7 +88,7 @@ permalink: /bioinformatics-chapter-2/implanted-motif-problem/
     remove duplicates from <i>Patterns</i>
     <strong>return</strong> <i>Patterns</i></code></small></pre>
 
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>MotifEnumeration</b>. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2a/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement <b>MotifEnumeration</b>. (Solve at <a href="https://cogniterra.org/lesson/29867/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=implanted-motif-problem" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba2a/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29867/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=implanted-motif-problem" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Estimate the running time of <b>MotifEnumeration</b>.</p>
 <p><b>MotifEnumeration</b> is unfortunately rather slow for large values of <em>k</em> and <em>d</em>, and so we will try a different approach instead. Maybe we can detect an implanted pattern simply by identifying the two most similar <em>k</em>-mers between each pair of strings in <em>Dna</em>? However, consider the implanted 15-mers <samp><strong><span style="color: #a03881;">A</span>g<span style="color: #a03881;">AA</span>g<span style="color: #a03881;">AAA</span><span style="color: #ff4363;">GG</span>tt<span style="color: #ff4363;">GGG</span></strong></samp> and <samp><strong>c<span style="color: #a03881;">AA</span>t<span style="color: #a03881;">AAAA</span>c<span style="color: #ff4363;">GGGG</span>c<span style="color: #ff4363;">G</span></strong></samp>, each of which differs from <samp><strong><span style="color: #a03881;">AAAAAAAA</span><span style="color: #ff4363;">GGGGGGG</span></strong></samp> by four mismatches. Although these 15-mers look similar to the correct motif <samp><strong><span style="color: #a03881;">AAAAAAAA</span><span style="color: #ff4363;">GGGGGGG</span></strong></samp>, they are not so similar when compared to each other, having eight mismatches:</p>
 <pre><small><span class="center"><strong><span style="color: #a03881;">A</span>g<span style="color: #a03881;">AA</span>g<span style="color: #a03881;">AAA</span><span style="color: #ff4363;">GG</span>tt<span style="color: #ff4363;">GGG</span></strong>

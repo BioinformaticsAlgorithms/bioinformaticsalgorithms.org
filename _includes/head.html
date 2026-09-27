@@ -3,11 +3,12 @@
 {% if page.seo_title %}{% assign seo_title = page.seo_title %}{% else %}{% assign seo_title = page.title %}{% endif %}
 {% seo title=false %}
 <title>{% if page.url == "/" %}{{ site.title }}: {{ site.tagline }} | Free Bioinformatics Textbook{% else %}{{ seo_title }} | {{ site.title }}{% endif %}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>try{var t=localStorage.getItem("ba-theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}</script>
+<meta name="theme-color" content="#2c365e">
+<meta name="ba-base" content="{{ site.baseurl }}">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="icon" href="{{ '/assets/images/site/favicon.png' | relative_url }}">
+<script defer src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 {% if site.ga4_id and jekyll.environment == "production" and site.noindex != true %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>
 <script>

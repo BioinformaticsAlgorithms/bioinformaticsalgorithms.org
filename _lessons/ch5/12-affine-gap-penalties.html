@@ -8,6 +8,13 @@ number: '5.12'
 order: 12
 slug: affine-gap-penalties
 permalink: /bioinformatics-chapter-5/affine-gap-penalties/
+cogniterra_lesson: 29940
+cogniterra_url: https://cogniterra.org/lesson/29940/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=affine-gap-penalties
+code_challenges: 1
+video: Npv180dQ_4Y
+video_title: Penalizing Insertions and Deletions in Sequence Alignment
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <h2 id="affine-gap-penalties">Affine gap penalties</h2>
@@ -42,7 +49,7 @@ introducing a new “long” edge for each gap.</p>
 <p style="text-align: center;"><img alt="Ic com media 56389e b291d78d96d14b50951ad227d8b46bb6 mv2 png" decoding="async" loading="lazy" src="{{ site.baseurl }}/assets/images/lessons/ic_com_media_56389e_b291d78d96d14b50951ad227d8b46bb6_mv2_png.png" style="max-width: 100%" width="401px"/></p>
 <p>The variable <i><span style="color: #66cc66;"><b>lower</b></span></i><sub><i><span style="color: #66cc66;"><b>i, j</b></span></i></sub> computes the score of an optimal alignment between the <i>i</i>-prefix of <i>v</i> and the <i>j</i>-prefix of <i>w</i> ending with a deletion (i.e., a vertical edge), whereas the variable <i><b><span style="color: #64b0f4;">upper</span></b></i><sub><i><b><span style="color: #64b0f4;">i, j</span></b></i></sub> computes the score of an optimal alignment of these prefixes ending with an insertion (i.e., a horizontal edge), and the variable <i><b><span style="color: #ff4363;">middle</span></b></i><sub><i><b><span style="color: #ff4363;">i, j</span></b></i></sub> computes the score of an optimal alignment ending with a match or mismatch. The first term in the recurrences for <i><b><span style="color: #66cc66;">lower</span></b></i><sub><i><b><span style="color: #66cc66;">i, j</span></b></i></sub><i></i><sub><i></i></sub> and <i><b><span style="color: #64b0f4;">upper</span></b></i><sub><i><b><span style="color: #64b0f4;">i, j</span></b></i></sub> corresponds to extending the gap, whereas the second term corresponds to initiating the gap.</p>
 <!-- Step 8 -->
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Alignment with Affine Gap Penalties Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5j/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Alignment with Affine Gap Penalties Problem. Solve at <a href="https://cogniterra.org/lesson/29940/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=affine-gap-penalties" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5j/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29940/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=affine-gap-penalties" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> Two amino acid strings <em>v</em> and <em>w</em> (each of length at most 100).</li>
 <li><strong>Output:</strong> The maximum alignment score between <em>v</em> and <em>w</em>, followed by an alignment of <em>v</em> and <em>w</em> achieving this maximum score.</li>

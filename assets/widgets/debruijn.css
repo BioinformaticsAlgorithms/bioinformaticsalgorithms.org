@@ -1,0 +1,79 @@
+/* De Bruijn graph widget. Everything is scoped under .w-debruijn. */
+.w-debruijn .dbg-body { font-family: var(--ui); color: var(--ink); }
+.w-debruijn .dbg-controls { margin: 0 0 10px; }
+.w-debruijn .dbg-mode { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 8px; font-size: 0.92rem; }
+.w-debruijn .dbg-radio { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.w-debruijn .dbg-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 10px; margin: 0 0 8px; }
+.w-debruijn .dbg-row[hidden] { display: none; }
+.w-debruijn .dbg-field { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; }
+.w-debruijn .dbg-field-wide { flex: 1 1 240px; min-width: 0; }
+.w-debruijn .dbg-field-name { font-family: var(--ui); font-weight: 700; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.02em; }
+.w-debruijn .dbg-input {
+  font-family: var(--mono); font-size: 0.95rem; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; width: 100%; min-width: 0;
+}
+.w-debruijn .dbg-input:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+.w-debruijn .dbg-k { width: 4.5em; }
+.w-debruijn .dbg-kmers { resize: vertical; line-height: 1.4; }
+.w-debruijn .dbg-note { font-size: 0.8rem; color: var(--muted); }
+.w-debruijn .dbg-error { margin: 0; color: var(--red); font-size: 0.9rem; min-height: 0; }
+.w-debruijn .dbg-error:empty { display: none; }
+.w-debruijn .btn-small:disabled { opacity: 0.45; cursor: default; }
+.w-debruijn .btn-small:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+.w-debruijn .dbg-stages {
+  display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 4px 0 8px; padding: 0;
+  counter-reset: dbg-stage; font-size: 0.82rem;
+}
+.w-debruijn .dbg-stage {
+  counter-increment: dbg-stage; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--muted); background: var(--paper);
+}
+.w-debruijn .dbg-stage::before { content: counter(dbg-stage) ". "; font-weight: 700; }
+.w-debruijn .dbg-stage.is-active { border-color: var(--teal); color: var(--ink); background: var(--wash); font-weight: 700; }
+
+.w-debruijn .dbg-scroll {
+  overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--paper);
+}
+.w-debruijn .dbg-svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.w-debruijn .dbg-backdrop { fill: var(--paper); }
+
+.w-debruijn .dbg-edge-line { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.w-debruijn .dbg-edge-arrow { fill: var(--muted); }
+.w-debruijn .dbg-edge.is-used .dbg-edge-line { stroke: var(--teal); stroke-width: 2.6; }
+.w-debruijn .dbg-edge.is-used .dbg-edge-arrow { fill: var(--teal); }
+.w-debruijn .dbg-edge.is-current .dbg-edge-line { stroke: var(--orange); stroke-width: 3.4; }
+.w-debruijn .dbg-edge.is-current .dbg-edge-arrow { fill: var(--orange); }
+.w-debruijn .dbg-edge.is-genome .dbg-edge-line { stroke: var(--teal); stroke-width: 2.6; }
+.w-debruijn .dbg-edge.is-genome .dbg-edge-arrow { fill: var(--teal); }
+.w-debruijn .dbg-edge-label {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round;
+}
+.w-debruijn .dbg-badge { fill: var(--navy); }
+.w-debruijn .dbg-badge-text { font-family: var(--ui); font-size: 10px; font-weight: 700; fill: var(--paper); }
+
+.w-debruijn .dbg-node ellipse { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
+.w-debruijn .dbg-node.is-start ellipse { stroke: var(--teal); stroke-width: 2.5; }
+.w-debruijn .dbg-node.is-here ellipse { fill: var(--wash); stroke: var(--orange); stroke-width: 3; }
+.w-debruijn .dbg-node-label { font-family: var(--mono); font-size: 13px; font-weight: 700; fill: var(--ink); }
+
+.w-debruijn .nt { fill: var(--ink); color: var(--ink); }
+.w-debruijn .nt-a { fill: var(--nt-a, #a03881); color: var(--nt-a, #a03881); }
+.w-debruijn .nt-c { fill: var(--nt-c, #64b0f4); color: var(--nt-c, #64b0f4); }
+.w-debruijn .nt-g { fill: var(--nt-g, #ff4363); color: var(--nt-g, #ff4363); }
+.w-debruijn .nt-t { fill: var(--nt-t, #66cc66); color: var(--nt-t, #66cc66); }
+
+.w-debruijn .dbg-steps { margin-top: 10px; }
+.w-debruijn .dbg-status { font-family: var(--read); font-size: 1rem; line-height: 1.5; margin: 6px 0 4px; min-height: 3em; }
+.w-debruijn .dbg-spelled { margin: 0 0 8px; overflow-wrap: anywhere; }
+.w-debruijn .dbg-spelled[hidden] { display: none; }
+.w-debruijn .dbg-dna { font-family: var(--mono); font-weight: 700; font-size: 1.02rem; letter-spacing: 0.03em; }
+.w-debruijn .dbg-caption { font-family: var(--read); font-size: 0.95rem; margin: 10px 0 4px; }
+.w-debruijn .dbg-pre {
+  font-family: var(--mono); font-size: 0.85rem; background: var(--wash); color: var(--ink);
+  border-radius: 6px; padding: 8px 10px; margin: 0; max-height: 12em; overflow: auto; white-space: pre;
+}
+.w-debruijn .dbg-overlap { margin-top: 10px; }
+.w-debruijn .dbg-overlap-body[hidden] { display: none; }

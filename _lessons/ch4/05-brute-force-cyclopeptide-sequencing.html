@@ -8,6 +8,13 @@ number: '4.5'
 order: 5
 slug: brute-force-cyclopeptide-sequencing
 permalink: /bioinformatics-chapter-4/brute-force-cyclopeptide-sequencing/
+cogniterra_lesson: 29913
+cogniterra_url: https://cogniterra.org/lesson/29913/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=brute-force-cyclopeptide-sequencing
+code_challenges: 0
+video: JpdCxw65Va8
+video_title: A Brute Force Algorithm for Cyclopeptide Sequencing
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-4-cover.jpg
 ---
 <!-- Step 1 -->
 <p>We first encountered brute force algorithms when looking for motifs. In this chapter, we will discuss how to speed up brute force algorithms for peptide sequencing to make them practical.</p>
@@ -20,11 +27,11 @@ permalink: /bioinformatics-chapter-4/brute-force-cyclopeptide-sequencing/
 <p>There should be no question that <strong>BFCyclopeptideSequencing</strong> will solve the Cyclopeptide Sequencing Problem. However, we should be concerned about its running time: how many peptides are there having mass equal to <em>ParentMass</em>(<em>Spectrum</em>)?</p>
 <!-- Step 2 -->
 <p><strong>Counting Peptides with Given Mass Problem:</strong> <em>Compute the number of peptides of given mass.</em></p><ul><li><strong>Input</strong><span>: An integer </span><em>m</em><span>.</span></li><li><strong>Output</strong><span>: The number of linear peptides having integer mass </span><em>m</em><span>.</span></li></ul>
-<p><strong><span style="color: #a03881;">Exercise Break (Optional):</span></strong> Solve the Counting Peptides with Given Mass Problem. (Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4d/" rel="noopener" target="_blank">Rosalind</a>.) The integer mass table is reproduced below; recall that we assume that peptides are formed from only 18 amino acid masses. That is, I/L are considered the same and K/Q are considered the same, so we would count AIKD and ALQD as just one peptide, not two.</p>
+<p><strong><span style="color: #a03881;">Exercise Break (Optional):</span></strong> Solve the Counting Peptides with Given Mass Problem. (Solve at <a href="https://cogniterra.org/lesson/29913/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=brute-force-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4d/" rel="noopener" target="_blank">Rosalind</a>.) The integer mass table is reproduced below; recall that we assume that peptides are formed from only 18 amino acid masses. That is, I/L are considered the same and K/Q are considered the same, so we would count AIKD and ALQD as just one peptide, not two.</p>
 <p><span class="image-wrapper"><p style="text-align: center;"><img alt="Integer mass table" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/integer_mass_table.png" style="max-width:100%" title="Image: https://bioinformaticsalgorithms.com/images/Antibiotics/integer_mass_table.png" width="709px"/></p></span></p>
 <p><strong>Suggestion:</strong> This exercise is optional because you may have difficulty solving this problem; if so, please return to it after learning more about dynamic programming algorithms in a future lesson.</p>
 <!-- Step 3 -->
 <p>It turns out that there are <em>trillions</em> of peptides that have the same integer mass (1322) as Tyrocidine B1 (figure below). Therefore, <b>BFCyclopeptideSequencing</b> is completely impractical, and we will not even bother asking you to implement it.</p>
-<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> This figure suggests that for large <em>m</em>, the number of peptides with given integer mass <em>m</em> can be approximated as <em>k</em> · <em>C<sup>m</sup></em>, where <em>k</em> and <em>C</em> are constants. If you solved the exercise break above, use your solution to find <em>C</em>. Test your solution at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> This figure suggests that for large <em>m</em>, the number of peptides with given integer mass <em>m</em> can be approximated as <em>k</em> · <em>C<sup>m</sup></em>, where <em>k</em> and <em>C</em> are constants. If you solved the exercise break above, use your solution to find <em>C</em>. Test your solution at <a href="https://cogniterra.org/lesson/29913/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=brute-force-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <p><span class="image-wrapper"><p style="text-align: center;"><img alt="Counting peptides" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/counting_peptides.png" style="max-width:100%" title="Image: https://bioinformaticsalgorithms.com/images/Antibiotics/counting_peptides.png" width="590px"/></p></span></p>
 <p style="text-align: center;"><small><strong>Figure: </strong>The number of peptides with given integer mass grows exponentially.</small></p>

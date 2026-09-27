@@ -8,6 +8,13 @@ number: '5.3'
 order: 3
 slug: manhattan-tourist-problem
 permalink: /bioinformatics-chapter-5/manhattan-tourist-problem/
+cogniterra_lesson: 29931
+cogniterra_url: https://cogniterra.org/lesson/29931/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=manhattan-tourist-problem
+code_challenges: 0
+video: wmIMeyWDZI0
+video_title: The Manhattan Tourist Problem
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <h2 id="what-is-the-best-sightseeing-strategy">What is the best sightseeing strategy?</h2>
@@ -26,7 +33,7 @@ permalink: /bioinformatics-chapter-5/manhattan-tourist-problem/
 <span class="image-wrapper"><p style="text-align: center;"><img alt="Additional square city" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/additional_square_city.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/additional_square_city.png" width="395px"/></p></span>
 <p><small><strong>Figure:</strong> An <em>n</em> × <em>m</em> city grid represented as a graph with weighted edges for <em>n</em> = <em>m</em> = 4. The bottom left node is indexed as (4, 0), and the upper right node is indexed as (0, 4).</small></p>
 <!-- Step 4 -->
-<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span>How many different paths are there from source to sink in a 16 × 12 rectangular grid? Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>.</p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span>How many different paths are there from source to sink in a 16 × 12 rectangular grid? Solve at <a href="https://cogniterra.org/lesson/29931/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=manhattan-tourist-problem" rel="noopener" target="_blank">Cogniterra</a>.</p>
 <p><strong>Note:</strong> Keep in mind that according to our notation, a 16 × 12 grid contains 17 × 13 = 221 nodes.</p>
 <!-- Step 5 -->
 <p>Applying a brute force approach to the Manhattan Tourist Problem is impractical because the number of paths is huge. A sensible greedy approach would choose between the two possible directions at each node (→ or ↓) according to how many attractions you would see if you moved only one block south versus moving one block east. For example, in the figure below, we start off by moving east from (0, 0) rather than south because the horizontal edge has three attractions, while the vertical edge has only one. Unfortunately, this greedy strategy may miss the longest path in the long run.</p>

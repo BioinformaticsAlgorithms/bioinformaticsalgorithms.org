@@ -8,6 +8,10 @@ number: '5.11'
 order: 11
 slug: edit-distance-fitting-overlap-alignment
 permalink: /bioinformatics-chapter-5/edit-distance-fitting-overlap-alignment/
+cogniterra_lesson: 29939
+cogniterra_url: https://cogniterra.org/lesson/29939/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment
+code_challenges: 3
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <p>In this lesson, we will describe three sequence comparison problems and let you apply what you have already learned to solve them. Hint: the idea is to frame each problem as an instance of the Longest Path in a DAG Problem.</p>
@@ -22,7 +26,7 @@ permalink: /bioinformatics-chapter-5/edit-distance-fitting-overlap-alignment/
 <p>Levenshtein introduced edit distance but did not describe an algorithm for computing it, which we leave to you.</p>
 <p><strong>Edit Distance Problem:</strong> <em>Find the edit distance between two strings.</em></p>
 <ul><li><strong>Input:</strong> Two strings.</li><li><strong>Output:</strong> The edit distance between these strings.</li></ul>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Edit Distance Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5g/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Edit Distance Problem. Solve at <a href="https://cogniterra.org/lesson/29939/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5g/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29939/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <!-- Step 4 -->
 <h2 id="problem-2-fitting-alignment">Problem 2: Fitting Alignment</h2>
 <p>Say that we wish to compare the approximately 20,000 amino acid-long NRP synthetase from <em>Bacillus brevis</em> with the approximately 600 amino acid-long A-domain from <em>Streptomyces roseosporus</em>, the bacterium that produces the powerful antibiotic Daptomycin. We hope to find a region within the longer protein sequence <em>v</em> that has high similarity with all of the shorter sequence <em>w</em>. Global alignment will not work because it tries to align all of <em>v</em> to all of <em>w</em>; local alignment will not work because it tries to align substrings of both <em>v</em> and <em>w</em>. Thus, we have a distinct alignment application called the <strong>Fitting Alignment Problem</strong>.</p>
@@ -33,7 +37,7 @@ permalink: /bioinformatics-chapter-5/edit-distance-fitting-overlap-alignment/
 <p style="text-align: center;"><img alt="Global local fitting" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/global_local_fitting.png" style="max-width: 100%" width="725px"/></p>
 <p><small><b>Figure: </b>Global, local, and fitting alignments.  Black symbols do not contribute to the local and fitting alignments and are only shown to illustrate flanking regions.</small></p>
 <!-- Step 5 -->
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span><span> Solve the Fitting Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5h/" rel="noopener" target="_blank">Rosalind</a>.</span></p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span><span> Solve the Fitting Alignment Problem. Solve at <a href="https://cogniterra.org/lesson/29939/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5h/" rel="noopener" target="_blank">Rosalind</a>.</span></span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29939/step/5?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul><li><strong>Input:</strong> Two nucleotide strings <em>v</em> and <em>w</em>, where <em>v</em> has length at most 1000 and <em>w</em> has length at most 100.</li><li><strong>Output:</strong> A highest-scoring fitting alignment between <em>v</em> and <em>w</em>. </li></ul>
 <!-- Step 6 -->
 <h2 id="problem-3-overlap-alignment">Problem 3: Overlap Alignment</h2>
@@ -43,5 +47,5 @@ permalink: /bioinformatics-chapter-5/edit-distance-fitting-overlap-alignment/
 <p><strong></strong></p></div><div style="text-align: left;"><strong>Overlap Alignment Problem:</strong> <em>Construct a highest-scoring overlap alignment between two strings.</em></div>
 <ul><li><strong>Input:</strong><span> Two strings and a matrix </span><em>score</em><span>.</span></li><li><strong>Output:</strong><span> A highest-scoring overlap alignment between the two strings as defined by the scoring matrix </span><em>score</em><span>.</span></li></ul>
 <!-- Step 7 -->
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Overlap Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5i/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Overlap Alignment Problem. Solve at <a href="https://cogniterra.org/lesson/29939/step/7?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5i/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29939/step/7?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=edit-distance-fitting-overlap-alignment" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul><li><strong>Input:</strong> Two strings <em>v</em> and <em>w</em>, each of length at most 1000.</li><li><strong>Output:</strong> The score of an optimal overlap alignment of <em>v</em> and <em>w</em>, followed by an alignment of a suffix <em>v'</em> of <em>v</em> and a prefix <em>w'</em> of <em>w </em>achieving this maximum score.</li></ul>

@@ -8,6 +8,13 @@ number: '1.7'
 order: 8
 slug: skew-diagram
 permalink: /bioinformatics-chapter-1/skew-diagram/
+cogniterra_lesson: 29855
+cogniterra_url: https://cogniterra.org/lesson/29855/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=skew-diagram
+code_challenges: 1
+video: LRnS8cuF6iU
+video_title: From a Biological Insight Toward an Algorithm for Finding the Replication Origin (Part 2)
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-1-cover.jpg
 ---
 <p>The figure below reveals a surprising pattern. We have partitioned the <em>E. coli</em> genome into 46 equally sized fragments of approximately 100,000 nucleotides, starting at the experimentally verified terminus of replication, and then computed the frequency of cytosine in each window. The first 23 fragments (starting from <em>ter</em>) represent the reverse half-strand, and the last 23 fragments (starting at <em>ori</em>) represent the forward half-strand. Most fragments on the reverse half-strand have a high cytosine frequency (above 25%), whereas most fragments on the forward half-strand have a low cytosine frequency (below 25%).</p>
 <p><p style="text-align: center;"><img alt="Ecoli cytosine frequency" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Replication/ecoli_cytosine_frequency.png" style="max-width:100%" width="600px"/></p></p>
@@ -45,6 +52,8 @@ Although the frequencies of <samp>A</samp> and <samp>T</samp> are practically id
 <p>Let's follow the 5' → 3' direction of DNA and walk along the chromosome from <em>ter</em> to <em>ori</em> (along a reverse half-strand), then continue on from <em>ori</em> to <em>ter</em> (along a forward half-strand).  In our previous discussion, we saw that the skew is decreasing along the reverse half-strand and increasing along the forward half-strand.  Thus, the skew should achieve a minimum at the position where the reverse half-strand ends and the forward half-strand begins, which is exactly the location of <em>ori</em>!</p>
 <p>We have just developed an insight for a new algorithm for locating <em>ori</em>: it should be found where the skew attains a minimum.</p>
 <p><strong>Minimum Skew Problem:</strong> <em>Find a position in a genome where the skew diagram attains a minimum.</em><br/></p><ul><li><strong>Input</strong><span>: A DNA string </span><em>Genome</em><span>.</span></li><li><strong>Output</strong><span>: All integer(s) </span><em>i</em><span> minimizing </span><em>Skew</em><sub><em>i</em></sub><span> (</span><em>Genome</em><span>) among all values of </span><em>i</em><span> (from 0 to |</span><em>Genome</em><span>|).</span></li></ul>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Minimum Skew Problem. (Solve on <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba1f/" rel="noopener" target="_blank">Rosalind</a>.)</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Minimum Skew Problem. (Solve on <a href="https://cogniterra.org/lesson/29855/step/10?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=skew-diagram" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba1f/" rel="noopener" target="_blank">Rosalind</a>.)</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29855/step/10?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=skew-diagram" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
+{% include widgets/skew.html %}
+
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> Note that the <em>E. coli</em> skew diagram below changes depending on where we start our walk along the circular chromosome.  Do you think that the minimum of the skew diagram points to the same position <em>in the genome</em> regardless of where we begin walking to generate the skew diagram?</p>
 <p><p style="text-align: center;"><img alt="Figure" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Replication/skew_diagram_ecoli.png" style="max-width:100%" width="600px"/></p></p>

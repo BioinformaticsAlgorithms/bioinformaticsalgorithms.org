@@ -8,6 +8,13 @@ number: '4.7'
 order: 7
 slug: leaderboard-cyclopeptide-sequencing
 permalink: /bioinformatics-chapter-4/leaderboard-cyclopeptide-sequencing/
+cogniterra_lesson: 29915
+cogniterra_url: https://cogniterra.org/lesson/29915/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing
+code_challenges: 2
+video: Qbnvs1CfRYY
+video_title: Adapting Sequencing for Spectra with Errors
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-4-cover.jpg
 ---
 <!-- Step 1 -->
 <h2 id="from-theoretical-to-real-spectra">From theoretical to real spectra</h2>
@@ -25,7 +32,7 @@ permalink: /bioinformatics-chapter-4/leaderboard-cyclopeptide-sequencing/
 <!-- Step 3 -->
 <p><b>Cyclopeptide Scoring Problem:</b> <em>Compute the score of a cyclic peptide against a spectrum.</em></p>
 <ul><li><b>Input:</b><span> An amino acid string </span><em>Peptide</em><span> and a collection of integers </span><em>Spectrum</em><span>. </span></li><li><b>Output:</b><span> The score of </span><em>Peptide</em><span> against </span><em>Spectrum</em><span>, </span><em>Score</em><span>(</span><em>Peptide</em><span>, </span><em>Spectrum</em><span>).</span></li></ul>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Cyclopeptide Scoring Problem at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4f/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Cyclopeptide Scoring Problem at <a href="https://cogniterra.org/lesson/29915/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba4f/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29915/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <!-- Step 4 -->
 <p>We now can redefine the Cyclopeptide Sequencing Problem for noisy spectra.</p>
 <p><strong>Cyclopeptide Sequencing Problem (for spectra with errors):</strong> <em>Find a cyclic peptide having maximum score against an experimental spectrum.</em></p>
@@ -54,8 +61,8 @@ permalink: /bioinformatics-chapter-4/leaderboard-cyclopeptide-sequencing/
     <em>Leaderboard</em> ← <em>Trim</em>(<em>Leaderboard</em>, <em>Spectrum</em>, <em>N</em>)
   <strong>output</strong> <em>LeaderPeptide</em></code></small></pre></div>
 <!-- Step 8 -->
-<p>The tricky aspect of implementing <strong>LeaderboardCyclopeptideSequencing</strong> is making sure that the <em>Trim</em> function is implemented correctly. Check out "<strong>Charging Station:</strong> Trimming the Peptide Leaderboard" in the print companion or at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> for some help with trimming Leaderboard.</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement<strong> LeaderboardCyclopeptideSequencing</strong> at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or at <a href="https://rosalind.info/problems/ba4g/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p>The tricky aspect of implementing <strong>LeaderboardCyclopeptideSequencing</strong> is making sure that the <em>Trim</em> function is implemented correctly. Check out "<strong>Charging Station:</strong> Trimming the Peptide Leaderboard" in the print companion or at <a href="https://cogniterra.org/lesson/29915/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a> for some help with trimming Leaderboard.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Implement<strong> LeaderboardCyclopeptideSequencing</strong> at <a href="https://cogniterra.org/lesson/29915/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a> or at <a href="https://rosalind.info/problems/ba4g/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29915/step/8?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul>
 <li><strong>Input:</strong> An integer <em>N</em> and a collection of integers <em>Spectrum</em>.</li>
 <li><strong>Output:</strong> <em>LeaderPeptide</em> after running <strong>LeaderboardCyclopeptideSequencing</strong>(<em>Spectrum</em>, <em>N</em>).</li>
@@ -68,7 +75,7 @@ permalink: /bioinformatics-chapter-4/leaderboard-cyclopeptide-sequencing/
 <!-- Step 10 -->
 <p>So far, <strong>LeaderboardCyclopeptideSequencing</strong> has worked well, but as the number of errors increases, so does the likelihood that this algorithm will return an incorrect peptide. Let’s see how this algorithm performs on a noisier simulated spectrum; below, we show <em>Spectrum</em><sub>25</sub> for Tyrocidine B1, which has 25% <strong>missing</strong>/<strong>false</strong> masses.</p>
 <p><p style="text-align: center;"><img alt="Tyrocidine spectrum 25" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Antibiotics/tyrocidine_spectrum_25.png" style="max-width: 100%" width="642px"/></p></p>
-<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Run <strong>LeaderboardCyclopeptideSequencing</strong> on <em>Spectrum</em><sub>25</sub> with <em>N</em> = 1000. (Solve this at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a>). You should find 38 linear peptides of maximum score 83 (corresponding to 15 different cyclic peptides).  What are they? </p>
+<p class="callout callout-exercise"><span class="callout-label">Exercise Break</span> Run <strong>LeaderboardCyclopeptideSequencing</strong> on <em>Spectrum</em><sub>25</sub> with <em>N</em> = 1000. (Solve this at <a href="https://cogniterra.org/lesson/29915/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=leaderboard-cyclopeptide-sequencing" rel="noopener" target="_blank">Cogniterra</a>). You should find 38 linear peptides of maximum score 83 (corresponding to 15 different cyclic peptides).  What are they? </p>
 <!-- Step 11 -->
 <p>When run on <em>Spectrum</em><sub>25</sub>, <strong>LeaderboardCyclopeptideSequencing</strong> (with <em>N</em> = 1000) identifies <samp>VKLFP<strong><span style="color: #ff4363;">AD</span></strong>FNQY</samp> (score: 83) as a highest-scoring cyclic peptide instead of the correct peptide <samp>VKLFP<strong><span style="color: #a03881;">W</span></strong>FNQY</samp> (score: 82). These two peptides are similar, owing to the fact that the combined mass of <samp><strong><span style="color: #ff4363;">A</span></strong></samp> (71) and <samp><strong><span style="color: #ff4363;">D</span></strong></samp> (115) is equal to the mass of <samp><strong><span style="color: #a03881;">W</span></strong></samp> (186).</p>
 <p class="callout callout-think"><span class="callout-label">STOP and Think</span> How could we have eliminated the incorrect peptide <samp>VKLFP<strong><span style="color: #ff4363;">AD</span></strong>FNQY</samp> from consideration for <em>Spectrum</em><sub>25</sub>?</p>

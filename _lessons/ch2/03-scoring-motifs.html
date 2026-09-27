@@ -8,6 +8,13 @@ number: '2.3'
 order: 3
 slug: scoring-motifs
 permalink: /bioinformatics-chapter-2/scoring-motifs/
+cogniterra_lesson: 29868
+cogniterra_url: https://cogniterra.org/lesson/29868/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=scoring-motifs
+code_challenges: 0
+video: R5DVi25kqAY
+video_title: From Implanted Patterns to Regulatory Motifs (Part 2)
+video_date: '2015-08-13'
+image: /assets/images/site/chapter-2-cover.jpg
 ---
 <h2 id="from-motifs-to-profile-matrices-and-consensus-strings">From motifs to profile matrices and consensus strings</h2>
 <p>Although the Implanted Motif Problem offers a useful abstraction of the biological problem of motif finding, it has some limitations. For example, when Steve Kay used a DNA array to infer the set of circadian genes in plants, he did not expect that <em>all</em> genes in the resulting set would have the evening element (or its variants) in their upstream regions. Similarly, biologists do not expect that all genes with an elevated expression level in infected flies must be regulated by NF-κB. DNA array experiments are inherently noisy, and some genes identified by these experiments have nothing to do with the circadian clock in plants or immunity genes in flies. For such noisy datasets, any algorithm for the Implanted Motif Problem would fail, because as long as a single sequence does not contain the transcription factor binding site, a (<em>k</em>, <em>d</em>)-motif does not exist!</p>
@@ -48,3 +55,5 @@ permalink: /bioinformatics-chapter-2/scoring-motifs/
 <p><span class="center"><img alt="Motifs" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/motifs.png" style="max-width:100%" width="600px"/></span></p>
 <p>Another application of entropy is the <strong>motif logo</strong>, a diagram for visualizing motif conservation that consists of a stack of letters at each position. We show a motif logo for the NF-κB motif matrix at the bottom. The relative sizes of letters indicate their frequency in the column. The total height of the letters in a column is based on the <strong>information content</strong> of the column, which is defined as 2 − <em>H</em>(<em>p</em><sub>1</sub>, … , <em>p</em><sub><em>N</em></sub>). The lower the entropy, the higher the information content, meaning that tall columns in the motif logo are highly conserved.</p>
 <p><span class="center"><img alt="Motifs score count profile consensus motiflogo" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Motifs/motifs_score_count_profile_consensus_motiflogo.png" style="max-width:100%" width="600px"/></span></p>
+{% include widgets/profile.html %}
+

@@ -1,0 +1,57 @@
+/* Theoretical spectrum widget. Everything is scoped under .w-spectrum. */
+.w-spectrum { color: var(--ink); min-width: 0; max-width: 100%; }
+.w-spectrum *, .w-spectrum *::before, .w-spectrum *::after { box-sizing: border-box; }
+.w-spectrum-body { padding: 14px 18px; font-size: 0.95rem; line-height: 1.5; min-width: 0; }
+
+.w-spectrum .ws-hint, .w-spectrum .ws-note { font-size: 0.85rem; color: var(--muted); margin: 0 0 10px; }
+.w-spectrum .ws-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.w-spectrum .ws-label { font-weight: 700; font-size: 0.9rem; }
+.w-spectrum .ws-input { font-family: var(--mono); font-size: 1rem; letter-spacing: 0.08em; padding: 6px 10px; width: 14em; max-width: 100%; box-sizing: border-box; border: 1px solid var(--muted); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.w-spectrum .ws-toggles { display: inline-flex; border: 1px solid var(--muted); border-radius: 999px; overflow: hidden; }
+.w-spectrum .ws-toggle { font-family: var(--ui); font-size: 0.85rem; font-weight: 700; padding: 6px 14px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
+.w-spectrum .ws-toggle[aria-pressed="true"] { background: var(--navy); color: var(--paper); }
+.w-spectrum .ws-toggle:focus-visible, .w-spectrum .ws-chip:focus-visible, .w-spectrum .ws-input:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.w-spectrum .ws-error { color: var(--red); font-size: 0.9rem; margin: 6px 0 0; min-height: 1.2em; }
+
+.w-spectrum .ws-top { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: flex-start; margin: 6px 0 8px; }
+.w-spectrum .ws-ring { flex: 0 1 290px; min-width: 0; max-width: 100%; }
+.w-spectrum .ws-ring-svg { display: block; width: 100%; height: auto; }
+.w-spectrum .ws-prefix { flex: 1 1 220px; min-width: 0; overflow-x: auto; }
+
+.w-spectrum .ws-bond { stroke: var(--muted); stroke-width: 3; }
+.w-spectrum .ws-bond-on { stroke: var(--teal); stroke-width: 6; }
+.w-spectrum .ws-bond-cut { stroke: var(--line); stroke-width: 2; stroke-dasharray: 4 5; }
+.w-spectrum .ws-residue { fill: var(--wash); stroke: var(--ink); stroke-width: 1.5; }
+.w-spectrum .ws-residue-on { fill: var(--teal); stroke: var(--teal); }
+.w-spectrum .ws-residue-letter { font-family: var(--mono); font-size: 15px; font-weight: 700; fill: var(--ink); }
+.w-spectrum .ws-residue-letter-on { fill: var(--paper); }
+.w-spectrum .ws-residue-mass { font-family: var(--ui); font-size: 12px; fill: var(--muted); }
+.w-spectrum .ws-ring-center { font-family: var(--ui); font-size: 13px; fill: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.w-spectrum .ws-ring-center-mass { font-family: var(--ui); font-size: 15px; font-weight: 700; fill: var(--ink); }
+
+.w-spectrum .ws-prefix-table { border-collapse: collapse; font-size: 0.88rem; margin: 0 0 8px; }
+.w-spectrum .ws-prefix-table caption { text-align: left; font-weight: 700; font-size: 0.85rem; color: var(--navy); padding-bottom: 4px; }
+.w-spectrum .ws-prefix-table th, .w-spectrum .ws-prefix-table td { padding: 3px 10px; border-bottom: 1px solid var(--line); text-align: right; }
+.w-spectrum .ws-prefix-table th { font-weight: 700; color: var(--muted); }
+.w-spectrum .ws-prefix-table td:nth-child(2) { font-family: var(--mono); text-align: left; }
+.w-spectrum .ws-prefix-on td { background: var(--wash); color: var(--teal); font-weight: 700; box-shadow: inset 3px 0 0 var(--teal); }
+
+.w-spectrum .ws-stepper { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 8px; }
+.w-spectrum .ws-status { font-weight: 700; margin: 0 0 2px; }
+.w-spectrum .ws-formula { font-family: var(--mono); font-size: 0.88rem; color: var(--teal); margin: 0 0 8px; min-height: 1.3em; overflow-wrap: anywhere; }
+.w-spectrum .ws-subhead { font-family: var(--ui); font-size: 0.9rem; color: var(--navy); margin: 14px 0 4px; }
+.w-spectrum .ws-spectrum { font-family: var(--mono); font-size: 0.88rem; margin: 0 0 6px; overflow-wrap: anywhere; }
+
+.w-spectrum .ws-plot { overflow-x: auto; }
+.w-spectrum .ws-plot-svg { display: block; width: 100%; min-width: 320px; height: auto; background: var(--paper); }
+.w-spectrum .ws-axis { stroke: var(--ink); stroke-width: 1; }
+.w-spectrum .ws-tick { font-family: var(--ui); font-size: 11px; fill: var(--muted); }
+.w-spectrum .ws-stick { stroke: var(--navy); stroke-width: 3; }
+.w-spectrum .ws-stick-on { stroke: var(--orange); stroke-width: 6; }
+
+.w-spectrum .ws-list { max-height: 260px; overflow-y: auto; }
+.w-spectrum .ws-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.w-spectrum .ws-chip { display: inline-flex; flex-direction: column; align-items: center; min-width: 3.2em; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--wash); color: var(--ink); cursor: pointer; font-family: var(--ui); }
+.w-spectrum .ws-chip-label { font-family: var(--mono); font-size: 0.85rem; }
+.w-spectrum .ws-chip-mass { font-size: 0.95rem; font-weight: 700; }
+.w-spectrum .ws-chip-on { border-color: var(--teal); background: var(--teal); color: var(--paper); }

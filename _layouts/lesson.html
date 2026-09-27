@@ -7,44 +7,55 @@ body_class: lesson-page
 {% assign idx = page.order | minus: 1 %}
 {% assign prev_idx = idx | minus: 1 %}
 {% assign next_idx = idx | plus: 1 %}
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 230 | plus: 1 %}
 {% capture chapter_url %}/bioinformatics-chapter-{{ page.chapter }}/{% endcapture %}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"LearningResource","name":{{ page.seo_title | jsonify }},"headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},
-  "url":"{{ page.url | absolute_url }}","learningResourceType":"Textbook section","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,
+  "url":"{{ page.url | absolute_url }}","learningResourceType":"Textbook section","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"timeRequired":"PT{{ minutes }}M",
   "author":[{"@type":"Person","name":"Phillip Compeau"},{"@type":"Person","name":"Pavel Pevzner"}],
   "publisher":{"@type":"Organization","name":"Active Learning Publishers"},
   "isPartOf":{"@type":"Book","name":"Bioinformatics Algorithms: An Active Learning Approach","url":"{{ '/' | absolute_url }}"}},
+ {% if page.video %}{"@type":"VideoObject","name":{{ page.video_title | jsonify }},"description":{{ page.video_title | append: ". A lecture from Bioinformatics Algorithms by Phillip Compeau and Pavel Pevzner." | jsonify }},
+  "thumbnailUrl":"https://i.ytimg.com/vi/{{ page.video }}/hqdefault.jpg","uploadDate":"{{ page.video_date }}","embedUrl":"https://www.youtube.com/embed/{{ page.video }}","contentUrl":"https://www.youtube.com/watch?v={{ page.video }}"},{% endif %}
  {"@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"Read the book","item":"{{ '/read-the-book' | absolute_url }}"},
   {"@type":"ListItem","position":2,"name":"Chapter {{ page.chapter }}: {{ chapter.topic }}","item":"{{ chapter_url | absolute_url }}"},
   {"@type":"ListItem","position":3,"name":{{ page.title | jsonify }},"item":"{{ page.url | absolute_url }}"}]}
 ]}
 </script>
+<div class="course-strip"><div class="wrap"><span class="cs-long">You are reading the free online edition.</span> <a href="{{ page.cogniterra_url | default: site.cogniterra_url }}" target="_blank" rel="noopener"><span class="cs-long">Autograded code challenges and a certificate are in the interactive text, free to start.</span><span class="cs-short">Solve these problems with autograders, free</span></a></div></div>
 <div class="wrap lesson-grid">
   <aside class="lesson-toc" aria-label="Chapter {{ page.chapter }} lessons">
-    <details open>
+    <details open data-toc>
       <summary><a href="{{ chapter_url | relative_url }}">Chapter {{ page.chapter }}: {{ chapter.topic }}</a></summary>
       <ol>
         {% for l in lessons %}
-        <li{% if l.url == page.url %} class="current" aria-current="page"{% endif %}><a href="{{ l.url | relative_url }}"><span class="toc-num">{{ l.number }}</span> {{ l.title }}</a></li>
+        <li data-lesson-url="{{ l.url | relative_url }}"{% if l.url == page.url %} class="current" aria-current="page"{% endif %}><a href="{{ l.url | relative_url }}"><span class="toc-num">{{ l.number }}</span> {{ l.title }}</a></li>
         {% endfor %}
       </ol>
     </details>
-    <a class="toc-faq" href="{{ '/faq-chapter-' | append: page.chapter | relative_url }}">Chapter {{ page.chapter }} FAQ</a>
   </aside>
-  <article class="lesson">
+  <article class="lesson" data-title="{{ page.title | escape }}">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ '/read-the-book' | relative_url }}">Read the book</a> <span>/</span> <a href="{{ chapter_url | relative_url }}">Chapter {{ page.chapter }}: {{ chapter.question }}</a></nav>
     <p class="lesson-kicker">{% if page.number contains "." %}Lesson {{ page.number }}{% else %}Chapter {{ page.chapter }} {{ page.number }}{% endif %}</p>
     <h1>{{ page.title }}</h1>
+    <p class="lesson-meta"><span>{{ minutes }} min read</span>{% if page.code_challenges > 0 %}<span>{{ page.code_challenges }} code challenge{% if page.code_challenges > 1 %}s{% endif %}</span>{% endif %}<span class="done-badge">&#10003; Read</span></p>
+    {% if page.video %}
+    <details class="lecture" data-video="{{ page.video }}" data-title="{{ page.video_title | escape }}">
+      <summary><span class="lecture-thumb" style="background-image:url('https://i.ytimg.com/vi/{{ page.video }}/mqdefault.jpg')"></span><span class="lecture-text"><strong>Watch the lecture</strong><span>{{ page.video_title }}</span></span></summary>
+      <div class="embed"></div>
+    </details>
+    {% endif %}
     <div class="prose">
 {{ content }}
     </div>
+    {% include next-steps.html %}
     <nav class="pager" aria-label="Lesson navigation">
       {% if prev_idx >= 0 %}{% assign p = lessons[prev_idx] %}<a class="pager-prev" href="{{ p.url | relative_url }}"><span>Previous</span>{{ p.title }}</a>{% else %}<span></span>{% endif %}
       {% if next_idx < lessons.size %}{% assign n = lessons[next_idx] %}<a class="pager-next" href="{{ n.url | relative_url }}"><span>Next</span>{{ n.title }}</a>
-      {% else %}{% assign next_ch = page.chapter | plus: 1 %}{% assign nc = site.data.chapters | where: "n", next_ch | first %}{% if nc and nc.free %}<a class="pager-next" href="{{ '/bioinformatics-chapter-' | append: next_ch | append: '/' | relative_url }}"><span>Next chapter</span>{{ nc.question }}</a>{% else %}<a class="pager-next" href="{{ site.buy_url | relative_url }}"><span>Keep reading</span>Chapters 6 to 11 are in the print book</a>{% endif %}{% endif %}
+      {% else %}{% assign next_ch = page.chapter | plus: 1 %}{% assign nc = site.data.chapters | where: "n", next_ch | first %}{% if nc and nc.free %}<a class="pager-next" href="{{ '/bioinformatics-chapter-' | append: next_ch | append: '/' | relative_url }}"><span>Next chapter</span>{{ nc.question }}</a>{% else %}<a class="pager-next" href="{{ site.cogniterra_url }}" target="_blank" rel="noopener"><span>Keep reading</span>Chapters 6 to 11 are in the interactive text</a>{% endif %}{% endif %}
     </nav>
-    {% include cta-book.html %}
   </article>
 </div>

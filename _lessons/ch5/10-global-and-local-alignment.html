@@ -8,6 +8,13 @@ number: '5.10'
 order: 10
 slug: global-and-local-alignment
 permalink: /bioinformatics-chapter-5/global-and-local-alignment/
+cogniterra_lesson: 29938
+cogniterra_url: https://cogniterra.org/lesson/29938/step/1?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=global-and-local-alignment
+code_challenges: 2
+video: kGJ9QZ5lwqs
+video_title: From Global to Local Alignment
+video_date: '2014-05-19'
+image: /assets/images/site/chapter-5-cover.jpg
 ---
 <!-- Step 1 -->
 <h2 id="global-alignment">Global alignment</h2>
@@ -26,7 +33,7 @@ permalink: /bioinformatics-chapter-5/global-and-local-alignment/
 <span class="image-wrapper"><p style="text-align: center;"><img alt="Colored alignment graph" decoding="async" loading="lazy" src="https://bioinformaticsalgorithms.com/images/Alignment/colored_alignment_graph.png" style="max-width: 100%" title="Image: https://bioinformaticsalgorithms.com/images/Alignment/colored_alignment_graph.png" width="404px"/></p></span>
 <p><small><strong>Figure:</strong> <em>AlignmentGraph</em>(<samp>TGTTA</samp>, <samp>TCGT</samp>), with each edge colored according to whether the edge represents a match, mismatch, insertion, or deletion.</small></p>
 <!-- Step 3 -->
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Global Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5e/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Global Alignment Problem. Solve at <a href="https://cogniterra.org/lesson/29938/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=global-and-local-alignment" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5e/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29938/step/3?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=global-and-local-alignment" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul><li><strong>Input:</strong><span> Two protein strings written in the single-letter amino acid alphabet.</span></li><li><strong>Output:</strong><span> The maximum alignment score of these strings followed by an alignment achieving this maximum score. Use the </span><span>BLOSUM62 scoring matrix for matches and mismatches as well as the indel penalty σ = 5.</span></li></ul>
 <!-- Step 4 -->
 <h2 id="limitations-of-global-alignment">Limitations of global alignment</h2>
@@ -64,5 +71,5 @@ permalink: /bioinformatics-chapter-5/global-and-local-alignment/
 <p class="callout callout-think" style="text-align: left;"><span class="callout-label">STOP and Think</span> After computing all values <em>s</em><sub><em>i</em>, <em>j </em></sub>, how can you find where the path corresponding to the best local alignment starts and ends in the alignment graph?</p>
 <!-- Step 10 -->
 <p>You might still be wondering how we can take these free taxi rides through the alignment graph. The point is that you are in charge of designing whatever Manhattan-like DAG you like, as long as it adequately models the specific alignment problem at hand. Transformations like free taxi rides will become a common theme in this chapter. Various alignment problems can be solved by constructing an appropriate DAG with as few edges as possible (to minimize runtime), assigning edge weights to model the requirements of the problem, and then finding a longest path in this DAG.</p>
-<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Local Alignment Problem. Solve at <a href="https://cogniterra.org/course/64" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5f/" rel="noopener" target="_blank">Rosalind</a>.</p>
+<p class="callout callout-challenge"><span class="callout-label">Code Challenge</span> Solve the Local Alignment Problem. Solve at <a href="https://cogniterra.org/lesson/29938/step/10?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=global-and-local-alignment" rel="noopener" target="_blank">Cogniterra</a> or <a href="https://rosalind.info/problems/ba5f/" rel="noopener" target="_blank">Rosalind</a>.</span><span class="cc-actions"><a class="btn btn-small btn-solve" href="https://cogniterra.org/lesson/29938/step/10?utm_source=bioinformaticsalgorithms.org&utm_medium=lesson&utm_campaign=global-and-local-alignment" target="_blank" rel="noopener">Solve it with the autograder</a><span class="cc-note">Free to start in the interactive text</span></span></p>
 <ul><li><strong>Input:</strong><span> Two protein strings written in the single-letter amino acid alphabet.</span></li><li><strong>Output:</strong><span> The maximum score of a local alignment of the strings, followed by a local alignment of these strings achieving the maximum </span><span>score.  Use the PAM250 scoring matrix for matches and mismatches as well as the indel penalty σ = 5.</span></li></ul>
