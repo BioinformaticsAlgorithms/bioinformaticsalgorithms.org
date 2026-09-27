@@ -6,7 +6,8 @@
 /* The book's own typography: Palatino for text, Optima for titles and labels, a Luxi-like mono for code. */
 :root {
   --read: Palatino, "Palatino Linotype", "Book Antiqua", "TeX Gyre Pagella", "URW Palladio L", Georgia, serif;
-  --ui: Optima, "Optima Nova", Candara, "URW Classico", "Segoe UI", "Noto Sans", system-ui, sans-serif;
+  --ui: "Raleway", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --book-sans: Optima, "Optima Nova", Candara, "URW Classico", "Segoe UI", sans-serif;
   --mono: "Luxi Mono", Menlo, Consolas, "IBM Plex Mono", "DejaVu Sans Mono", monospace;
   --navy: #2c365e;
   --navy-deep: #1f2745;
@@ -98,7 +99,7 @@ a:hover { color: var(--navy); }
 .brand-monkey { width: 64px; height: auto; flex: 0 0 auto; transition: transform 0.25s; }
 .brand:hover .brand-monkey { transform: rotate(-4deg) translateY(-1px); }
 .brand-words { display: flex; flex-direction: column; line-height: 1.05; }
-.brand-title { font-family: var(--read); font-weight: 700; font-size: 1.28rem; letter-spacing: 0.005em; color: var(--navy); }
+.brand-title { font-family: var(--ui); font-weight: 800; font-size: 1.18rem; letter-spacing: 0.01em; color: var(--navy); }
 .brand-sub { font-family: var(--ui); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 .header-tools { display: flex; align-items: center; gap: 2px; order: 3; }
 .icon-btn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 0; background: transparent; color: var(--navy); cursor: pointer; font-size: 1.6rem; line-height: 1; }
@@ -197,7 +198,7 @@ h2, h3 { color: var(--navy); line-height: 1.25; }
 /* Quotes */
 .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
 .quote { margin: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 24px; }
-.quote p { font-family: var(--read); font-size: 1.15rem; line-height: 1.5; margin: 0 0 14px; }
+.quote p { font-family: var(--ui); font-weight: 500; font-size: 1.15rem; line-height: 1.5; margin: 0 0 14px; }
 .quote footer { color: var(--orange); font-weight: 700; font-size: 0.92rem; }
 
 /* Chapter page */
@@ -358,7 +359,7 @@ h2, h3 { color: var(--navy); line-height: 1.25; }
 /* Type: Optima for titles and interface, Palatino for reading */
 body { background: var(--paper); color: var(--ink); font-family: var(--ui); }
 h1, h2, h3, .page-title, .section-title { font-family: var(--ui); letter-spacing: 0.005em; }
-.lede, .section-lede, .chapter-hero .lede { font-family: var(--read); }
+.lede, .section-lede { font-family: var(--ui); font-weight: 500; }
 .prose h2, .prose h3 { font-family: var(--ui); }
 .prose samp, .prose code, .prose tt, .prose pre { font-family: var(--mono); }
 .prose pre { background: var(--wash); border-color: var(--line); border-left-color: var(--navy); color: var(--ink); }
@@ -480,3 +481,17 @@ h1, h2, h3, .page-title, .section-title { font-family: var(--ui); letter-spacing
 @media (prefers-reduced-motion: reduce) { .wanted img { transition: none; } }
 .authors .person .wanted img, .person .wanted img { width: 100%; height: 100%; border-radius: 0; }
 .wanted { aspect-ratio: 440 / 508; }
+
+/* Friendlier, lighter surfaces: Raleway for the site, Palatino only where people read the book */
+h1, h2, h3, .page-title, .section-title { font-weight: 800; letter-spacing: -0.01em; }
+.hero h1 { font-size: clamp(2.4rem, 5.4vw, 3.9rem); }
+.hero .lede { font-size: 1.22rem; line-height: 1.55; color: var(--muted); }
+.search-results .sr-snip, .callout, .faq-answer { font-family: var(--read); }
+.lesson h1, .prose h2, .prose h3 { font-family: var(--ui); font-weight: 800; }
+.lesson-kicker, .kicker { font-weight: 800; }
+.chapter-banner .lede { font-size: 1.12rem; }
+.site-nav > a, .nav-group > a { white-space: nowrap; font-size: 0.95rem; padding: 8px 9px; }
+.site-nav > .nav-cta { white-space: nowrap; }
+.brand-title { white-space: nowrap; }
+@media (max-width: 1240px) { .brand-sub { display: none; } }
+@media (max-width: 1140px) and (min-width: 981px) { .brand-title { font-size: 1rem; } .site-nav > a, .nav-group > a { padding: 8px 6px; font-size: 0.9rem; } }

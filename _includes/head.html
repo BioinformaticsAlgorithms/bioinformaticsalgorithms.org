@@ -4,6 +4,9 @@
 {% seo title=false %}
 <title>{% if page.url == "/" %}{{ site.title }}: {{ site.tagline }} | Free Bioinformatics Textbook{% else %}{{ seo_title }} | {{ site.title }}{% endif %}</title>
 <script>try{var t=localStorage.getItem("ba-theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#2c365e">
 <meta name="ba-base" content="{{ site.baseurl }}">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
